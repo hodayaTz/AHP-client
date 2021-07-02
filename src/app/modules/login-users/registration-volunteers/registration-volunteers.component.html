@@ -1,0 +1,30 @@
+<form [formGroup]="volunteerForm">
+    <div>
+        <label for="identityNumber">מספר זהות:</label>
+        <input type="text" id="identityNumber" formControlName="identityNumber">
+    </div>
+    <div>
+        <label for="firstName">שם פרטי:</label>
+        <input type="text" id="firstName" formControlName="firstName">
+    </div>
+    <div>
+        <label for="lastName">משפחה:</label>
+        <input type="text" id="lastName" formControlName="lastName">
+    </div>
+    <div>
+        <label for="phone">מספר טלפון:</label>
+        <input type="text" id="phone" formControlName="phone">
+    </div>
+    <div>
+        <label for="gmail">כתובת דוא"ל:</label>
+        <input type="text" id="gmail" formControlName="gmail">
+    </div>
+    <div>
+        <label for="idArea">אזור מגורים</label>
+        <select name="idArea" id="idArea" formControlName="idArea">
+            <option *ngFor="let a of areas" [ngValue]="a.idArea">{{a.areaName}}</option>
+        </select>
+    </div>
+    <button (click)="saveNewVolunteer()" type="submit">שמירה</button>  
+</form>
+<div *ngIf="!volunteerExist">המשתמש קיים במערכת</div>

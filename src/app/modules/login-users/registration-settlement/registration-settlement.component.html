@@ -1,0 +1,33 @@
+<form [formGroup]="settlementForm">
+    <div>
+        <label for="name">שם ישוב:</label>
+        <input type="text" id="name" formControlName="nameSettlement">
+    </div>
+    <div>
+        <label for="idArea">אזור מגורים</label>
+        <select name="idArea" id="idArea" formControlName="idArea">
+            <option *ngFor="let a of areas" value="{{a.idArea}}">{{a.areaName}}</option>
+        </select>
+    </div>
+    <button (click)="EnterDetailsContactPerson()">הכנסת פרטי איש קשר</button>
+    <form *ngIf="IsContactPerson" [formGroup]="contactPersonForm">
+        <div>
+            <label for="firstName">שם פרטי:</label>
+            <input type="text" id="firstName" formControlName="firstName">
+        </div>
+        <div>
+            <label for="lastName">שם משפחה:</label>
+            <input type="text" id="lastName" formControlName="lastName">
+        </div>
+        <div>
+            <label for="phone">פלאפון:</label>
+            <input type="tel" id="phone" formControlName="phone">
+        </div>
+        <div>
+            <label for="gmail">דואר אלקטרוני:</label>
+            <input type="email" id="gmail" formControlName="gmail">
+        </div>
+    </form>
+    <button (click)="saveNewSettlement()" type="submit">שמירה</button>  
+</form>
+<div *ngIf="!settlementExist">הישוב קיים במערכת</div>

@@ -1,0 +1,17 @@
+
+<div>
+    <ul *ngFor="let h of holidays">
+        <li>
+            <div>
+                <span (click)="detailsHoliday(h.idHoliday)">{{h.descriptionHoliday}}</span>
+                <button (click)="deleteHoliday(h)">מחיקת החג</button>
+            </div>
+        </li>
+    </ul>    
+</div>
+
+
+
+<!-- רשימה של כל שמות החגים עם אפשרות להיכנס לכל חג
+הוספת חג חדש
+כפתור להפניה להסטוריה  -->
