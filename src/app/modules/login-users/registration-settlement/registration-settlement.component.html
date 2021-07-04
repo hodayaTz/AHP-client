@@ -6,7 +6,7 @@
     <div>
         <label for="idArea">אזור מגורים</label>
         <select name="idArea" id="idArea" formControlName="idArea">
-            <option *ngFor="let a of areas" value="{{a.idArea}}">{{a.areaName}}</option>
+            <option *ngFor="let a of areas" [ngValue]="a.idArea">{{a.areaName}}</option>
         </select>
     </div>
     <button (click)="EnterDetailsContactPerson()">הכנסת פרטי איש קשר</button>

@@ -4,5 +4,5 @@ export class Settlement{
     idSettlement:number;
 	nameSettlement:string;
 	idArea:number;
-	contactPerson:ContactPerson
+	contactPer:ContactPerson
 }
