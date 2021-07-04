@@ -14,8 +14,8 @@ import { SettlementsListComponent } from './modules/management/settlement/settle
   declarations: [
     AppComponent,
     ManagementLogInComponent,
-    HolidaysListComponent
-    // SettlementsListComponent,
+    HolidaysListComponent,
+    SettlementsListComponent,
   ],
   imports: [
     BrowserModule,

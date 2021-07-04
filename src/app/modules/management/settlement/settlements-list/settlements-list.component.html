@@ -2,9 +2,13 @@
 <div>
     <ul *ngFor="let s of settlements">
         <li>
-            <div>
-                <span >{{s}}</span>
+            <div (click)="settlementDetails(s.idSettlement)">
+                <span >{{s.idArea}}</span>
+                <!--  how to show The Area name?
+                 Do we need to pull all the areas from server and then? or---??? -->
+                <span>{{s.nameSettlement}}</span>
             </div>
+            <button (click)="deleteSettlement(s)">Delete</button>
         </li>
     </ul>    
 </div>

@@ -17,7 +17,6 @@ export class HolidaysService {
   getHolidayById(id:number):Observable<Holiday>{
     return this._http.get<Holiday>(this.url+"/"+id)
   }
-  //ליצור את הפונקציה בסרבר
   deleteHoliday(holidayToDelete:Holiday):Observable<boolean>{
     return this._http.delete<boolean>(this.url+"/"+holidayToDelete.idHoliday)
   }

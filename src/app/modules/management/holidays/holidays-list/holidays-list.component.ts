@@ -27,6 +27,14 @@ export class HolidaysListComponent implements OnInit {
 
   deleteHoliday(holidayToDelete:Holiday){
     this._serviceHoliday.deleteHoliday(holidayToDelete).subscribe(res=>{
+      if (res){
+        alert("the deletion succeeded!!");
+        let index = this.holidays.indexOf(holidayToDelete);
+        this.holidays.splice(index,1);
+      }
+      else{
+        alert("the deletion did not succeed");
+      }
     })
   }
 
