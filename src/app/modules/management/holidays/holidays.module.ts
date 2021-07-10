@@ -11,7 +11,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [HolidayDetailsComponent],
+  declarations: [HolidayDetailsComponent,HolidaysListComponent,HolidayDetailsComponent],
   imports: [
     CommonModule,HttpClientModule,RouterModule,HolidaysRoutingModule,ReactiveFormsModule,FormsModule
   ],

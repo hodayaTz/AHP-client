@@ -1,4 +1,4 @@
-<form [formGroup]="settlementForm">
+<form [formGroup]="settlementForm" (submit)="settlementForm.valid && saveNewSettlement()">
     <div>
         <label for="name">שם ישוב:</label>
         <input type="text" id="name" formControlName="nameSettlement">
@@ -28,6 +28,6 @@
             <input type="email" id="gmail" formControlName="gmail">
         </div>
     </form>
-    <button (click)="saveNewSettlement()" type="submit">שמירה</button>  
+    <button type="submit">שמירה</button>  
 </form>
 <div *ngIf="!settlementExist">הישוב קיים במערכת</div>

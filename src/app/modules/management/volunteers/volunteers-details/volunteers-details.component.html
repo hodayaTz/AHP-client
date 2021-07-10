@@ -1,4 +1,4 @@
-<form [formGroup]="volunteerForm" (submit)="volunteerForm.valid && saveNewVolunteer()">
+<form [formGroup]="volunteerForm" (submit)="volunteerForm.valid && updateVolunteer()">
     <div>
         <label for="identityNumber">מספר זהות:</label>
         <input type="text" id="identityNumber" formControlName="identityNumber">
@@ -27,4 +27,4 @@
     </div>
     <button type="submit">שמירה</button>  
 </form>
-<div *ngIf="!volunteerExist">המשתמש קיים במערכת</div>
+<div *ngIf="saveSucceed">פרטי הפעיל עודכנו בהצלחה</div>

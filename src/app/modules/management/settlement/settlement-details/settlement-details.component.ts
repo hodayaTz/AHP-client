@@ -25,11 +25,11 @@ export class SettlementDetailsComponent implements OnInit {
             "settlementName":new FormControl(this.settlement.nameSettlement, Validators.required),
             // "areaName":new FormControl(this.settlement.A, Validators.required), ???
             "contactPerson":new FormGroup({
-              "idContactPerson":new FormControl(this.settlement.contactPerson.idContactPerson, Validators.required),
-              "firstName":new FormControl(this.settlement.contactPerson.firstName, Validators.required),
-              "lastName":new FormControl(this.settlement.contactPerson.lastName, Validators.required),
-              "phone":new FormControl(this.settlement.contactPerson.phone, Validators.required),
-              "gmail":new FormControl(this.settlement.contactPerson.gmail, Validators.required),
+              "idContactPerson":new FormControl(this.settlement.contactPer.idContactPerson, Validators.required),
+              "firstName":new FormControl(this.settlement.contactPer.firstName, Validators.required),
+              "lastName":new FormControl(this.settlement.contactPer.lastName, Validators.required),
+              "phone":new FormControl(this.settlement.contactPer.phone, Validators.required),
+              "gmail":new FormControl(this.settlement.contactPer.gmail, Validators.required),
             })
           })
         })

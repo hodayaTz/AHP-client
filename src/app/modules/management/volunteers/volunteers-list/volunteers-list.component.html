@@ -1,0 +1,16 @@
+<button (click)="addVolunteer()">הוספת מתנדב חדש</button>
+<div>
+    <ul *ngFor="let v of volunteers">
+        <li>
+            <div>
+                <span >{{v.firstName}}+" "+{{v.lastName}}</span>
+                <!-- <button (click)="">הפיכת פעיל ללא פעיל</button> -->
+                <button (click)="detailsVolunteer(v.idVolunteer)">עריכת פרטים</button>
+                <button *ngIf="v.isActive" (click)="changeStatus(v)">שנוי סטטוס ל-לא פעיל</button>
+                <button *ngIf="!v.isActive" (click)="changeStatus(v)">שנוי סטטוס ל- פעיל</button>
+                <button>הסטורית פעיל</button>
+            </div>
+        </li>
+    </ul>    
+</div>
+

@@ -23,7 +23,6 @@ export class RegistrationVolunteersComponent implements OnInit {
         console.log(element.areaName)
       });
     })
-    
   }
   areas:Area[]
   newVolunteer:Volunteer;
@@ -46,7 +45,4 @@ export class RegistrationVolunteersComponent implements OnInit {
       this.volunteerExist = res;
     })
   } 
-
-
-
 }

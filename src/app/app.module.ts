@@ -8,14 +8,13 @@ import { ManagementModule } from './modules/management/management.module';
 import { ManagementLogInComponent } from './modules/management-log-in/management-log-in/management-log-in.component';
 import { HolidaysListComponent } from './modules/management/holidays/holidays-list/holidays-list.component';
 import { SettlementsListComponent } from './modules/management/settlement/settlements-list/settlements-list.component';
+import { VolunteersListComponent } from './modules/management/volunteers/volunteers-list/volunteers-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ManagementLogInComponent,
-    HolidaysListComponent,
-    SettlementsListComponent,
+    ManagementLogInComponent
   ],
   imports: [
     BrowserModule,
