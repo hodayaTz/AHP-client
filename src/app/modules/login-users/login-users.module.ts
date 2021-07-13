@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LogInRoutingModule } from './login-users-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LogInService } from './log-in.service';
+import { MaterialModule } from 'src/app/material.module';
 
 
 
@@ -18,7 +19,8 @@ import { LogInService } from './log-in.service';
     RouterModule,
     LogInRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers:[LogInService]
 })

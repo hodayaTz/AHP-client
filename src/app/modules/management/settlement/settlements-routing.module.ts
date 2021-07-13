@@ -4,7 +4,7 @@ import { SettlementDetailsComponent } from './settlement-details/settlement-deta
 import { SettlementsListComponent } from './settlements-list/settlements-list.component';
 
 const routes: Routes = [
-  {path:"settlementList" ,component:SettlementsListComponent},
+  {path:"" ,component:SettlementsListComponent},
   {path:"detailsSettlement",component:SettlementDetailsComponent}
 ];
 

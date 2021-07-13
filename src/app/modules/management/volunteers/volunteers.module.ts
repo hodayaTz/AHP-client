@@ -7,11 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { VolunteersRoutingModule } from './volunteers-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   declarations: [VolunteersDetailsComponent,VolunteersListComponent],
   imports: [
-    CommonModule,HttpClientModule,RouterModule,VolunteersRoutingModule,ReactiveFormsModule,FormsModule
+    CommonModule,HttpClientModule,RouterModule,VolunteersRoutingModule,ReactiveFormsModule,FormsModule,MaterialModule
   ],
   providers:[VolunteersService]
 })

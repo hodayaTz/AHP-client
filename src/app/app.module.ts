@@ -9,6 +9,8 @@ import { ManagementLogInComponent } from './modules/management-log-in/management
 import { HolidaysListComponent } from './modules/management/holidays/holidays-list/holidays-list.component';
 import { SettlementsListComponent } from './modules/management/settlement/settlements-list/settlements-list.component';
 import { VolunteersListComponent } from './modules/management/volunteers/volunteers-list/volunteers-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { VolunteersListComponent } from './modules/management/volunteers/volunte
     BrowserModule,
     AppRoutingModule,
     LoginUsersModule,
-    ManagementModule
+    ManagementModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
