@@ -6,7 +6,7 @@ import { RegistrationVolunteersComponent } from '../../login-users/registration-
 
 const routes: Routes = [
   {path:"" ,component:VolunteersListComponent},
-  {path:"detailsVolunteer/:id" ,component:VolunteersDetailsComponent},
+  {path:"editVolunteer/:id" ,component:VolunteersDetailsComponent},
   {path:"addVolunteer",component:RegistrationVolunteersComponent}
 ];
 
