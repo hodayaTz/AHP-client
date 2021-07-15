@@ -14,11 +14,11 @@ export class VolunteersDetailsComponent implements OnInit {
   constructor( private _acr: ActivatedRoute,private _serviceVolunteers:VolunteersService ) { }
 
   ngOnInit(): void {
-    debugger
+    // debugger
     this._acr.paramMap.subscribe(data=>{
       if(data.has("id")){
         this._serviceVolunteers.getVolunteerById(Number(data.get("id"))).subscribe(current_volunteer=>{
-          debugger
+          // debugger
           this.volunteer= current_volunteer
         })
       }
@@ -51,6 +51,7 @@ export class VolunteersDetailsComponent implements OnInit {
   }
   updateVolunteer(){
     this.volunteer=this.volunteerForm.value
+    debugger
     this._serviceVolunteers.updateVolunteer(this.volunteer).subscribe(result=>{
       this.saveSucceed=result
     })
