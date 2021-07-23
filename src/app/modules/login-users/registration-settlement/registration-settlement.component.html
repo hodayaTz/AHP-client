@@ -9,7 +9,7 @@
             <option *ngFor="let a of areas" [ngValue]="a.idArea">{{a.areaName}}</option>
         </select>
     </div>
-    <button (click)="EnterDetailsContactPerson()">הכנסת פרטי איש קשר</button>
+    <input type="button" (click)="EnterDetailsContactPerson()">הכנסת פרטי איש קשר
     <form *ngIf="IsContactPerson" [formGroup]="contactPersonForm">
         <div>
             <label for="firstName">שם פרטי:</label>

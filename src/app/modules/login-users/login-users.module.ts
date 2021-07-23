@@ -22,6 +22,7 @@ import { MaterialModule } from 'src/app/material.module';
     HttpClientModule,
     MaterialModule
   ],
+  exports:[RegistrationSettlementComponent,RegistrationVolunteersComponent],
   providers:[LogInService]
 })
 export class LoginUsersModule { }

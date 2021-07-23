@@ -16,7 +16,7 @@ import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
   declarations: [
     AppComponent,
-    ManagementLogInComponent
+    ManagementLogInComponent,
   ],
   imports: [
     BrowserModule,

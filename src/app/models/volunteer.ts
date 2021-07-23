@@ -7,6 +7,7 @@ export class Volunteer{
 	gmail:string;
 	idArea:number;
 	isActive:boolean;
+	nameArea:string;
 }
 
 
