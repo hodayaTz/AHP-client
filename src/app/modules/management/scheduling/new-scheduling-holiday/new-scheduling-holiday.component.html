@@ -3,7 +3,7 @@
         <p>
             <mat-form-field appearance="legacy">
                 <label></label>
-                <input matInput formControlName="yearHoliday">
+                <input matInput type="number" formControlName="yearHoliday" min="{{currentYear}}">
                 <!-- <mat-icon matSuffix>gmail</mat-icon> -->
                 <mat-hint>שנה</mat-hint>
             </mat-form-field>
