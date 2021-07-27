@@ -25,9 +25,9 @@ export class RegistrationSettlementComponent implements OnInit {
     // })
     this._service.getArea().subscribe(areasData => {
       this.areas = areasData
-      this.areas.forEach(element => {
-        console.log(element.areaName)
-      });
+      // this.areas.forEach(element => {
+      //   console.log(element.areaName)
+      // });
     })
   }
   newArea: Area = new Area()
