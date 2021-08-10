@@ -5,13 +5,22 @@ import { SettlementModule } from './settlement/settlement.module';
 import { VolunteersModule } from './volunteers/volunteers.module';
 import { ManagamentRoutingModule } from './management-routing.module';
 import { SchedulingModule } from './scheduling/scheduling.module';
+import { ManagementBasicDesignComponent } from './management-basic-design/management-basic-design.component';
+import { MaterialModule } from 'src/app/material.module';
+import { MenuDesignComponent } from './menu-design/menu-design.component';
+import { OpenSchedulingModule } from './scheduling/open-scheduling/open-scheduling.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ManagementBasicDesignComponent,
+    MenuDesignComponent
+  ],
   imports: [
-    CommonModule,HolidaysModule,SettlementModule,VolunteersModule,ManagamentRoutingModule,SchedulingModule
+    CommonModule,HolidaysModule,SettlementModule,VolunteersModule,ManagamentRoutingModule,SchedulingModule,
+    MaterialModule,
+    OpenSchedulingModule
   ]
 })
 export class ManagementModule { }

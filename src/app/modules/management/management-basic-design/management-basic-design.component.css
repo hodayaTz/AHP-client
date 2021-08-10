@@ -1,0 +1,12 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-icon{
+  font-size: 35px;
+  padding-right: 25px;
+}
+
+/* 
+.example-sidenav {
+  padding: 20px;
+} */

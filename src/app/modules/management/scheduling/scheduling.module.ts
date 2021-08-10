@@ -8,6 +8,7 @@ import { SchedulingService } from './scheduling.service';
 import { NewSchedulingHolidayComponent } from './new-scheduling-holiday/new-scheduling-holiday.component';
 import { SchedulingRoutingModule } from './scheduling-routing.module';
 import { MaterialModule } from 'src/app/material.module';
+import { OpenSchedulingModule } from './open-scheduling/open-scheduling.module';
 
 
 
@@ -16,7 +17,8 @@ import { MaterialModule } from 'src/app/material.module';
     OpenSchedulingListComponent,NewSchedulingHolidayComponent
   ],
   imports: [
-    CommonModule,HttpClientModule,RouterModule,ReactiveFormsModule,FormsModule,SchedulingRoutingModule,MaterialModule
+    CommonModule,HttpClientModule,RouterModule,ReactiveFormsModule,FormsModule,SchedulingRoutingModule,MaterialModule,
+    OpenSchedulingModule
   ],
   providers:[SchedulingService]
 })
