@@ -8,9 +8,10 @@ import { RouterModule } from '@angular/router';
 import { VolunteersRoutingModule } from './volunteers-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
+import { VolunteersSearchPipe } from './volunteers-search-pipe';
 
 @NgModule({
-  declarations: [VolunteersDetailsComponent,VolunteersListComponent],
+  declarations: [VolunteersDetailsComponent,VolunteersListComponent,VolunteersSearchPipe],
   imports: [
     CommonModule,HttpClientModule,RouterModule,VolunteersRoutingModule,ReactiveFormsModule,FormsModule,MaterialModule
   ],

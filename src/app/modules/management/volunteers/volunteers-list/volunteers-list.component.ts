@@ -8,6 +8,7 @@ import { VolunteersService } from '../volunteers.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-volunteers-list',
@@ -21,13 +22,13 @@ export class VolunteersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._service.getVolunteers().subscribe(data => {
-      this.volunteers = data
-    })
+    this.volunteers$=this._service.getVolunteers()
   }
-  volunteers: Volunteer[]
+
+  volunteers$:Observable<Volunteer[]>
   color:string= "primary"
   currentVolunteerDetails:Volunteer
+  searchText:string
 
   editVolunteer(volunteerId: number) {
     debugger
@@ -38,9 +39,8 @@ export class VolunteersListComponent implements OnInit {
     this._service.changeStatus(volunteerToChange).subscribe(result => {
       console.log(result)
     })
-    this._service.getVolunteers().subscribe(data => {
-      this.volunteers = data
-    })
+    // this.volunteers$=this._service.getVolunteers()
+
   }
 
   addVolunteer() {
@@ -49,19 +49,6 @@ export class VolunteersListComponent implements OnInit {
 
   detailsVolunteer(currentVolunteerDetails:Volunteer){
     this.currentVolunteerDetails=currentVolunteerDetails
-  }
-  
-  
-  applyFilter(event: Event) {
-    // this.volunteers.forEach(element => {
-    //   this.dataSource.data.push(element)
-    // });
-    // const filterValue = (event.target as HTMLInputElement).value;
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    // if (this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    // }
   }
 
 }

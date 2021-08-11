@@ -1,12 +1,13 @@
 <div>
     <div class="filterAndButton">
         <mat-form-field appearance="standard">
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            <mat-label>חיפוש...</mat-label>
+            <input [(ngModel)]="searchText" matInput >
         </mat-form-field>
-        <button dir="ltr" (click)="addVolunteer()" mat-raised-button color={{color}} style="height: fit-content;">הוספת מתנדב חדש</button>
+        <button dir="ltr" (click)="addVolunteer()" mat-raised-button color={{color}} style="height: fit-content;">הוספת פעיל חדש</button>
     </div>
-    <div *ngFor="let v of volunteers">
+    
+    <div *ngFor="let v of volunteers$ | async | search : searchText">
             <mat-accordion (click)="detailsVolunteer(v)">
                 <mat-expansion-panel hideToggle>
                     <mat-expansion-panel-header>
@@ -16,15 +17,14 @@
                         <!-- <mat-panel-description>
                             This is a summary of the content
                         </mat-panel-description> -->
-                        <!-- <button mat-stroked-button color={{color}} *ngIf="v.isActive" (click)="changeStatus(v)">שנוי סטטוס ל-לא פעיל</button>
-                        <button mat-stroked-button color={{color}} *ngIf="!v.isActive" (click)="changeStatus(v)">שנוי סטטוס ל- פעיל</button> -->
+                        <button mat-raised-button color={{color}} *ngIf="v.isActive" (click)="changeStatus(v)">שנוי סטטוס ל-לא פעיל</button>
+                        <button mat-raised-button color={{color}} *ngIf="!v.isActive" (click)="changeStatus(v)">שנוי סטטוס ל- פעיל</button> 
                         <button mat-stroked-button color={{color}} (click)="editVolunteer(v.idVolunteer)">עריכת פרטים</button>
                         <button mat-stroked-button color={{color}}>הסטורית פעיל</button>
                     </mat-expansion-panel-header>
-                    <div *ngIf="currentVolunteerDetails">
-                        <p>{{currentVolunteerDetails.gmail}}</p>
-                        <p>{{currentVolunteerDetails.phone}}</p>
-                        ש פלאפון ומייל ואזור 
+                    <div *ngIf="v">
+                        <p>דואר אלקטרוני: {{v.gmail}}</p>
+                        <p>פלאפון: {{v.phone}}</p>
                     </div>
                 </mat-expansion-panel>
             </mat-accordion>

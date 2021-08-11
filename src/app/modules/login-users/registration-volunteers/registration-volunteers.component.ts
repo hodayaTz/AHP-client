@@ -32,7 +32,7 @@ export class RegistrationVolunteersComponent implements OnInit {
     lastName:new FormControl("",[Validators.required]),
     identityNumber:new FormControl("",[Validators.required]),
     phone:new FormControl("",[Validators.required]),
-    gmail:new FormControl("",[Validators.required,Validators.email]),
+    gmail:new FormControl("",[Validators.email]),
     idArea:new FormControl("",[Validators.required]),
   })
 

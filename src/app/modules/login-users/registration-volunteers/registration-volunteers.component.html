@@ -9,68 +9,40 @@
     </p>
     <p>
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label for="firstName">First name</mat-label>
+        <mat-label for="firstName">שם פרטי</mat-label>
         <input matInput formControlName="firstName">
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label for="lastName">Last name</mat-label>
+        <mat-label for="lastName">שם משפחה</mat-label>
         <input matInput formControlName="lastName">
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Phone number</mat-label>
-        <input type="tel" matInput formControlName="phone" placeholder="055-555-5555" required>
+        <mat-label>טלפון</mat-label>
+        <input type="tel" matInput formControlName="phone" placeholder="055-555-5555">
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="gmail" placeholder="Ex. pat@example.com" required>
+        <input type="email" matInput formControlName="gmail" placeholder="Ex. pat@example.com">
         <mat-icon matSuffix>gmail</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="example-full-width" appearance="fill">
-        <label></label>
+        <mat-label>מיקום בארץ:</mat-label>
         <mat-select disableRipple name="idArea" id="idArea" formControlName="idArea">
           <mat-option *ngFor="let a of areas" [value]="a.idArea">{{a.areaName}}</mat-option>
         </mat-select>
         <!-- <mat-icon>map</mat-icon> -->
       </mat-form-field>
     </p>
-    <!-- 
-  <div>
-    <label for="identityNumber">מספר זהות:</label>
-    <input type="text" id="identityNumber" formControlName="identityNumber">
-  </div>
-  <div>
-    <label for="firstName">שם פרטי:</label>
-    <input type="text" id="firstName" formControlName="firstName">
-  </div>
-  <div>
-    <label for="lastName">משפחה:</label>
-    <input type="text" id="lastName" formControlName="lastName">
-  </div>
-  <div>
-    <label for="phone">מספר טלפון:</label>
-    <input type="text" id="phone" formControlName="phone">
-  </div>
-  <div>
-    <label for="gmail">כתובת דוא"ל:</label>
-    <input type="text" id="gmail" formControlName="gmail">
-  </div>
-  <div>
-    <label for="idArea">אזור מגורים</label>
-    <select name="idArea" id="idArea" formControlName="idArea">
-      <option *ngFor="let a of areas" [ngValue]="a.idArea">{{a.areaName}}</option>
-    </select>
-  </div> -->
     <button style="width:120px; padding: 5px;"  mat-raised-button color="primary">שמירה</button>
-    <!-- <button type="submit">שמירה</button> -->
   </form>
   <div *ngIf="!volunteerExist">המשתמש קיים במערכת</div>
 </div>
