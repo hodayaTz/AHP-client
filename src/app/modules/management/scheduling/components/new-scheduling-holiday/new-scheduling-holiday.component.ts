@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { SchedulingHoliday } from 'src/app/models/scheduling-holiday';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SchedulingService } from '../scheduling.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { HolidaysService } from '../../holidays/holidays-service.service';
 import { Holiday } from 'src/app/models/holiday';
+import { SchedulingService } from '../../scheduling.service';
+import { HolidaysService } from '../../../holidays/holidays-service.service';
 // import { DialogData } from '../open-scheduling-list/open-scheduling-list.component';
 // import { DialogData } from '../open-scheduling-list/open-scheduling-list.component';
 

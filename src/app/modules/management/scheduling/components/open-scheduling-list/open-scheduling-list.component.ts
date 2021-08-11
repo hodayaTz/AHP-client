@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SchedulingService } from '../scheduling.service';
 import { SchedulingHoliday } from 'src/app/models/scheduling-holiday';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NewSchedulingHolidayComponent } from '../new-scheduling-holiday/new-scheduling-holiday.component';
+import { Observable } from 'rxjs';
+import { SchedulingService } from '../../scheduling.service';
+import { HolidaysService } from '../../../holidays/holidays-service.service';
+import { Router } from '@angular/router';
 
 
 
@@ -13,14 +16,17 @@ import { NewSchedulingHolidayComponent } from '../new-scheduling-holiday/new-sch
   styleUrls: ['./open-scheduling-list.component.css']
 })
 export class OpenSchedulingListComponent implements OnInit {
+  color:string="primary"
 
-  // constructor(private _service:SchedulingService) { }
+  ngOnInit(): void {
+    this.openSchedulingHolidays$=this._service.getSchedulingsHoliday().pipe(
+      
+    )
+  }
+  constructor(private _router:Router,private dialog: MatDialog,private _service:SchedulingService,private _service_holiday:HolidaysService) {}
 
   formNewSchedulingHoliday:FormGroup
-  ngOnInit(): void {
-    
-  }
-  constructor(public dialog: MatDialog) {}
+  openSchedulingHolidays$:Observable<SchedulingHoliday[]>
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewSchedulingHolidayComponent, {
@@ -30,6 +36,16 @@ export class OpenSchedulingListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  // getHolidayName(id:number){
+  //   this._service_holiday.getHolidayById(id).subscribe(holiday=>{
+  //     return holiday.descriptionHoliday
+  //   })
+  // }
+
+  openScheduling(idSchedulingHoliday:number){
+    this._router.navigate(["/detailsHoliday",idSchedulingHoliday])
   }
 }
 

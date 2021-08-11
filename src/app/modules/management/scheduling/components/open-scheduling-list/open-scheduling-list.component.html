@@ -1,1 +1,16 @@
-<button mat-raised-button (click)="openDialog()">פתיחת שיבוץ חדש</button>
+<div class="container-flex-column">
+    <div class="container-flex-space">
+        <div>שיבוצים פתוחים:</div>
+        <button mat-raised-button (click)="openDialog()">פתיחת שיבוץ חדש</button>
+    </div>
+    <div class="container-flex">
+        <div *ngFor="let h of openSchedulingHolidays$ | async">
+            <button class="open-scheduling" mat-stroked-button color={{color}} (click)="openScheduling(h.idSchedulingHoliday)">
+                <!-- {{getHolidayName(h.idHoliday)}} -->
+                פורים
+                <br>
+                {{h.yearHoliday}}
+            </button>
+        </div>
+    </div>
+</div>
