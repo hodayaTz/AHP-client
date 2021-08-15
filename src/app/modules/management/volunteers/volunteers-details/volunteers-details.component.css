@@ -1,8 +1,13 @@
 .example-container .mat-form-field + .mat-form-field {
-    margin-left: 8px;
-  }
-  .center{
+  margin-left: 8px;
+}
+  /* .center{
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
+  } */
+.card{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+}

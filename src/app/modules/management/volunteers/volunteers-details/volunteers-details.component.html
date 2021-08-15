@@ -1,4 +1,4 @@
-<div class="center">
+<div class="card">
     <form [formGroup]="volunteerForm" (submit)="volunteerForm.valid && updateVolunteer()">
         <p>
             <mat-form-field appearance="legacy">
@@ -8,26 +8,6 @@
                 <mat-hint>מספר זהות</mat-hint>
             </mat-form-field>
         </p>
-        <!-- <div>
-        <label for="identityNumber">מספר זהות:</label>
-        <input type="text" id="identityNumber" formControlName="identityNumber">
-    </div>
-    <div>
-        <label for="firstName">שם פרטי:</label>
-        <input type="text" id="firstName" formControlName="firstName">
-    </div>
-    <div>
-        <label for="lastName">משפחה:</label>
-        <input type="text" id="lastName" formControlName="lastName">
-    </div>
-    <div>
-        <label for="phone">מספר טלפון:</label>
-        <input type="text" id="phone" formControlName="phone">
-    </div>
-    <div>
-        <label for="gmail">כתובת דוא"ל:</label>
-        <input type="text" id="gmail" formControlName="gmail">
-    </div> -->
         <p>
             <mat-form-field appearance="legacy">
                 <label></label>
@@ -44,14 +24,7 @@
                 <mat-hint>שם משפחה</mat-hint>
             </mat-form-field>
         </p>
-        <!-- <p>
-    <mat-form-field appearance="fill">
-        <mat-label>Phone number</mat-label>
-        <example-tel-input formControlName="phone" required></example-tel-input>
-        <mat-icon matSuffix>phone</mat-icon>
-        <mat-hint>Include area code</mat-hint>
-      </mat-form-field>
-    </p> -->
+        <p>
         <p>
             <mat-form-field appearance="legacy">
                 <label></label>
@@ -74,16 +47,9 @@
                 <mat-select disableRipple name="idArea" id="idArea" formControlName="idArea">
                     <mat-option *ngFor="let a of areas" [value]="a.idArea">{{a.areaName}}</mat-option>
                 </mat-select>
-                <!-- <mat-icon>map</mat-icon> -->
                 <mat-hint>איזור מגורים</mat-hint>
             </mat-form-field>
         </p>
-        <!-- <div>
-        <label for="idArea">אזור מגורים</label>
-        <select name="idArea" id="idArea" formControlName="idArea">
-            <option *ngFor="let a of areas" [ngValue]="a.idArea"></option>
-        </select>
-    </div> -->
         <button mat-raised-button type="submit" color="primary">שמירה</button>
     </form>
 </div>
