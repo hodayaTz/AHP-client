@@ -3,4 +3,5 @@ export class SchedulingHoliday{
     idHoliday:number
     yearHoliday:number
     isOpen:boolean
+    descripation:string
 }

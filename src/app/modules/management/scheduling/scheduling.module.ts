@@ -19,7 +19,7 @@ import { HolidaysService } from '../holidays/holidays-service.service';
   ],
   imports: [
     CommonModule,HttpClientModule,RouterModule,ReactiveFormsModule,FormsModule,SchedulingRoutingModule,MaterialModule,
-    OpenSchedulingModule
+    OpenSchedulingModule,MaterialModule,RouterModule
   ],
   providers:[SchedulingService,HolidaysService]
 })

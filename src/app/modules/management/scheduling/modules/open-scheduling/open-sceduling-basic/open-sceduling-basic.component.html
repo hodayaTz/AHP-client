@@ -1,1 +1,7 @@
 <p>open-sceduling-basic works!</p>
+<button routerLink="/volunteers/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">פעילים</button>
+<button routerLink="/settlements/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">ישובים</button>
+
+<button mat-raised-button color="primary">שיבוץ</button>
+<button (click)="delete()" mat-raised-button color="primary">מחיקה</button>
+

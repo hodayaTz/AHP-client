@@ -45,7 +45,7 @@ export class OpenSchedulingListComponent implements OnInit {
   // }
 
   openScheduling(idSchedulingHoliday:number){
-    this._router.navigate(["/detailsHoliday",idSchedulingHoliday])
+    this._router.navigate(["/openScheduling",idSchedulingHoliday])
   }
 }
 
