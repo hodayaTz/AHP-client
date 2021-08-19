@@ -3,6 +3,9 @@ import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
 import { OpenSchedulingService } from '../open-scheduling.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { SchedulingService } from '../../../scheduling.service';
+import { Observable } from 'rxjs';
+import { ExperienceOptional } from 'src/app/models/experience_optional';
 
 // export interface PeriodicElement {
 //   name: string;
@@ -32,7 +35,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class VolunteerComponent implements OnInit {
 
   primary:string="primary"
-  constructor(private _service:OpenSchedulingService,private _acr: ActivatedRoute) { }
+  constructor(private _service:OpenSchedulingService,private _acr: ActivatedRoute,private _serviceScheduling:SchedulingService) { }
 
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data=>{
@@ -44,20 +47,25 @@ export class VolunteerComponent implements OnInit {
         })
       }
     })
+    this.experienceOptionals$=this._serviceScheduling.getExperienceOption().pipe()
+
   }
 
   volunteers:OptionalVolunteer[]
   dataSource:any
   displayedColumns: string[] = ['experience','nameAndPhone', 'details','btn']
   // displayedColumns: string[] = ['icon-status', 'name+phone', 'button-details','button-ok','button-cancel','button-maby']
-
+  experienceOptionals$:Observable<ExperienceOptional[]>
 
   applyFilter(event: Event ) {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
 
-  a(){
-    console.log("sss")
+  changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:number){
+    debugger
+    this._serviceScheduling.changeExperience(optionalVolunteer,newExperience).subscribe(result=>{
+      console.log(result)
+    })
   }
 }

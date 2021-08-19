@@ -37,9 +37,9 @@
     <ng-container matColumnDef="btn">
         <th mat-header-cell *matHeaderCellDef> btn </th>
         <td mat-cell *matCellDef="let element">
-            <button class="btn_table" mat-stroked-button color={{primary}}>אישור</button>
-            <button class="btn_table" mat-stroked-button color={{primary}}>דחיה</button>
-            <button class="btn_table" mat-stroked-button color={{primary}}>אולי</button>
+            <button *ngFor="let ex of experienceOptionals$ | async" class="btn_table" mat-stroked-button color={{primary}} (click)="changeExperience(element,ex.idExperience)">{{ex.descriptionExperience}}</button>
+            <!-- <button class="btn_table" mat-stroked-button color={{primary}}>דחיה</button>
+            <button class="btn_table" mat-stroked-button color={{primary}}>אולי</button> -->
         </td>
     </ng-container>
 

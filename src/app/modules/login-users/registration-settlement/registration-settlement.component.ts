@@ -59,6 +59,7 @@ export class RegistrationSettlementComponent implements OnInit {
     this.newContactPerson.idContactPerson=0
     this.newSettlement.idSettlement=0
     this.newSettlement.contactPer=this.newContactPerson
+    this.newSettlement.idContactPer=this.newContactPerson.idContactPerson
     this._service.saveNewSettlement(this.newSettlement).subscribe(res => {
       this.settlementExist = res
     })
