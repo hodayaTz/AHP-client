@@ -28,7 +28,7 @@ export class VolunteersDetailsComponent implements OnInit {
     })
   }
   private _volunteer:Volunteer=new Volunteer()
-  volunteerForm:FormGroup
+  volunteerForm:FormGroup | undefined = undefined
   areas:Area[]
   saveSucceed=false
   public get volunteer(): Volunteer {
@@ -37,6 +37,7 @@ export class VolunteersDetailsComponent implements OnInit {
   public set volunteer(v:Volunteer){
     this._volunteer=v
     if(this._volunteer!=undefined){
+      console.log(this.volunteer)
       this.volunteerForm=new FormGroup({
         firstName:new FormControl(this.volunteer.firstName,[Validators.required]),
         lastName:new FormControl(this.volunteer.lastName,[Validators.required]),
@@ -50,7 +51,7 @@ export class VolunteersDetailsComponent implements OnInit {
     }
   }
   updateVolunteer(){
-    this.volunteer=this.volunteerForm.value
+    this.volunteer=this.volunteerForm?.value
     debugger
     this._serviceVolunteers.updateVolunteer(this.volunteer).subscribe(result=>{
       this.saveSucceed=result

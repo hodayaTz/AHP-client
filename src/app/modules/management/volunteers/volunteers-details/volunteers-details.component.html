@@ -1,5 +1,5 @@
-<div class="card">
-    <form [formGroup]="volunteerForm" (submit)="volunteerForm.valid && updateVolunteer()">
+<div class="card" *ngIf="volunteerForm!=undefined">
+    <form [formGroup]="volunteerForm!" (submit)="volunteerForm?.valid && updateVolunteer()">
         <p>
             <mat-form-field appearance="legacy">
                 <label></label>
