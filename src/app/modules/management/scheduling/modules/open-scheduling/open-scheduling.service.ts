@@ -11,6 +11,7 @@ export class OpenSchedulingService {
   constructor(private _http:HttpClient) { }
 
   getOptionalVolunteerByHoliday(idSchedulingHoliday:number):Observable<OptionalVolunteer[]>{
+    debugger
     return this._http.get<OptionalVolunteer[]>(URL_VOLUNTEER+"/"+idSchedulingHoliday);
   }
 
