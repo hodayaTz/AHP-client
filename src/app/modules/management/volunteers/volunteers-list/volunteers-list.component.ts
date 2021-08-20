@@ -35,12 +35,19 @@ export class VolunteersListComponent implements OnInit {
     this._router.navigate(["editVolunteer/", volunteerId])
   }
 
-  changeStatus(volunteerToChange: Volunteer) {
-    this._service.changeStatus(volunteerToChange).subscribe(result => {
+  // changeStatus(volunteerToChange: Volunteer) {
+  //   this._service.changeStatus(volunteerToChange).subscribe(result => {
+  //     console.log(result)
+  //   })
+  //   // this.volunteers$=this._service.getVolunteers()
+  // }
+
+  deleteVolunteer(volunteer:Volunteer){
+    debugger
+    this._service.changeStatus(volunteer).subscribe(result => {
       console.log(result)
     })
-    // this.volunteers$=this._service.getVolunteers()
-
+    this.volunteers$=this._service.getVolunteers()
   }
 
   addVolunteer() {

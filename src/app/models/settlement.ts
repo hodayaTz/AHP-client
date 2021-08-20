@@ -7,3 +7,5 @@ export class Settlement{
 	idContactPer:number
 	contactPer:ContactPerson
 }
+
+

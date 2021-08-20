@@ -62,9 +62,12 @@ export class VolunteerComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
 
-  changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:number){
-    debugger
-    this._serviceScheduling.changeExperience(optionalVolunteer,newExperience).subscribe(result=>{
+  changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:ExperienceOptional){
+    //האם להשתמש בID או בתאור
+    if(newExperience.descriptionExperience=='כן'){
+      debugger
+    }
+    this._serviceScheduling.changeExperience(optionalVolunteer,newExperience.idExperience).subscribe(result=>{
       console.log(result)
     })
   }
