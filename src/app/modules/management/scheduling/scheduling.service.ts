@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SchedulingHoliday } from 'src/app/models/scheduling-holiday';
 import { ExperienceOptional } from 'src/app/models/experience_optional';
 import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
+import { Professional } from 'src/app/models/professional';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,12 @@ export class SchedulingService {
   }
 
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:number):Observable<boolean>{
-    return this._http.post<boolean>("/api/ExperienceOptional/"+newExperience,optionalVolunteer)
+    return this._http.post<boolean>("/api/OptionalVolunteerToHoliday/"+newExperience,optionalVolunteer)
   }
- 
+
+  getProfessionalsByHoliday(holiday:number):Observable<Professional[]>{
+    return this._http.get<Professional[]>("/api/Professional/GetProfessionalsById/"+holiday)
+  }
+  
   // experienceOptionals:ExperienceOptional[]
 }

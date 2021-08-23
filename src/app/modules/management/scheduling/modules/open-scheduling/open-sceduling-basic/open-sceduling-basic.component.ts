@@ -22,6 +22,7 @@ export class OpenScedulingBasicComponent implements OnInit {
         this._schedilingService.getSchedulingHolidayById(Number(data.get("id"))).subscribe(res=>{
           debugger
           this.schedulingHoliday=res
+          sessionStorage.setItem("holiday",res.idHoliday.toString())
         })
       }
     })

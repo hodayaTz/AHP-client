@@ -11,9 +11,9 @@ import { Area } from 'src/app/models/area';
 })
 export class RegistrationVolunteersComponent implements OnInit {
   constructor(private _service:LogInService) { 
-    _service.a().subscribe(data=>{
-      console.log(data)
-    })
+    // _service.a().subscribe(data=>{
+    //   console.log(data)
+    // })
   }
 
   ngOnInit(): void {
@@ -25,8 +25,8 @@ export class RegistrationVolunteersComponent implements OnInit {
     })
   }
   areas:Area[]
-  newVolunteer:Volunteer;
-  volunteerExist:boolean=true;
+  newVolunteer:Volunteer
+  volunteerExist:boolean=true
   volunteerForm:FormGroup=new FormGroup({
     firstName:new FormControl("",[Validators.required]),
     lastName:new FormControl("",[Validators.required]),

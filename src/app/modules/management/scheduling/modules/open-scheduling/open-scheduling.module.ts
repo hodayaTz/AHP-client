@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
 import { OpenScedulingBasicComponent } from './open-sceduling-basic/open-sceduling-basic.component';
 import { SettlementComponent } from './settlement/settlement.component';
 import { VolunteerComponent } from './volunteer/volunteer.component';
+import { DetailsVolunteerToHolidayComponent } from './details-volunteer-to-holiday/details-volunteer-to-holiday.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [OpenScedulingBasicComponent,SettlementComponent,VolunteerComponent],
+  declarations: [OpenScedulingBasicComponent,SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent],
   imports: [
-    CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule
+    CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,ReactiveFormsModule,FormsModule
   ],
   providers:[OpenSchedulingService,SchedulingService]
 })
