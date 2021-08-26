@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { OpenSchedulingService } from '../open-scheduling.service';
 import { HolidayVolunteer } from 'src/app/models/holiday-volunteer';
 import { Professional } from 'src/app/models/professional';
 import { Observable } from 'rxjs';
 import { SchedulingService } from '../../../scheduling.service';
+import { PrayerText } from 'src/app/models/prayer_text';
 
 @Component({
   selector: 'app-details-volunteer-to-holiday',
@@ -13,33 +14,14 @@ import { SchedulingService } from '../../../scheduling.service';
   styleUrls: ['./details-volunteer-to-holiday.component.css']
 })
 export class DetailsVolunteerToHolidayComponent implements OnInit {
-
-  volunteerHolidayForm:FormGroup=new FormGroup({
-    // לטפל במערך של מקצועות ושל נוסחים
-    //לעשות ngif
-    countjoiners:new FormControl(0),
-    withFamily :new FormControl(false),
-    countKids :new FormControl(0),
-    // idPrayer :new FormControl(""),
-    hasCar:new FormControl(false),
-    hasLicense :new FormControl(false),
-    professionals: new FormControl([])
-  })
-
-
+  
   ngOnInit(): void {
     let holiday=Number(sessionStorage.getItem("holiday")) 
-    // this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
-    this._SchedulingService.getProfessionalsByHoliday(holiday).subscribe(data=>{
-      console.log(data)
-      this.professionals$=data
-      for (let index = 0; index < this.professionals$.length; index++) {
-        this.index[index]=index
-      }
-    })
+    this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
+    this.prayerTexts$=this._SchedulingService.getPrayerTexts()
   }
 
-  constructor(private _openSchedulingService:OpenSchedulingService,
+  constructor(private _openSchedulingService:OpenSchedulingService,private fb:FormBuilder,
     private _SchedulingService : SchedulingService,
     public dialogRef: MatDialogRef<DetailsVolunteerToHolidayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string) { }
@@ -47,12 +29,30 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
   volunteer:HolidayVolunteer
-  professionals$:Professional[]
-  index:number[]=[]
+  professionals$:Observable<Professional[]>
+  prayerTexts$:Observable<PrayerText[]>
+  professionals: FormArray
+  volunteerHolidayForm:FormGroup=new FormGroup({
+    countjoiners:new FormControl(0),
+    withFamily :new FormControl(false),
+    countKids :new FormControl(0),
+    idPrayer :new FormControl(Validators.required),
+    hasCar:new FormControl(false),
+    hasLicense :new FormControl(false),
+    professionals: this.fb.array([
+      new FormControl(false),
+      new FormControl(false)
+    ])
+  })
 
   addVolunteerHoliday(){
     this.volunteer=this.volunteerHolidayForm.value
+    console.log(this.volunteer)
+    this.volunteer.idSchedulingHoliday=0
+    this.volunteer.idVolunteer=0
+    this.volunteer.professionals=[]
     this._openSchedulingService.addVolunteerHoliday(this.volunteer).subscribe(result=>{
       if(result){
         console.log('הפעיל נוסף בהצלחה')

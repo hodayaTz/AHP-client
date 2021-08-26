@@ -1,32 +1,40 @@
 <div class="center">
-    <form [formGroup]="volunteerHolidayForm" (submit)="volunteerHolidayForm.valid && addVolunteerHoliday()">
-        <p>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label for="countjoiners">מספר מצטרפים</mat-label>
-              <input type="number" matInput formControlName="countjoiners">
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-checkbox formControlName="withFamily">עם משפחה</mat-checkbox>
-          </p>
-          <p>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label for="countKids">מספר ילדים</mat-label>
-              <input type="number" matInput formControlName="countKids">
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-checkbox formControlName="hasLicense">עם רשיון</mat-checkbox>
-          </p>
-          <p>
-            <mat-checkbox formControlName="hasCar">עם רכב</mat-checkbox>
-          </p>
-          <mat-label for="professionals">מקצועות:</mat-label>
-          <p *ngFor="let i of index">
-            <mat-checkbox formControlName="professionals[i]">{{professionals$[i].descriptionProfessional}}</mat-checkbox>
-          </p>
-        <button mat-raised-button type="submit" color="primary" (click)="onNoClick()">שמירה</button>
-        <button type="button" mat-button (click)="onNoClick()">ביטול</button>
-    </form>
+  <form [formGroup]="volunteerHolidayForm" (submit)="volunteerHolidayForm.valid && addVolunteerHoliday()">
+    <p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="countjoiners">מספר מצטרפים</mat-label>
+        <input type="number" matInput formControlName="countjoiners">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-checkbox formControlName="withFamily">עם משפחה</mat-checkbox>
+    </p>
+    <p *ngIf="volunteerHolidayForm.value.withFamily">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="countKids">מספר ילדים</mat-label>
+        <input type="number" matInput formControlName="countKids">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-checkbox formControlName="hasLicense">עם רשיון</mat-checkbox>
+    </p>
+    <p *ngIf="volunteerHolidayForm.value.hasLicense">
+      <mat-checkbox formControlName="hasCar">עם רכב</mat-checkbox>
+    </p>
+    <p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>נוסח תפילה:</mat-label>
+        <mat-select disableRipple name="idPrayer" id="idPrayer" formControlName="idPrayer">
+          <mat-option *ngFor="let p of prayerTexts$ | async" [value]="p.idPrayer">{{p.namePrayer}}</mat-option>
+        </mat-select>
+        <!-- <mat-icon>map</mat-icon> -->
+      </mat-form-field>
+    </p>
+    <mat-label for="professionals">מקצועות:</mat-label>
+    <p *ngFor="let p of professionals$ |async ; index as i">
+      <mat-checkbox formControlName="professionals.controls[i]">{{p.descriptionProfessional}}</mat-checkbox>
+    </p>
+    <button mat-raised-button type="submit" color="primary" (click)="onNoClick()">שמירה</button>
+    <button type="button" mat-button (click)="onNoClick()">ביטול</button>
+  </form>
 </div>
-

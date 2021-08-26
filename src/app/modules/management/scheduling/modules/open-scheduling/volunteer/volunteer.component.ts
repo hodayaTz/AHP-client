@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { ExperienceOptional } from 'src/app/models/experience_optional';
 import { DetailsVolunteerToHolidayComponent } from '../details-volunteer-to-holiday/details-volunteer-to-holiday.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Volunteer } from 'src/app/models/volunteer';
+
 
 @Component({
   selector: 'app-volunteer',
@@ -24,13 +26,12 @@ export class VolunteerComponent implements OnInit {
       if(data.has("id")){
         this._service.getOptionalVolunteerByHoliday(Number(data.get("id"))).subscribe(data=>{
           this.volunteers=data
-          debugger
-          this.dataSource = new MatTableDataSource(this.volunteers)
+          this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==0||v.idExperience==1))
+          // this.dataSource.filterPredicate =(data: Volunteer, filter: string) => !filter || data.firstName+data.lastName == filter;
         })
       }
     })
     this.experienceOptionals$=this._serviceScheduling.getExperienceOption().pipe()
-
   }
 
   volunteers:OptionalVolunteer[]
@@ -40,7 +41,6 @@ export class VolunteerComponent implements OnInit {
   experienceOptionals$:Observable<ExperienceOptional[]>
 
   applyFilter(event: Event ) {
-    debugger
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
@@ -48,7 +48,6 @@ export class VolunteerComponent implements OnInit {
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:ExperienceOptional){
     //האם להשתמש בID או בתאור
     if(newExperience.descriptionExperience=='כן'){
-      debugger
       this.openDialog()
     }
     else{
@@ -64,11 +63,19 @@ export class VolunteerComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DetailsVolunteerToHolidayComponent, {
-      width: '30%',
+      width: 'auto',
     });
    
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  showOnly(idExperience:number){
+    if(idExperience==-1){
+      this.dataSource=new MatTableDataSource(this.volunteers)
+      return
+    }
+    this.dataSource=new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==idExperience))
   }
 }

@@ -1,3 +1,6 @@
+<button *ngFor="let e of experienceOptionals$ | async" mat-raised-button color="{{primary}}" (click)="showOnly(e.idExperience)">הצג רק {{e.descriptionExperience}}</button>
+<button mat-raised-button color="{{primary}}" (click)="showOnly(0)">הצג רק פעילים שלא טופלו</button>
+<button mat-raised-button color="{{primary}}" (click)="showOnly(-1)"> הצג הכל</button>
 
 <mat-form-field appearance="standard">
     <mat-label>חפש</mat-label>
@@ -30,7 +33,6 @@
             <button class="btn_table" mat-stroked-button color={{primary}}>אולי</button> -->
         </td>
     </ng-container>
-
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

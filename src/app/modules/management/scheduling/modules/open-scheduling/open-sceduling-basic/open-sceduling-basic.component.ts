@@ -16,11 +16,9 @@ export class OpenScedulingBasicComponent implements OnInit {
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data=>{
       if(data.has("id")){
-        debugger
         console.log(Number(data.get("id")))
         console.log(typeof(Number(data.get("id"))))
         this._schedilingService.getSchedulingHolidayById(Number(data.get("id"))).subscribe(res=>{
-          debugger
           this.schedulingHoliday=res
           sessionStorage.setItem("holiday",res.idHoliday.toString())
         })
