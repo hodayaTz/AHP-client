@@ -30,10 +30,18 @@
         <!-- <mat-icon>map</mat-icon> -->
       </mat-form-field>
     </p>
-    <mat-label for="professionals">מקצועות:</mat-label>
-    <p *ngFor="let p of professionals$ |async ; index as i">
-      <mat-checkbox formControlName="professionals.controls[i]">{{p.descriptionProfessional}}</mat-checkbox>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label for="professionals">מקצועות:</mat-label>
+        <mat-select formControlName="professionals" multiple>
+          <mat-option *ngFor="let p of professionals$ |async" [value]="p.idProfessional">{{p.descriptionProfessional}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </p>
+
+    <!-- <p *ngFor="let p of professionals$ |async ; index as i">
+      <mat-checkbox formControlName="professionals.controls[i]">{{p.descriptionProfessional}}</mat-checkbox>
+    </p> -->
     <button mat-raised-button type="submit" color="primary" (click)="onNoClick()">שמירה</button>
     <button type="button" mat-button (click)="onNoClick()">ביטול</button>
   </form>

@@ -34,7 +34,7 @@ export class OpenSchedulingListComponent implements OnInit {
     });
    
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.openSchedulingHolidays$=this._service.getSchedulingsHoliday()
     });
   }
 

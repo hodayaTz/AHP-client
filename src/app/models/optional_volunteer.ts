@@ -5,4 +5,5 @@ export class OptionalVolunteer{
     idSchedulingHoliday:number
     idExperience:number
     volunteer:Volunteer
+    icon:string
 }

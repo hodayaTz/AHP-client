@@ -6,6 +6,7 @@ import { ExperienceOptional } from 'src/app/models/experience_optional';
 import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
 import { Professional } from 'src/app/models/professional';
 import { PrayerText } from 'src/app/models/prayer_text';
+import { OptionalSettlement } from 'src/app/models/optional-settlement';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,10 @@ export class SchedulingService {
 
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:number):Observable<boolean>{
     return this._http.post<boolean>("/api/OptionalVolunteerToHoliday/"+newExperience,optionalVolunteer)
+  }
+
+  changeExperienceSettlement(optionalSettlement:OptionalSettlement,newExperience:number):Observable<boolean>{
+    return this._http.post<boolean>("/api/OptionalSettlementToHoliday/"+newExperience,optionalSettlement)
   }
 
   getProfessionalsByHoliday(holiday:number):Observable<Professional[]>{

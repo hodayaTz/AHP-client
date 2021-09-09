@@ -1,6 +1,8 @@
-<button *ngFor="let e of experienceOptionals$ | async" mat-raised-button color="{{primary}}" (click)="showOnly(e.idExperience)">הצג רק {{e.descriptionExperience}}</button>
-<button mat-raised-button color="{{primary}}" (click)="showOnly(0)">הצג רק פעילים שלא טופלו</button>
-<button mat-raised-button color="{{primary}}" (click)="showOnly(-1)"> הצג הכל</button>
+<div class="container-button">
+    <button class="btn" *ngFor="let e of experienceOptionals$ | async" mat-raised-button color="{{primary}}" (click)="showOnly(e.idExperience)">הצג רק {{e.descriptionExperience}}</button>
+    <button class="btn" mat-raised-button color="{{primary}}" (click)="showOnly(0)">הצג רק פעילים שלא טופלו</button>
+    <button class="btn" mat-raised-button color="{{primary}}" (click)="showOnly(-1)"> הצג הכל</button>
+</div>
 
 <mat-form-field appearance="standard">
     <mat-label>חפש</mat-label>
@@ -9,24 +11,27 @@
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="experience">
-        <th mat-header-cell *matHeaderCellDef> idExperience </th>
-        <td mat-cell *matCellDef="let element">אייקון {{element.idExperience}} </td>
+        <th mat-header-cell *matHeaderCellDef> סטטוס </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-icon *ngIf="element.icon" aria-hidden="false" aria-label="Example home icon">{{element.icon}}</mat-icon>
+            <mat-icon *ngIf="!element.icon" aria-hidden="false" aria-label="Example home icon">accessibility_new</mat-icon>
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="nameAndPhone">
-        <th mat-header-cell *matHeaderCellDef> idVolunteer </th>
+        <th mat-header-cell *matHeaderCellDef> פעיל </th>
         <td mat-cell *matCellDef="let element"> {{element.volunteer.firstName}} {{element.volunteer.lastName}} : {{element.volunteer.phone}}</td>
     </ng-container>
 
     <ng-container matColumnDef="details">
-        <th mat-header-cell *matHeaderCellDef> details </th>
+        <th mat-header-cell *matHeaderCellDef>  </th>
         <td mat-cell *matCellDef="let element">
-            <button routerLink="/editVolunteer/{{element.idVolunteer}}" mat-button color={{primary}}>פרטי הפעיל/עריכה</button>
+            <button routerLink="/editVolunteer/{{element.idVolunteer}}" mat-button color={{primary}}><mat-icon>edit</mat-icon>פרטי הפעיל/עריכה</button>
         </td>
     </ng-container>
 
     <ng-container matColumnDef="btn">
-        <th mat-header-cell *matHeaderCellDef> btn </th>
+        <th mat-header-cell *matHeaderCellDef>  </th>
         <td mat-cell *matCellDef="let element">
             <button *ngFor="let ex of experienceOptionals$ | async" class="btn_table" mat-stroked-button color={{primary}} (click)="changeExperience(element,ex)" [disabled]="ex.idExperience==element.idExperience">{{ex.descriptionExperience}}</button>
             <!-- <button class="btn_table" mat-stroked-button color={{primary}}>דחיה</button>

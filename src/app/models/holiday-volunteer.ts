@@ -9,5 +9,5 @@ export class HolidayVolunteer{
     idPrayer :number
     hasCar:boolean
     hasLicense :boolean
-    professionals:Professional[]
+    professionals:number[]=[]
 }

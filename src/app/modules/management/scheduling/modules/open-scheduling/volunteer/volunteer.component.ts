@@ -24,31 +24,41 @@ export class VolunteerComponent implements OnInit {
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data=>{
       if(data.has("id")){
-        this._service.getOptionalVolunteerByHoliday(Number(data.get("id"))).subscribe(data=>{
-          this.volunteers=data
-          this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==0||v.idExperience==1))
-          // this.dataSource.filterPredicate =(data: Volunteer, filter: string) => !filter || data.firstName+data.lastName == filter;
-        })
+        this.schedulingHolidayId=Number(data.get("id"))
+        this.getOptinalVolunteers()
       }
     })
     this.experienceOptionals$=this._serviceScheduling.getExperienceOption().pipe()
   }
 
+  schedulingHolidayId:number
   volunteers:OptionalVolunteer[]
   dataSource:any
   displayedColumns: string[] = ['experience','nameAndPhone', 'details','btn']
   // displayedColumns: string[] = ['icon-status', 'name+phone', 'button-details','button-ok','button-cancel','button-maby']
   experienceOptionals$:Observable<ExperienceOptional[]>
+  currentStatus:number=-1
+
+  getOptinalVolunteers(){
+    this._service.getOptionalVolunteerByHoliday(this.schedulingHolidayId).subscribe(data=>{
+      this.volunteers=data
+      this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==0||v.idExperience==1))
+      // this.dataSource.filterPredicate =(data: Volunteer, filter: string) => !filter || data.firstName+data.lastName == filter;
+      this.showOnly(this.currentStatus)
+    })
+  }
 
   applyFilter(event: Event ) {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
+    
+    // this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>(v.volunteer.firstName+" "+v.volunteer.lastName).includes(filterValue)))
   }
 
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:ExperienceOptional){
     //האם להשתמש בID או בתאור
     if(newExperience.descriptionExperience=='כן'){
-      this.openDialog()
+      this.openDialog(optionalVolunteer.idVolunteer)
     }
     else{
       if(optionalVolunteer.idExperience==1){
@@ -59,23 +69,27 @@ export class VolunteerComponent implements OnInit {
         console.log(result)
       })
     }
+    this.getOptinalVolunteers()
   }
 
-  openDialog(): void {
+  openDialog(idVolunteer:number): void {
     const dialogRef = this.dialog.open(DetailsVolunteerToHolidayComponent, {
       width: 'auto',
+      data: {volunteer: idVolunteer, scheduling: this.schedulingHolidayId},
+      
     });
-   
+    dialogRef.disableClose=true
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
   }
 
   showOnly(idExperience:number){
-    if(idExperience==-1){
+    if(idExperience==-1 ){
       this.dataSource=new MatTableDataSource(this.volunteers)
       return
     }
     this.dataSource=new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==idExperience))
+    this.currentStatus=idExperience
   }
 }

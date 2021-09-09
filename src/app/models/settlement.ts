@@ -6,6 +6,7 @@ export class Settlement{
 	idArea:number
 	idContactPer:number
 	contactPer:ContactPerson
+	areaName:string
 }
 
 

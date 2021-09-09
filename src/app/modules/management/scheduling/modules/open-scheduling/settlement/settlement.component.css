@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+.btn_table{
+    margin-left: 2%;
+}
+
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+.container-button{
+  display: flex;
+  justify-content: center;
+}
+
+.btn{
+  margin: 0.3%;
+}

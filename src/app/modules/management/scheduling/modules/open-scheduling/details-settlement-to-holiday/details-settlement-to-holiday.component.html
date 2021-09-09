@@ -1,0 +1,41 @@
+<div class="center">
+    <form [formGroup]="settlementHolidayForm" (submit)="settlementHolidayForm.valid && addSettlementHoliday()">
+      <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="amountPeopleConsumed">כמות אנשים נצרכים:</mat-label>
+          <input type="number" matInput formControlName="amountPeopleConsumed">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-checkbox formControlName="isSynagogue">האם קיים מבנה לבית כנסת</mat-checkbox>
+      </p>
+      <p>
+        <mat-checkbox formControlName="isSeferTora">ספר תורה</mat-checkbox>
+      </p>
+      <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>נוסח תפילה:</mat-label>
+          <mat-select disableRipple name="idPrayer" id="idPrayer" formControlName="idPrayer">
+            <mat-option *ngFor="let p of prayerTexts$ | async" [value]="p.idPrayer">{{p.namePrayer}}</mat-option>
+          </mat-select>
+          <!-- <mat-icon>map</mat-icon> -->
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label for="professionals">מקצועות:</mat-label>
+          <mat-select formControlName="professionals" multiple>
+            <mat-option *ngFor="let p of professionals$ |async" [value]="p.idProfessional">{{p.descriptionProfessional}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+            <mat-label>הערות:</mat-label>
+            <textarea formControlName="additionalNeeds" matInput></textarea>
+          </mat-form-field>
+      </p>
+      <button mat-raised-button type="submit" color="primary" (click)="onNoClick()">שמירה</button>
+      <button type="button" mat-button (click)="onNoClick()">ביטול</button>
+    </form>
+</div>

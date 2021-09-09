@@ -8,6 +8,11 @@ import { Observable } from 'rxjs';
 import { SchedulingService } from '../../../scheduling.service';
 import { PrayerText } from 'src/app/models/prayer_text';
 
+export interface DialogData {
+  volunteer: number;
+  scheduling: number;
+}
+
 @Component({
   selector: 'app-details-volunteer-to-holiday',
   templateUrl: './details-volunteer-to-holiday.component.html',
@@ -24,16 +29,17 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
   constructor(private _openSchedulingService:OpenSchedulingService,private fb:FormBuilder,
     private _SchedulingService : SchedulingService,
     public dialogRef: MatDialogRef<DetailsVolunteerToHolidayComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: string) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
   
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+
   volunteer:HolidayVolunteer
   professionals$:Observable<Professional[]>
   prayerTexts$:Observable<PrayerText[]>
-  professionals: FormArray
+
   volunteerHolidayForm:FormGroup=new FormGroup({
     countjoiners:new FormControl(0),
     withFamily :new FormControl(false),
@@ -41,18 +47,15 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
     idPrayer :new FormControl(Validators.required),
     hasCar:new FormControl(false),
     hasLicense :new FormControl(false),
-    professionals: this.fb.array([
-      new FormControl(false),
-      new FormControl(false)
-    ])
+    professionals: new FormControl([]),
   })
 
   addVolunteerHoliday(){
     this.volunteer=this.volunteerHolidayForm.value
     console.log(this.volunteer)
-    this.volunteer.idSchedulingHoliday=0
-    this.volunteer.idVolunteer=0
-    this.volunteer.professionals=[]
+    this.volunteer.idSchedulingHoliday=this.data.scheduling
+    this.volunteer.idVolunteer=this.data.volunteer
+    debugger
     this._openSchedulingService.addVolunteerHoliday(this.volunteer).subscribe(result=>{
       if(result){
         console.log('הפעיל נוסף בהצלחה')

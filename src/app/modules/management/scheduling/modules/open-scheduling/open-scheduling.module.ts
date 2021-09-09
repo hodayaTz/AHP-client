@@ -10,11 +10,12 @@ import { SettlementComponent } from './settlement/settlement.component';
 import { VolunteerComponent } from './volunteer/volunteer.component';
 import { DetailsVolunteerToHolidayComponent } from './details-volunteer-to-holiday/details-volunteer-to-holiday.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DetailsSettlementToHolidayComponent } from './details-settlement-to-holiday/details-settlement-to-holiday.component';
 
 
 
 @NgModule({
-  declarations: [OpenScedulingBasicComponent,SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent],
+  declarations: [OpenScedulingBasicComponent,SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent,DetailsSettlementToHolidayComponent],
   imports: [
     CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,ReactiveFormsModule,FormsModule
   ],
