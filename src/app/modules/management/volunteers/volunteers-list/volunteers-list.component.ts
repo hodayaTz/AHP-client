@@ -25,11 +25,12 @@ export class VolunteersListComponent implements OnInit {
     this.volunteers$=this._service.getVolunteers()
   }
 
+  displayedColumns: string[] = ['experience','nameAndPhone', 'details','history','delete']
   volunteers$:Observable<Volunteer[]>
   color:string= "primary"
   currentVolunteerDetails:Volunteer
   searchText:string
-
+  getVolHistory(){}
   editVolunteer(volunteerId: number) {
     debugger
     this._router.navigate(["editVolunteer/", volunteerId])

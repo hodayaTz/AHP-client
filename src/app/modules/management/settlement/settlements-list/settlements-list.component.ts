@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Settlement } from 'src/app/models/settlement';
 import { SettlementService } from '../settlement.service';
+
+
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-settlements-list',
@@ -11,7 +17,8 @@ import { SettlementService } from '../settlement.service';
 export class SettlementsListComponent implements OnInit {
 
   constructor(private _settlementService:SettlementService,private _router:Router) { }
-  settlements:Settlement[];
+  settlements:Settlement[]
+  searchText:string
 
   ngOnInit(): void {
     this._settlementService.getSettlements().subscribe(res=>{
