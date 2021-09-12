@@ -4,6 +4,7 @@ import { Settlement } from 'src/app/models/settlement';
 import { LogInService } from '../log-in.service';
 import { Area } from 'src/app/models/area';
 import { ContactPerson } from 'src/app/models/contactPerson';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration-settlement',
@@ -14,7 +15,7 @@ export class RegistrationSettlementComponent implements OnInit {
 
 
 
-  constructor(private _service: LogInService) { }
+  constructor(private _service: LogInService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     // debugger
@@ -25,16 +26,12 @@ export class RegistrationSettlementComponent implements OnInit {
     // })
     this._service.getArea().subscribe(areasData => {
       this.areas = areasData
-      // this.areas.forEach(element => {
-      //   console.log(element.areaName)
-      // });
     })
   }
   newArea: Area = new Area()
   areas: Area[]
   newSettlement: Settlement;
   newContactPerson:ContactPerson
-  settlementExist: boolean = true
   IsContactPerson: boolean = false
   settlementForm: FormGroup = new FormGroup({
     nameSettlement: new FormControl("", Validators.required),
@@ -49,6 +46,13 @@ export class RegistrationSettlementComponent implements OnInit {
     phone: new FormControl(""),
     gmail: new FormControl("")
   })
+
+  openSnackBar(message: string, action: string="x") {
+    this._snackBar.open(message, action,{
+      duration: 3000
+    });
+  }
+
   EnterDetailsContactPerson() {
     this.IsContactPerson = true
   }
@@ -60,8 +64,18 @@ export class RegistrationSettlementComponent implements OnInit {
     this.newSettlement.idSettlement=0
     this.newSettlement.contactPer=this.newContactPerson
     this.newSettlement.idContactPer=this.newContactPerson.idContactPerson
-    this._service.saveNewSettlement(this.newSettlement).subscribe(res => {
-      this.settlementExist = res
+    this._service.saveNewSettlement(this.newSettlement).subscribe(res=>{
+      if(res){
+        this.openSnackBar("פרטי הישוב נשמרו בצלחה")
+      }
+      else{
+        this.openSnackBar("הישוב קיים במערכת")
+      }
+      this.settlementForm.reset()
+      this.IsContactPerson=false
+
+    },err=>{
+      this.openSnackBar("שגיאה - אנא נסה שנית")
     })
   }
 }

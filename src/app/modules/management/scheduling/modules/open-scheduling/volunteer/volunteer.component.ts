@@ -9,6 +9,7 @@ import { ExperienceOptional } from 'src/app/models/experience_optional';
 import { DetailsVolunteerToHolidayComponent } from '../details-volunteer-to-holiday/details-volunteer-to-holiday.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Volunteer } from 'src/app/models/volunteer';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { Volunteer } from 'src/app/models/volunteer';
 export class VolunteerComponent implements OnInit {
 
   primary:string="primary"
-  constructor(private dialog: MatDialog,private _service:OpenSchedulingService,private _acr: ActivatedRoute,private _serviceScheduling:SchedulingService) { }
+  constructor(private _snackBar: MatSnackBar,private dialog: MatDialog,private _service:OpenSchedulingService,private _acr: ActivatedRoute,private _serviceScheduling:SchedulingService) { }
 
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data=>{
@@ -43,22 +44,26 @@ export class VolunteerComponent implements OnInit {
     this._service.getOptionalVolunteerByHoliday(this.schedulingHolidayId).subscribe(data=>{
       this.volunteers=data
       this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==0||v.idExperience==1))
-      // this.dataSource.filterPredicate =(data: Volunteer, filter: string) => !filter || data.firstName+data.lastName == filter;
-      this.showOnly(this.currentStatus)
+      this.dataSource.filterPredicate = (data: OptionalVolunteer, filter:string) => {
+        return (data.volunteer.firstName+" "+data.volunteer.lastName).includes(filter)
+      }
+      // this.showOnly(this.currentStatus)
     })
   }
 
   applyFilter(event: Event ) {
+    debugger
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
-    
-    // this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>(v.volunteer.firstName+" "+v.volunteer.lastName).includes(filterValue)))
   }
 
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:ExperienceOptional){
     //האם להשתמש בID או בתאור
     if(newExperience.descriptionExperience=='כן'){
-      this.openDialog(optionalVolunteer.idVolunteer)
+      let res=this.openDialog(optionalVolunteer.idVolunteer)
+      this._serviceScheduling.changeExperience(optionalVolunteer,newExperience.idExperience).subscribe(result=>{
+        console.log(result)
+      })
     }
     else{
       if(optionalVolunteer.idExperience==1){
@@ -91,5 +96,11 @@ export class VolunteerComponent implements OnInit {
     }
     this.dataSource=new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==idExperience))
     this.currentStatus=idExperience
+  }
+
+  openSnackBar(message: string, action: string="x") {
+    this._snackBar.open(message, action,{
+      duration: 3000
+    });
   }
 }

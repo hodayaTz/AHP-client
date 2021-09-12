@@ -10,7 +10,7 @@
         </p>
         <p>
             <mat-form-field appearance="legacy">
-                <label></label>
+                <mat-label>בחר חג:</mat-label>
                 <mat-select disableRipple name="idHoliday" id="idHoliday" formControlName="idHoliday">
                     <mat-option *ngFor="let h of holidays" [value]="h.idHoliday">{{h.descriptionHoliday}}</mat-option>
                 </mat-select>

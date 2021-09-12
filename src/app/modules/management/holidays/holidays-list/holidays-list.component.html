@@ -1,16 +1,16 @@
 
-<div>
-    <ul *ngFor="let h of holidays">
-        <li>
-            <div>
-                <span (click)="detailsHoliday(h.idHoliday)">{{h.descriptionHoliday}}</span>
-                <button (click)="deleteHoliday(h)">מחיקת החג</button>
-            </div>
-        </li>
-    </ul>    
-</div>
+<mat-selection-list #holidays [multiple]="false">
+    <mat-list-option *ngFor="let h of holidays$ | async" [value]="h">
+        <div class="flex-col">
+            <div>{{h.descriptionHoliday}}</div>
+            <button mat-button color="primary">הסטוריה</button>
+        </div>
+    </mat-list-option>
+</mat-selection-list>
 
-
+<p>
+    Option selected: {{holidays.selectedOptions.selected[0]?.value?.descriptionHoliday}}
+</p>
 
 <!--  רשימה של כל שמות החגים עם אפשרות להיכנס לכל חג ומה יהיה בכניסה לחג?
 הוספת חג חדש

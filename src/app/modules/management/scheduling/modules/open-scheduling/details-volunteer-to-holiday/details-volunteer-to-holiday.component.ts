@@ -55,7 +55,6 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
     console.log(this.volunteer)
     this.volunteer.idSchedulingHoliday=this.data.scheduling
     this.volunteer.idVolunteer=this.data.volunteer
-    debugger
     this._openSchedulingService.addVolunteerHoliday(this.volunteer).subscribe(result=>{
       if(result){
         console.log('הפעיל נוסף בהצלחה')
@@ -63,6 +62,7 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
       else{
         console.log("הפעיל כבר קיים בשיבוץ זה")
       }
+      return result
     })
   }
 }

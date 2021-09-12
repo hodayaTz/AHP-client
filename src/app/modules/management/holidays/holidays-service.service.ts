@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Holiday } from 'src/app/models/holiday';
+import { Professional } from 'src/app/models/professional';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,8 @@ export class HolidaysService {
   }
   deleteHoliday(holidayToDelete:Holiday):Observable<boolean>{
     return this._http.delete<boolean>(this.url+"/"+holidayToDelete.idHoliday)
+  }
+  getProfessionalsByHoliday(holiday:number):Observable<Professional[]>{
+    return this._http.get<Professional[]>("/api/Professional/GetProfessionalsById/"+holiday)
   }
 }

@@ -26,7 +26,7 @@ export class SchedulingService {
     return this._http.get<SchedulingHoliday>(this.url+"/"+id)
   }
   deleteSchedulingHoliday(idSchedulingHoliday:number):Observable<boolean>{
-    return this._http.delete<boolean>(this.url+idSchedulingHoliday)
+    return this._http.delete<boolean>(this.url+"/"+idSchedulingHoliday)
   }
   getExperienceOption():Observable<ExperienceOptional[]>{
     return this._http.get<ExperienceOptional[]>("/api/ExperienceOptional")

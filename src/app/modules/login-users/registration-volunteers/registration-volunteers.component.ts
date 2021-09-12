@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Volunteer } from 'src/app/models/volunteer';
 import { LogInService } from '../log-in.service';
 import { Area } from 'src/app/models/area';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration-volunteers',
@@ -10,10 +11,8 @@ import { Area } from 'src/app/models/area';
   styleUrls: ['./registration-volunteers.component.css']
 })
 export class RegistrationVolunteersComponent implements OnInit {
-  constructor(private _service:LogInService) { 
-    // _service.a().subscribe(data=>{
-    //   console.log(data)
-    // })
+  constructor(private _service:LogInService,private _snackBar: MatSnackBar) { 
+    
   }
 
   ngOnInit(): void {
@@ -26,7 +25,6 @@ export class RegistrationVolunteersComponent implements OnInit {
   }
   areas:Area[]
   newVolunteer:Volunteer
-  volunteerExist:boolean=true
   volunteerForm:FormGroup=new FormGroup({
     firstName:new FormControl("",[Validators.required]),
     lastName:new FormControl("",[Validators.required]),
@@ -36,13 +34,28 @@ export class RegistrationVolunteersComponent implements OnInit {
     idArea:new FormControl("",[Validators.required]),
   })
 
+  openSnackBar(message: string, action: string="x") {
+    this._snackBar.open(message, action,{
+      duration: 3000
+    });
+  }
+
   saveNewVolunteer(){
     this.newVolunteer=this.volunteerForm.value;
     this.newVolunteer.isActive=true;
     this.newVolunteer.idVolunteer=0
     debugger
     this._service.saveNewVolunteer(this.newVolunteer).subscribe(res=>{
-      this.volunteerExist = res;
+      if(res){
+        this.openSnackBar("פרטי הפעיל נשמרו בצלחה")
+      }
+      else{
+        this.openSnackBar("הפעיל קיים במערכת")
+      }
+      this.volunteerForm.reset()
+      this.volunteerForm.enable()
+    },err=>{
+      this.openSnackBar("שגיאה - אנא נסה שנית")
     })
   } 
 }

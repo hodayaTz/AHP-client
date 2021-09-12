@@ -7,13 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HolidaysRoutingModule } from './holidays-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/material.module';
 
 
 
 @NgModule({
   declarations: [HolidayDetailsComponent,HolidaysListComponent,HolidayDetailsComponent],
   imports: [
-    CommonModule,HttpClientModule,RouterModule,HolidaysRoutingModule,ReactiveFormsModule,FormsModule
+    CommonModule,HttpClientModule,RouterModule,HolidaysRoutingModule,ReactiveFormsModule,FormsModule,MaterialModule
   ],
   providers:[HolidaysService]
 })

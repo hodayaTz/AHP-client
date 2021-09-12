@@ -42,15 +42,16 @@ export class SettlementComponent implements OnInit {
     this._service.getOptionalSettlementByHoliday(this.schedulingHolidayId).subscribe(data=>{
       this.settlements=data
       this.dataSource = new MatTableDataSource(this.settlements.filter(v=>v.idExperience==0||v.idExperience==1))
-      this.showOnly(this.currentStatus)
+      this.dataSource.filterPredicate = (data: OptionalSettlement, filter:string) => {
+        return data.settlement.nameSettlement.includes(filter)  
+      }
+      // this.showOnly(this.currentStatus)
     })
   }
 
   applyFilter(event: Event ) {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
-    debugger
-    // this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>(v.volunteer.firstName+" "+v.volunteer.lastName).includes(filterValue)))
   }
 
   changeExperience(optionalSettlement:OptionalSettlement,newExperience:ExperienceOptional){
