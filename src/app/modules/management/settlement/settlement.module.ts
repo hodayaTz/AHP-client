@@ -5,14 +5,19 @@ import { SettlementService } from './settlement.service';
 import { SettlementsRoutingModule } from './settlements-routing.module';
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SettlementDetailsComponent } from './settlement-details/settlement-details.component';
+import { SettlementsListComponent } from './settlements-list/settlements-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 // SettlementsListComponent
 @NgModule({
-  declarations: [],
+  declarations: [SettlementDetailsComponent,SettlementsListComponent],
   imports: [
-    CommonModule,SettlementsRoutingModule,MaterialModule,ReactiveFormsModule,FormsModule
+    CommonModule,SettlementsRoutingModule,MaterialModule,ReactiveFormsModule,FormsModule, HttpClientModule,RouterModule
   ],
-  providers:[SettlementService]
+  providers:[SettlementService],
+  // exports:[MaterialModule]
 })
 export class SettlementModule { }

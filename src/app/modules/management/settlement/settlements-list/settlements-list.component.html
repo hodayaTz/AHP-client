@@ -1,13 +1,77 @@
 <div>
-    <ul>
+    <!-- <ul>
         <li *ngFor="let s of settlements">
             <div (click)="settlementDetails(s.idSettlement)">
                 <span>{{s.idArea}}</span>
-                how to show The Area name?
-                Do we need to pull all the areas from server and then? or---??? -->
+             
                 <span>{{s.nameSettlement}}</span>
             </div>
             <button (click)="deleteSettlement(s)">Delete</button>
         </li>
-    </ul>
+    </ul> -->
+
+
+
+
+    <!-- <div class="filterAndButton">
+        <mat-form-field appearance="standard">
+            <mat-label>חיפוש...</mat-label>
+            <input [(ngModel)]="searchText" matInput>
+        </mat-form-field>
+        <button dir="ltr" (click)="addVolunteer()" mat-raised-button color={{color}} style="height: fit-content;">הוספת
+            פעיל חדש</button>
+    </div>  -->
+
+    <!-- | search : searchText -->
+    <table mat-table [dataSource]="settlements" class="mat-elevation-z8">
+        <ng-container matColumnDef="experience">
+            <th mat-header-cell *matHeaderCellDef> סטטוס </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon *ngIf="element.isActive" aria-hidden="false" aria-label="Example home icon">{{element.icon}}
+                </mat-icon>
+                <mat-icon *ngIf="!element.isActive" aria-hidden="false" aria-label="Example home icon">
+                </mat-icon>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> יישוב </th>
+            <td mat-cell *matCellDef="let element"> {{element.nameSettlement}} :: {{element.areaName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef> פרטי היישוב/עריכה </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button color="primary" (click)="settlementDetails(element.idSettlement)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="history">
+            <th mat-header-cell *matHeaderCellDef>הסטורית יישוב</th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="getHistory()" mat-button color="primary" >
+                    <mat-icon>history</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>מחיקת יישוב</th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="deleteSettlement(element)" mat-button color="primary">
+                    <del>delete</del>
+                </button>
+            </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+    </table>
 </div>

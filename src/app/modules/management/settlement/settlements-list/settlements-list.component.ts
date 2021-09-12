@@ -3,12 +3,6 @@ import { Router } from '@angular/router';
 import { Settlement } from 'src/app/models/settlement';
 import { SettlementService } from '../settlement.service';
 
-
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-
-
 @Component({
   selector: 'app-settlements-list',
   templateUrl: './settlements-list.component.html',
@@ -17,13 +11,16 @@ import { MatTableDataSource } from '@angular/material/table';
 export class SettlementsListComponent implements OnInit {
 
   constructor(private _settlementService:SettlementService,private _router:Router) { }
+  
   settlements:Settlement[]
   searchText:string
+  color:string= "primary"
+  displayedColumns: string[] = ['experience','name', 'details','history','delete']
 
   ngOnInit(): void {
     this._settlementService.getSettlements().subscribe(res=>{
       this.settlements = res;
-      // console.log(this.settlements);
+      console.log(this.settlements);
     })
   }
   deleteSettlement(settlement:Settlement){
@@ -39,7 +36,8 @@ export class SettlementsListComponent implements OnInit {
     })
   }
   settlementDetails(id:number){
-    this._router.navigate(['/detailsSettlement',id]);
+    this._router.navigate(['detailsSettlement/',id]);
   }
+  getHistory(){}
 
 }

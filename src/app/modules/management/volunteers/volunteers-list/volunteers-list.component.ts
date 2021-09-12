@@ -5,9 +5,6 @@ import { VolunteersService } from '../volunteers.service';
 
 
 
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,9 +14,8 @@ import { Observable } from 'rxjs';
 })
 export class VolunteersListComponent implements OnInit {
 
-  constructor(private _router: Router, private _service: VolunteersService) {
-    
-  }
+  constructor(private _router: Router, private _service: VolunteersService) {}
+  
 
   ngOnInit(): void {
     this.volunteers$=this._service.getVolunteers()
@@ -31,9 +27,9 @@ export class VolunteersListComponent implements OnInit {
   currentVolunteerDetails:Volunteer
   searchText:string
   getVolHistory(){}
-  editVolunteer(volunteerId: number) {
+  editVolunteer(id: number) {
     debugger
-    this._router.navigate(["editVolunteer/", volunteerId])
+    this._router.navigate(["editVolunteer/", id])
   }
 
   // changeStatus(volunteerToChange: Volunteer) {

@@ -7,6 +7,7 @@ export class Settlement{
 	idContactPer:number
 	contactPer:ContactPerson
 	areaName:string
+	isActive:boolean 
 }
 
 
