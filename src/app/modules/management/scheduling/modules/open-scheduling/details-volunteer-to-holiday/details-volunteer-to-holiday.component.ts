@@ -7,10 +7,14 @@ import { Professional } from 'src/app/models/professional';
 import { Observable } from 'rxjs';
 import { SchedulingService } from '../../../scheduling.service';
 import { PrayerText } from 'src/app/models/prayer_text';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
 
 export interface DialogData {
   volunteer: number;
   scheduling: number;
+  idExperience:number;
+  optionalVolunteer:OptionalVolunteer;
 }
 
 @Component({
@@ -26,7 +30,7 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
     this.prayerTexts$=this._SchedulingService.getPrayerTexts()
   }
 
-  constructor(private _openSchedulingService:OpenSchedulingService,private fb:FormBuilder,
+  constructor(private _snackBar: MatSnackBar,private _schedulingService:SchedulingService,private _openSchedulingService:OpenSchedulingService,private fb:FormBuilder,
     private _SchedulingService : SchedulingService,
     public dialogRef: MatDialogRef<DetailsVolunteerToHolidayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
@@ -57,12 +61,25 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
     this.volunteer.idVolunteer=this.data.volunteer
     this._openSchedulingService.addVolunteerHoliday(this.volunteer).subscribe(result=>{
       if(result){
-        console.log('הפעיל נוסף בהצלחה')
+        this._SchedulingService.changeExperience(this.data.optionalVolunteer,this.data.idExperience).subscribe(_result=>{
+          if(_result){
+            this.openSnackBar("נשמרו פרטי הפעיל "+this.data.optionalVolunteer.volunteer.firstName+" "+this.data.optionalVolunteer.volunteer.lastName)
+          }
+          else{
+            this.openSnackBar("שגיאה-פרטי הפעיל לא נשמרו")
+          }
+        })
       }
       else{
-        console.log("הפעיל כבר קיים בשיבוץ זה")
+        this.openSnackBar("שגיאה-פרטי הפעיל לא נשמרו")
       }
       return result
     })
+  }
+
+  openSnackBar(message: string, action: string="x") {
+    this._snackBar.open(message, action,{
+      duration: 3000
+    });
   }
 }

@@ -60,10 +60,7 @@ export class VolunteerComponent implements OnInit {
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:ExperienceOptional){
     //האם להשתמש בID או בתאור
     if(newExperience.descriptionExperience=='כן'){
-      let res=this.openDialog(optionalVolunteer.idVolunteer)
-      this._serviceScheduling.changeExperience(optionalVolunteer,newExperience.idExperience).subscribe(result=>{
-        console.log(result)
-      })
+      let res=this.openDialog(optionalVolunteer.idVolunteer,newExperience.idExperience,optionalVolunteer)
     }
     else{
       if(optionalVolunteer.idExperience==1){
@@ -77,10 +74,10 @@ export class VolunteerComponent implements OnInit {
     this.getOptinalVolunteers()
   }
 
-  openDialog(idVolunteer:number): void {
+  openDialog(idVolunteer:number,experience:number,_optionalVolunteer:OptionalVolunteer): void {
     const dialogRef = this.dialog.open(DetailsVolunteerToHolidayComponent, {
       width: 'auto',
-      data: {volunteer: idVolunteer, scheduling: this.schedulingHolidayId},
+      data: {volunteer: idVolunteer, scheduling: this.schedulingHolidayId,idExperience:experience,optionalVolunteer:_optionalVolunteer},
       
     });
     dialogRef.disableClose=true

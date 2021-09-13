@@ -43,6 +43,7 @@ export class SettlementComponent implements OnInit {
       this.settlements=data
       this.dataSource = new MatTableDataSource(this.settlements.filter(v=>v.idExperience==0||v.idExperience==1))
       this.dataSource.filterPredicate = (data: OptionalSettlement, filter:string) => {
+        console.log(data.settlement.nameSettlement)
         return data.settlement.nameSettlement.includes(filter)  
       }
       // this.showOnly(this.currentStatus)
