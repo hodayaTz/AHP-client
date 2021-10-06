@@ -8,12 +8,13 @@ import { SchedulingModule } from './scheduling/scheduling.module';
 import { ManagementBasicDesignComponent } from './management-basic-design/management-basic-design.component';
 import { MaterialModule } from 'src/app/material.module';
 import { MenuDesignComponent } from './menu-design/menu-design.component';
+import { NavComponent } from './nav/nav.component';
 
 
 
 @NgModule({
   declarations: [
-ManagementBasicDesignComponent,MenuDesignComponent
+ManagementBasicDesignComponent,MenuDesignComponent,NavComponent
   ],
   imports: [
     CommonModule,HolidaysModule,SettlementModule,VolunteersModule,ManagamentRoutingModule,SchedulingModule,

@@ -57,6 +57,4 @@ export class VolunteersListComponent implements OnInit {
 
 }
 
-/** Builds and returns a new User. */
-
 

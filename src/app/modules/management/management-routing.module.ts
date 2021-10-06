@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagementBasicDesignComponent } from './management-basic-design/management-basic-design.component';
 import { MenuDesignComponent } from './menu-design/menu-design.component';
+import { NavComponent } from './nav/nav.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "nn", pathMatch: "full" },
-  { path: "nn", component: ManagementBasicDesignComponent },
-  { path: "menu", component: MenuDesignComponent },
+  // { path: "", redirectTo: "nn", pathMatch: "full" },
+  // { path: "nn", component: ManagementBasicDesignComponent },
+  // { path: "menu", component: MenuDesignComponent },
+  { path: "n", component:NavComponent },
   { path: "volunteers", loadChildren: () => import("./volunteers/volunteers.module").then(m => m.VolunteersModule) },
   { path: "holidays", loadChildren: () => import("./holidays/holidays.module").then(m => m.HolidaysModule) },
   { path: "settlement", loadChildren: () => import("./settlement/settlement.module").then(m => m.SettlementModule) },
