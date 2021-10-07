@@ -5,7 +5,7 @@ import { SettlementDetailsComponent } from './settlement-details/settlement-deta
 import { SettlementsListComponent } from './settlements-list/settlements-list.component';
 
 const routes: Routes = [
-  { path: "", component: SettlementsListComponent },
+  { path: "", component: SettlementsListComponent ,pathMatch:"full"},
   { path: "detailsSettlement/:id", component: SettlementDetailsComponent },
   { path: "d", component: RegistrationSettlementComponent }
 ];

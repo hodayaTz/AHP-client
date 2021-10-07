@@ -5,7 +5,7 @@ import { VolunteersListComponent } from './volunteers-list/volunteers-list.compo
 import { RegistrationVolunteersComponent } from '../../login-users/registration-volunteers/registration-volunteers.component';
 
 const routes: Routes = [
-  {path:"" ,component:VolunteersListComponent},
+  {path:"" ,component:VolunteersListComponent ,pathMatch:"full"},
   {path:"editVolunteer/:id" ,component:VolunteersDetailsComponent},
   {path:"addVolunteer",component:RegistrationVolunteersComponent}
 ];

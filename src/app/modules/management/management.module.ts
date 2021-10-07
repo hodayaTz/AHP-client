@@ -17,7 +17,7 @@ import { NavComponent } from './nav/nav.component';
 ManagementBasicDesignComponent,MenuDesignComponent,NavComponent
   ],
   imports: [
-    CommonModule,HolidaysModule,SettlementModule,VolunteersModule,ManagamentRoutingModule,SchedulingModule,
-    MaterialModule  ]
+    CommonModule,ManagamentRoutingModule,
+    MaterialModule ]
 })
 export class ManagementModule { }

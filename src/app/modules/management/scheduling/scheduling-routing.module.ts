@@ -4,8 +4,9 @@ import { OpenSchedulingListComponent } from './components/open-scheduling-list/o
 import { OpenScedulingBasicComponent } from './modules/open-scheduling/open-sceduling-basic/open-sceduling-basic.component';
 
 const routes: Routes = [
-  {path:"" ,component:OpenSchedulingListComponent},
+  {path:"" ,component:OpenSchedulingListComponent,pathMatch:"full"},
   {path:"openScheduling/:id",component:OpenScedulingBasicComponent}
+  // {path:"openScheduling/:id",loadChildren: () => import("./modules/open-scheduling/open-scheduling.module").then(m => m.OpenSchedulingModule)}
 ];
 
 @NgModule({

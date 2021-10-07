@@ -4,7 +4,7 @@ import { HolidayDetailsComponent } from './holiday-details/holiday-details.compo
 import { HolidaysListComponent } from './holidays-list/holidays-list.component';
 
 const routes: Routes = [
-  {path:"" ,component:HolidaysListComponent},
+  {path:"" ,component:HolidaysListComponent, pathMatch:"full"},
   {path:"detailsHoliday/:id" ,component:HolidayDetailsComponent}
 ];
 

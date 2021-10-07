@@ -15,7 +15,7 @@ import { DetailsSettlementToHolidayComponent } from './details-settlement-to-hol
 
 
 @NgModule({
-  declarations: [OpenScedulingBasicComponent,SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent,DetailsSettlementToHolidayComponent],
+  declarations: [SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent,DetailsSettlementToHolidayComponent,OpenScedulingBasicComponent],
   imports: [
     CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,ReactiveFormsModule,FormsModule
   ],
