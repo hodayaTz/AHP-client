@@ -1,0 +1,6 @@
+<mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let settlement of settlements|async" [value]="settlement">
+      {{settlement.idSettlement}}
+    </mat-list-option>
+</mat-selection-list>
+  

@@ -7,11 +7,12 @@ import { SettlementDetailsComponent } from '../../../settlement/settlement-detai
 import { OpenScedulingBasicComponent } from './open-sceduling-basic/open-sceduling-basic.component';
 
 const ROUTES: Routes = [
-  // {path:"",component:OpenScedulingBasicComponent,pathMatch:"full"},
+  {path:"",component:OpenScedulingBasicComponent,pathMatch:"full"},
   {path:"settlements/:id" ,component:SettlementComponent},
   {path:"volunteers/:id" ,component:VolunteerComponent},
   {path:"editVolunteer/:id" ,component:VolunteersDetailsComponent},
-  {path:"editSettlement/:id" ,component:SettlementDetailsComponent}
+  {path:"editSettlement/:id" ,component:SettlementDetailsComponent},
+  {path:"actualScheduling/:id",loadChildren: () => import("./actual-scheduling/actual-scheduling.module").then(m=>m.ActualSchedulingModule)}
 ];
 
 @NgModule({

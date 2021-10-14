@@ -11,13 +11,15 @@ import { VolunteerComponent } from './volunteer/volunteer.component';
 import { DetailsVolunteerToHolidayComponent } from './details-volunteer-to-holiday/details-volunteer-to-holiday.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DetailsSettlementToHolidayComponent } from './details-settlement-to-holiday/details-settlement-to-holiday.component';
+import { ActualSchedulingModule } from './actual-scheduling/actual-scheduling.module';
 
 
 
 @NgModule({
   declarations: [SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent,DetailsSettlementToHolidayComponent,OpenScedulingBasicComponent],
   imports: [
-    CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,ReactiveFormsModule,FormsModule
+    CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,ReactiveFormsModule,FormsModule,
+    ActualSchedulingModule
   ],
   providers:[OpenSchedulingService,SchedulingService]
 })

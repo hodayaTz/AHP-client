@@ -15,7 +15,8 @@ import { HolidaysService } from '../holidays/holidays-service.service';
 
 @NgModule({
   declarations: [
-    OpenSchedulingListComponent,NewSchedulingHolidayComponent
+    NewSchedulingHolidayComponent,
+    OpenSchedulingListComponent
   ],
   imports: [
     CommonModule,HttpClientModule,RouterModule,ReactiveFormsModule,FormsModule,SchedulingRoutingModule,MaterialModule,
