@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Volunteer } from 'src/app/models/volunteer';
 import { VolunteersService } from '../volunteers.service';
 
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class VolunteersListComponent implements OnInit {
 
-  constructor(private _router: Router, private _service: VolunteersService) {}
+  constructor(private _router: Router, private _service: VolunteersService, private route:ActivatedRoute) {}
   
 
   ngOnInit(): void {
@@ -28,8 +28,7 @@ export class VolunteersListComponent implements OnInit {
   searchText:string
   getVolHistory(){}
   editVolunteer(id: number) {
-    debugger
-    this._router.navigate(["editVolunteer/", id])
+    this._router.navigate(["editVolunteer/", id],{relativeTo:this.route})
   }
 
   // changeStatus(volunteerToChange: Volunteer) {

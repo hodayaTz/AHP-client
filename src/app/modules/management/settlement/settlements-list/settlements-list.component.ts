@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Settlement } from 'src/app/models/settlement';
 import { SettlementService } from '../settlement.service';
 
@@ -10,7 +10,7 @@ import { SettlementService } from '../settlement.service';
 })
 export class SettlementsListComponent implements OnInit {
 
-  constructor(private _settlementService:SettlementService,private _router:Router) { }
+  constructor(private _settlementService:SettlementService,private _router:Router, private route:ActivatedRoute) { }
   
   settlements:Settlement[]
   searchText:string
@@ -36,7 +36,7 @@ export class SettlementsListComponent implements OnInit {
     })
   }
   settlementDetails(id:number){
-    this._router.navigate(['detailsSettlement/',id]);
+    this._router.navigate(['detailsSettlement/',id],{relativeTo:this.route});
   }
   getHistory(){}
 

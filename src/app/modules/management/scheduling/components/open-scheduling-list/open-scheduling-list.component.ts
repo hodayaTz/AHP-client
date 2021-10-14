@@ -6,7 +6,7 @@ import { NewSchedulingHolidayComponent } from '../new-scheduling-holiday/new-sch
 import { Observable } from 'rxjs';
 import { SchedulingService } from '../../scheduling.service';
 import { HolidaysService } from '../../../holidays/holidays-service.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -23,7 +23,7 @@ export class OpenSchedulingListComponent implements OnInit {
       
     )
   }
-  constructor(private _router:Router,private dialog: MatDialog,private _service:SchedulingService,private _service_holiday:HolidaysService) {}
+  constructor( private route:ActivatedRoute,private _router:Router,private dialog: MatDialog,private _service:SchedulingService,private _service_holiday:HolidaysService) {}
 
   formNewSchedulingHoliday:FormGroup
   openSchedulingHolidays$:Observable<SchedulingHoliday[]>
@@ -45,7 +45,7 @@ export class OpenSchedulingListComponent implements OnInit {
   // }
 
   openScheduling(idSchedulingHoliday:number){
-    this._router.navigate(["/openScheduling",idSchedulingHoliday])
+    this._router.navigate(["openScheduling",idSchedulingHoliday],{relativeTo:this.route})
   }
 }
 
