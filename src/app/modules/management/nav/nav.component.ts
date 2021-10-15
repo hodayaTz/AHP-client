@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+declare var require: any;
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -15,7 +16,9 @@ export class NavComponent {
       map(result => result.matches),
       shareReplay()
     );
+   
 
   constructor(private breakpointObserver: BreakpointObserver) {}
+  logo = require('../../../../assets/images/logohe.png').default;
 
 }

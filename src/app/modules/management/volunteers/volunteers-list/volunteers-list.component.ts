@@ -47,7 +47,7 @@ export class VolunteersListComponent implements OnInit {
   }
 
   addVolunteer() {
-    this._router.navigate(["addVolunteer"])
+    this._router.navigate(['addVolunteer'],{relativeTo:this.route})
   }
 
   detailsVolunteer(currentVolunteerDetails:Volunteer){

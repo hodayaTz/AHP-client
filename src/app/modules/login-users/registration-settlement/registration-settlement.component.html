@@ -34,7 +34,7 @@
 <div *ngIf="!settlementExist">הישוב קיים במערכת</div> -->
 <div class="card">
     <form [formGroup]="settlementForm" class="form_register" (submit)="settlementForm.valid && saveNewSettlement()">
-        <h2 style="padding-bottom: 20px;">אנא מלא פרטים אישיים</h2>
+        <h2 style="padding-bottom: 20px;">נא מלא פרטי יישוב:</h2>
         <p>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label for="name">שם ישוב:</mat-label>

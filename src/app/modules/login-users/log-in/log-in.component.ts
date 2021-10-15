@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+declare var require: any;
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -9,6 +8,7 @@ import { Router } from '@angular/router';
 export class LogInComponent implements OnInit {
   constructor() { 
   }
+  logo = require('../../../../assets/images/logohe.png').default;
   ngOnInit(): void {
   }
 

@@ -1,3 +1,21 @@
-table {
-    width: 100%;
-  }
+.container{
+  display: flex;
+  justify-content: center;
+}
+.container-flex-column{
+  display: flex;
+  flex-direction: column;
+}
+button{
+  padding: 15px;
+  margin: 10px;
+  width: 120%;
+  font-size: large;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+/* body{
+  background-image: url('../../../../assets/images/logohe.png');
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+} */

@@ -26,6 +26,10 @@ export class SettlementService {
     return this._http.get<Area[]>("/api/Area");
   }
 
+  addSettlement(settlement: Settlement): Observable<boolean> {
+    return this._http.post<boolean>(this.url, settlement);
+  }
+
   updateSettlement(settlement: Settlement): Observable<boolean> {
     debugger
     return this._http.put<boolean>(this.url + "/", settlement)

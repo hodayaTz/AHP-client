@@ -7,7 +7,7 @@ import { SettlementsListComponent } from './settlements-list/settlements-list.co
 const routes: Routes = [
   { path: "", component: SettlementsListComponent ,pathMatch:"full"},
   { path: "detailsSettlement/:id", component: SettlementDetailsComponent },
-  { path: "d", component: RegistrationSettlementComponent }
+  { path: "addSettlement", component: RegistrationSettlementComponent }
 ];
 
 @NgModule({

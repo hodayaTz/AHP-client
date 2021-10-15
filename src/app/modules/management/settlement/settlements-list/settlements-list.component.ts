@@ -35,6 +35,9 @@ export class SettlementsListComponent implements OnInit {
       }
     })
   }
+  addNewSettlement(){
+    this._router.navigate(['addSettlement'],{relativeTo:this.route})
+  }
   settlementDetails(id:number){
     this._router.navigate(['detailsSettlement/',id],{relativeTo:this.route});
   }
