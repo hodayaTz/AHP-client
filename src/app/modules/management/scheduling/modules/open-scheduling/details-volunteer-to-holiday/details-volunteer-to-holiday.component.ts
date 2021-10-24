@@ -25,7 +25,8 @@ export interface DialogData {
 export class DetailsVolunteerToHolidayComponent implements OnInit {
   
   ngOnInit(): void {
-    let holiday=Number(sessionStorage.getItem("holiday")) 
+    // let holiday=Number(sessionStorage.getItem("holiday")) 
+    let holiday=this._openSchedulingService.holidayId
     this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
     this.prayerTexts$=this._SchedulingService.getPrayerTexts()
   }

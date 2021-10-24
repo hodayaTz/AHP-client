@@ -8,10 +8,14 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { SchedulingService } from '../../../scheduling.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DetailsVolunteerToHolidayComponent } from '../details-volunteer-to-holiday/details-volunteer-to-holiday.component';
+import { OptionalSettlement } from 'src/app/models/optional-settlement';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface DialogData {
   settlement: number;
   scheduling: number;
+  idExperience:number;
+  optionalSettlement:OptionalSettlement;
 }
 @Component({
   selector: 'app-details-settlement-to-holiday',
@@ -21,12 +25,13 @@ export interface DialogData {
 export class DetailsSettlementToHolidayComponent implements OnInit {
 
   ngOnInit(): void {
-    let holiday=Number(sessionStorage.getItem("holiday")) 
+    // let holiday=Number(sessionStorage.getItem("holiday")) 
+    let holiday=this._openSchedulingService.holidayId
     this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
     this.prayerTexts$=this._SchedulingService.getPrayerTexts()
   }
 
-  constructor(private _openSchedulingService:OpenSchedulingService,private fb:FormBuilder,
+  constructor(private _snackBar: MatSnackBar,private _openSchedulingService:OpenSchedulingService,private fb:FormBuilder,
     private _SchedulingService : SchedulingService,
     public dialogRef: MatDialogRef<DetailsVolunteerToHolidayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
@@ -54,12 +59,22 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
     this.settlement.idSettlement=this.data.settlement
     this._openSchedulingService.addSettlementHoliday(this.settlement).subscribe(result=>{
       if(result){
-        console.log('הפעיל נוסף בהצלחה')
+        this._SchedulingService.changeExperienceSettlement(this.data.optionalSettlement,this.data.idExperience).subscribe(_result=>{
+          if(_result){
+            this.openSnackBar("נשמרו פרטי הישוב "+this.data.optionalSettlement.settlement.areaName)
+          }
+          else{
+            this.openSnackBar("שגיאה-פרטי הישוב לא נשמרו")
+          }
+        })
       }
       else{
-        console.log("הפעיל כבר קיים בשיבוץ זה")
-      }
+        this.openSnackBar("שגיאה-פרטי הישוב לא נשמרו")      }
     })
   }
-
+  openSnackBar(message: string, action: string="x") {
+    this._snackBar.open(message, action,{
+      duration: 3000
+    });
+  }
 }

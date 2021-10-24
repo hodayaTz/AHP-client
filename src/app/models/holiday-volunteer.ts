@@ -1,4 +1,4 @@
-import { Professional } from './professional'
+import { Volunteer } from './volunteer'
 
 export class HolidayVolunteer{
     idSchedulingHoliday:number
@@ -10,4 +10,5 @@ export class HolidayVolunteer{
     hasCar:boolean
     hasLicense :boolean
     professionals:number[]=[]
+    volunteer:Volunteer
 }

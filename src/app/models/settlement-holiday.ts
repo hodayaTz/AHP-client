@@ -1,3 +1,5 @@
+import { Settlement } from './settlement'
+
 export class SettlementHoliday{
     idSettlement:Number
     idSchedulingHoliday:Number 
@@ -7,4 +9,5 @@ export class SettlementHoliday{
     isSeferTora :boolean
     additionalNeeds:string 
     professionals:number[]=[]
+    settlement:Settlement
 }

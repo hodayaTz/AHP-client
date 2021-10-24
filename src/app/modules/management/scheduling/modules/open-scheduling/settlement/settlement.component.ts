@@ -58,7 +58,7 @@ export class SettlementComponent implements OnInit {
   changeExperience(optionalSettlement:OptionalSettlement,newExperience:ExperienceOptional){
     //האם להשתמש בID או בתאור
     if(newExperience.descriptionExperience=='כן'){
-      this.openDialog(optionalSettlement.idSettlement)
+      this.openDialog(optionalSettlement.idSettlement,newExperience.idExperience,optionalSettlement)
     }
     else{
       if(optionalSettlement.idExperience==1){
@@ -73,10 +73,10 @@ export class SettlementComponent implements OnInit {
     this.getOptinalSettlements()
   }
 
-  openDialog(idSettlement:number): void {
+  openDialog(idSettlement:number,experience:number,_OptionalSettlement:OptionalSettlement): void {
     const dialogRef = this.dialog.open(DetailsSettlementToHolidayComponent, {
       width: 'auto',
-      data: {settlement: idSettlement, scheduling: this.schedulingHolidayId}
+      data: {settlement: idSettlement, scheduling: this.schedulingHolidayId,idExperience:experience,optionalSettlement:_OptionalSettlement}
     });
 
     dialogRef.afterClosed().subscribe(result => {

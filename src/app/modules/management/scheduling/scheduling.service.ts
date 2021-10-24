@@ -15,7 +15,6 @@ export class SchedulingService {
   url:string="/api/SchedulingHoliday"
   constructor(private _http:HttpClient) { }
   addSchedulingHoliday(newSchedulingHoliday:SchedulingHoliday):Observable<boolean>{
-    debugger
     return this._http.post<boolean>(this.url,newSchedulingHoliday)
   }
   getSchedulingsHoliday( ):Observable<SchedulingHoliday[]>{

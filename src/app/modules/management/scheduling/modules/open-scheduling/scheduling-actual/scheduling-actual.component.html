@@ -1,0 +1,29 @@
+<div class="flex-row">
+    <div>
+        <div>
+            <mat-selection-list #sett [multiple]="false" (selectionChange)="selectSettlement(sett)">
+                <mat-list-option *ngFor="let settlement of settlements|async"  [value]="settlement" >
+                    {{settlement.settlement.nameSettlement}}
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+    <div *ngIf="settlementChoose">
+        <div>
+            <mat-card>{{settlementChoose?.settlement?.nameSettlement}} מיקום- {{settlementChoose.settlement?.areaName}} כמות אנשים- {{settlementChoose.amountPeopleConsumed}} </mat-card>
+            <mat-chip-list>
+                <mat-chip *ngFor="let p of settlementChoose.professionals" color="primary" selected>{{getProfessionalById(p)}}</mat-chip>
+            </mat-chip-list>
+        </div>
+        <div>
+            <mat-selection-list #shoes [multiple]="false" >
+                <mat-list-option *ngFor="let volunteer of volunteers|async" [value]="volunteer">
+                    {{volunteer.volunteer.firstName+" "+volunteer.volunteer.lastName}}
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let p of volunteer.professionals" color="primary" selected>{{getProfessionalById(p)}}</mat-chip>
+                    </mat-chip-list>
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+</div>
