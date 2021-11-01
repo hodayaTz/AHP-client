@@ -10,11 +10,20 @@
     </div>
     <div *ngIf="settlementChoose">
         <div>
+            <span>צרכי הישוב:</span>
             <mat-card>{{settlementChoose?.settlement?.nameSettlement}} מיקום- {{settlementChoose.settlement?.areaName}} כמות אנשים- {{settlementChoose.amountPeopleConsumed}} </mat-card>
             <mat-chip-list>
                 <mat-chip *ngFor="let p of settlementChoose.professionals" color="primary" selected>{{getProfessionalById(p)}}</mat-chip>
             </mat-chip-list>
-        </div>
+        </div> 
+        <br>
+        <div>
+            <span>איזה צרכים נשארו:</span>
+            <mat-card>כמות אנשים- {{settlementChooseMoreNeeded.amountPeopleConsumed}} </mat-card>
+            <mat-chip-list>
+                <mat-chip *ngFor="let p of settlementChooseMoreNeeded.professionals" color="primary" selected>{{getProfessionalById(p)}}</mat-chip>
+            </mat-chip-list>
+        </div> 
         <div>
             <mat-selection-list #shoes [multiple]="false" >
                 <mat-list-option *ngFor="let volunteer of volunteers|async" [value]="volunteer">

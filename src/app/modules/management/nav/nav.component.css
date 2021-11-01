@@ -25,3 +25,6 @@
   width: -webkit-fill-available;
 }
 
+.mat-drawer-content {
+   overflow: visible;
+}

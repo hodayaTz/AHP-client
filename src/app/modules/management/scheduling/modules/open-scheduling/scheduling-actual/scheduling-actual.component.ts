@@ -18,14 +18,20 @@ export class SchedulingActualComponent implements OnInit {
       if(data.has("id")) {
         this.volunteers=this._service.getVolunteers(Number(data.get("id")))
         this.settlements=this._service.getSettlements(Number(data.get("id")))
+        debugger
+        this._service.getVolunteersFromHistory(5).subscribe(data=>{
+          debugger
+        })
       }
     })
   }
   settlements:Observable<SettlementHoliday[]>
   volunteers:Observable<HolidayVolunteer[]>
   settlementChoose:SettlementHoliday=new SettlementHoliday()
+  settlementChooseMoreNeeded:SettlementHoliday=new SettlementHoliday()
   selectSettlement(event:any){
     this.settlementChoose=event?._value[0]
+    this.settlementChooseMoreNeeded=event?._value[0]
   }
 
   getProfessionalById(id:number){

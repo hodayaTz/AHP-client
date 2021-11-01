@@ -6,9 +6,10 @@ export class HolidayVolunteer{
     countjoiners:number
     withFamily :boolean
     countKids :number
-    idPrayer :number
+    idPrayer :number 
     hasCar:boolean
     hasLicense :boolean
     professionals:number[]=[]
     volunteer:Volunteer
+    idSettlement?:number
 }
