@@ -1,4 +1,5 @@
 import { Volunteer } from './volunteer'
+import { PrayerText } from './prayer_text'
 
 export class HolidayVolunteer{
     idSchedulingHoliday:number
@@ -12,4 +13,5 @@ export class HolidayVolunteer{
     professionals:number[]=[]
     volunteer:Volunteer
     idSettlement?:number
+    prayerText:PrayerText
 }

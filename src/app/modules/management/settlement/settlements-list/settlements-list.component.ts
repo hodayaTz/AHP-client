@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Settlement } from 'src/app/models/settlement';
 import { SettlementService } from '../settlement.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-settlements-list',
@@ -12,28 +13,20 @@ export class SettlementsListComponent implements OnInit {
 
   constructor(private _settlementService:SettlementService,private _router:Router, private route:ActivatedRoute) { }
   
-  settlements:Settlement[]
+  settlements$:Observable< Settlement[]>
   searchText:string
   color:string= "primary"
   displayedColumns: string[] = ['experience','name', 'details','history','delete']
 
   ngOnInit(): void {
-    this._settlementService.getSettlements().subscribe(res=>{
-      this.settlements = res;
-      console.log(this.settlements);
-    })
+
+    this.settlements$=this._settlementService.getSettlements()
   }
   deleteSettlement(settlement:Settlement){
-    this._settlementService.deleteService(settlement.idSettlement).subscribe(res=>{
-      if (res){
-        alert("the deletion succeeded!!");
-        let index = this.settlements.indexOf(settlement);
-        this.settlements.splice(index);
-      }
-      else{
-        alert("the deletion did not succeed");
-      }
+    this._settlementService.deleteService(settlement.idSettlement).subscribe(result => {
+      console.log(result)
     })
+    this.settlements$=this._settlementService.getSettlements()
   }
   addNewSettlement(){
     this._router.navigate(['addSettlement'],{relativeTo:this.route})

@@ -9,11 +9,13 @@ import { SettlementDetailsComponent } from './settlement-details/settlement-deta
 import { SettlementsListComponent } from './settlements-list/settlements-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { VolunteersSearchPipe } from '../volunteers/volunteers-search-pipe';
+import { SettlementsSearchPipe } from './settlements-search-pipe';
 
 
 // SettlementsListComponent
 @NgModule({
-  declarations: [SettlementDetailsComponent,SettlementsListComponent],
+  declarations: [SettlementDetailsComponent,SettlementsListComponent,SettlementsSearchPipe],
   imports: [
     CommonModule,SettlementsRoutingModule,MaterialModule,ReactiveFormsModule,FormsModule, HttpClientModule,RouterModule
   ],

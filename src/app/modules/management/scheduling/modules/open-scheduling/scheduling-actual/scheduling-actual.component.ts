@@ -16,22 +16,28 @@ export class SchedulingActualComponent implements OnInit {
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data => {
       if(data.has("id")) {
-        this.volunteers=this._service.getVolunteers(Number(data.get("id")))
-        this.settlements=this._service.getSettlements(Number(data.get("id")))
-        debugger
-        this._service.getVolunteersFromHistory(5).subscribe(data=>{
-          debugger
-        })
+        this.schedulingHoliday=Number(data.get("id")) 
+        this.volunteers=this._service.getVolunteers(this.schedulingHoliday)
+        this.settlements=this._service.getSettlements(this.schedulingHoliday)
+        
       }
     })
   }
+  schedulingHoliday:number
   settlements:Observable<SettlementHoliday[]>
   volunteers:Observable<HolidayVolunteer[]>
+  // volunteersFromHistory:Observable<HolidayVolunteer[]>
   settlementChoose:SettlementHoliday=new SettlementHoliday()
   settlementChooseMoreNeeded:SettlementHoliday=new SettlementHoliday()
   selectSettlement(event:any){
     this.settlementChoose=event?._value[0]
     this.settlementChooseMoreNeeded=event?._value[0]
+    // this._service.getVolunteersFromHistory(this.settlementChoose.idSettlement,this.schedulingHoliday).subscribe(data=>{
+    // })
+    // this.volunteersFromHistory=this._service.getVolunteersFromHistory(this.settlementChoose.idSettlement,this.schedulingHoliday)
+    this._service.getVolunteersToScheduling(this.settlementChoose.idSettlement,this.schedulingHoliday).subscribe(data=>{
+      debugger
+    })
   }
 
   getProfessionalById(id:number){

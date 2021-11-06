@@ -19,17 +19,15 @@ export class ActualSchedulingService {
         return this._http.get<HolidayVolunteer[]>("/api/HolidayVolunteer/" + id)
     }
 
-    getVolunteersFromHistory(settlement:number):Observable<Record<number,number>>{
-        return this._http.get<Record<number,number>>("/api/HolidayVolunteer/GetVolunteersBySettlement/"+settlement)
-    }
-    // getVolunteersFromHistory(settlement: number) {
-    //     return this._http.get<Map<number, number>>("/api/HolidayVolunteer/GetVolunteersBySettlement/" + settlement, {
-    //         headers: new HttpHeaders({
-    //             'Content-Type': 'text/plain',
-    //             'Accept': 'application/json'
-    //         }),
-    //         withCredentials: true
-    //     });
+    // getVolunteersFromHistory(settlement:number,scheduling:number):Observable<HolidayVolunteer[]>{
+    //     return this._http.get<HolidayVolunteer[]>("/api/HolidayVolunteer/GetVolunteersBySettlement/"+settlement+"/"+scheduling)
     // }
 
+    getVolunteersToScheduling(settlement:number,scheduling:number):Observable<HolidayVolunteer[][]>{
+        return this._http.get<HolidayVolunteer[][]>("/api/HolidayVolunteer/GetVolunteersToScheduling/"+settlement+"/"+scheduling)
+    }
+
+    saveVolunteerToSettlement(settlement:number, holidayVolunteer:HolidayVolunteer):Observable<boolean>{
+        return this._http.post<boolean>("/api/HolidayVolunteer/saveVolunteerToSettlement/"+settlement,holidayVolunteer)
+    }
 }

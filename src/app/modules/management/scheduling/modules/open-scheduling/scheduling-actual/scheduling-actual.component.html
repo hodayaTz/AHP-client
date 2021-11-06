@@ -11,7 +11,7 @@
     <div *ngIf="settlementChoose">
         <div>
             <span>צרכי הישוב:</span>
-            <mat-card>{{settlementChoose?.settlement?.nameSettlement}} מיקום- {{settlementChoose.settlement?.areaName}} כמות אנשים- {{settlementChoose.amountPeopleConsumed}} </mat-card>
+            <mat-card>{{settlementChoose?.settlement?.nameSettlement}} מיקום- {{settlementChoose?.settlement?.areaName}} כמות אנשים- {{settlementChoose?.amountPeopleConsumed}} נוסח - {{settlementChoose?.prayerText?.namePrayer}}</mat-card>
             <mat-chip-list>
                 <mat-chip *ngFor="let p of settlementChoose.professionals" color="primary" selected>{{getProfessionalById(p)}}</mat-chip>
             </mat-chip-list>
@@ -24,7 +24,17 @@
                 <mat-chip *ngFor="let p of settlementChooseMoreNeeded.professionals" color="primary" selected>{{getProfessionalById(p)}}</mat-chip>
             </mat-chip-list>
         </div> 
-        <div>
+        <!-- <div *ngIf="volunteersFromHistory" class="fromHistort">
+            <mat-selection-list #shoes [multiple]="false" >
+                <mat-list-option *ngFor="let volunteer of volunteersFromHistory|async" [value]="volunteer">
+                    {{volunteer.volunteer.firstName+" "+volunteer.volunteer.lastName}}
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let p of volunteer?.professionals" color="primary" selected>{{getProfessionalById(p)}}</mat-chip>
+                    </mat-chip-list>
+                </mat-list-option>
+            </mat-selection-list>
+        </div> -->
+        <div class="">
             <mat-selection-list #shoes [multiple]="false" >
                 <mat-list-option *ngFor="let volunteer of volunteers|async" [value]="volunteer">
                     {{volunteer.volunteer.firstName+" "+volunteer.volunteer.lastName}}
