@@ -1,17 +1,33 @@
-
-<mat-selection-list #holidays [multiple]="false">
-    <mat-list-option *ngFor="let h of holidays$ | async" [value]="h">
-        <div class="flex-col">
-            <div>{{h.descriptionHoliday}}</div>
-            <button mat-button color="primary">הסטוריה</button>
-        </div>
-    </mat-list-option>
-</mat-selection-list>
-
+<!-- 
 <p>
     Option selected: {{holidays.selectedOptions.selected[0]?.value?.descriptionHoliday}}
-</p>
+</p> -->
 
 <!--  רשימה של כל שמות החגים עם אפשרות להיכנס לכל חג ומה יהיה בכניסה לחג?
 הוספת חג חדש
 כפתור להפניה להסטוריה  -->
+
+<div class="example-action-buttons">
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+<mat-accordion class="example-headers-align" multi>
+    <div *ngFor="let h of holidays$ | async">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{h.descriptionHoliday}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <button mat-button color="primary">הסטוריה</button>
+                    <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let p of professional$ | async" appearance="fill">
+                <mat-label>{{p.descriptionProfessional}}</mat-label>
+            </div>
+
+        </mat-expansion-panel>
+    </div>
+</mat-accordion>
