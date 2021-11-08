@@ -39,15 +39,17 @@ export class OpenSchedulingService {
     return this._http.post<boolean>("/api/SettlementHoliday",settlementHoliday)
   }
 
-  private _holidayId:number
+  // private _holidayId:number
   
-  public get holidayId() : number {
-    return this._holidayId
-  }
+  // public get holidayId() : number {
+  //   return this._holidayId
+  // }
   
-  public set holidayId(h : number) {
-    this._holidayId = h;
-  }
+  // public set holidayId(h : number) {
+  //   this._holidayId = h;
+  // }
+
+  public holidayId:number
   
   private _professionals:Professional[]
 

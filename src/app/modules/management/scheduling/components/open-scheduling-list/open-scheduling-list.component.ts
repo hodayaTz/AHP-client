@@ -7,8 +7,12 @@ import { Observable } from 'rxjs';
 import { SchedulingService } from '../../scheduling.service';
 import { HolidaysService } from '../../../holidays/holidays-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { OpenScedulingBasicComponent } from '../../modules/open-scheduling/open-sceduling-basic/open-sceduling-basic.component';
 
 
+export interface DialogDataScheduling {
+  id:number
+}
 
 @Component({
   selector: 'app-open-scheduling-list',
@@ -30,11 +34,21 @@ export class OpenSchedulingListComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewSchedulingHolidayComponent, {
-      width: '250px',
+      width: 'auto',
     });
    
     dialogRef.afterClosed().subscribe(result => {
       this.openSchedulingHolidays$=this._service.getSchedulingsHoliday()
+    });
+  }
+
+  openDialogChooseScheduling(idScheduling:number): void {
+    const dialogRef = this.dialog.open(OpenScedulingBasicComponent, {
+      width: '30%',
+      data:{id:idScheduling}
+    });
+    dialogRef.disableClose=true
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 

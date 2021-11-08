@@ -5,9 +5,8 @@
     </div>
     <div class="container-flex">
         <div *ngFor="let h of openSchedulingHolidays$ | async">
-            <button class="open-scheduling" mat-stroked-button color={{color}} (click)="openScheduling(h.idSchedulingHoliday)">
+            <button class="open-scheduling" mat-stroked-button color={{color}} (click)="openDialogChooseScheduling(h.idSchedulingHoliday)">
                 {{(h.descripation)}}
-                <!-- פורים -->
                 <br>
                 {{h.yearHoliday}}
             </button>

@@ -1,6 +1,9 @@
-<p>open-sceduling-basic works!</p>
-<button routerLink="volunteers/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">פעילים</button>
-<button routerLink="settlements/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">ישובים</button>
+<div *ngIf="schedulingHoliday" class="flex-row">
 
-<button routerLink="actualScheduling/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">שיבוץ</button>
+<button (click)="onNoClick()" routerLink="/management/scheduling/openScheduling/{{schedulingHoliday.idSchedulingHoliday}}/volunteers/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">פעילים</button>
+<button (click)="onNoClick()" routerLink="/management/scheduling/openScheduling/{{schedulingHoliday.idSchedulingHoliday}}/settlements/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">ישובים</button>
+
+<button (click)="onNoClick()" routerLink="/management/scheduling/openScheduling/{{schedulingHoliday.idSchedulingHoliday}}/actualScheduling/{{schedulingHoliday.idSchedulingHoliday}}" mat-raised-button color="primary">שיבוץ</button>
 <button (click)="delete()" mat-raised-button color="primary">מחיקה</button>
+
+</div>
