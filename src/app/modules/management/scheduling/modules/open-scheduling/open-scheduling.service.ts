@@ -6,6 +6,7 @@ import { HolidayVolunteer } from 'src/app/models/holiday-volunteer';
 import { OptionalSettlement } from 'src/app/models/optional-settlement';
 import { SettlementHoliday } from 'src/app/models/settlement-holiday';
 import { Professional } from 'src/app/models/professional';
+import { SchedulingHoliday } from 'src/app/models/scheduling-holiday';
 
 const URL_VOLUNTEER="/api/OptionalVolunteerToHoliday"
 const URL_SETTLEMENT="/api/OptionalSettlementToHoliday"
@@ -63,5 +64,9 @@ export class OpenSchedulingService {
 
   getProfessionalById(id:number):Professional{
     return this._professionals.filter(p=>p.idProfessional===id)[0]
+  }
+
+  getSchedulingHolidayById(id:number):Observable<SchedulingHoliday>{
+    return this._http.get<SchedulingHoliday>("/api/SchedulingHoliday/"+id)
   }
 }

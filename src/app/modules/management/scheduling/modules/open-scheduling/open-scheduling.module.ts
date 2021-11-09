@@ -13,14 +13,19 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DetailsSettlementToHolidayComponent } from './details-settlement-to-holiday/details-settlement-to-holiday.component';
 import { ActualSchedulingService } from './actual-scheduling.service';
 import { SchedulingActualComponent } from './scheduling-actual/scheduling-actual.component';
+import { VolunteerPlacementApprovalComponent } from './volunteer-placement-approval/volunteer-placement-approval.component';
+import { SettlementService } from '../../../settlement/settlement.service';
+import { CompletionSchedulingComponent } from './completion-scheduling/completion-scheduling.component';
 
 
 
 @NgModule({
-  declarations: [SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent,DetailsSettlementToHolidayComponent,OpenScedulingBasicComponent,SchedulingActualComponent],
+  declarations: [SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent,
+    DetailsSettlementToHolidayComponent,OpenScedulingBasicComponent,SchedulingActualComponent,
+    VolunteerPlacementApprovalComponent,CompletionSchedulingComponent],
   imports: [
     CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,ReactiveFormsModule,FormsModule
   ],
-  providers:[OpenSchedulingService,SchedulingService,ActualSchedulingService]
+  providers:[OpenSchedulingService,SchedulingService,ActualSchedulingService,SettlementService]
 })
 export class OpenSchedulingModule { }

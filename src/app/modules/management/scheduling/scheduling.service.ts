@@ -21,7 +21,6 @@ export class SchedulingService {
     return this._http.get<SchedulingHoliday[]>(this.url)
   }
   getSchedulingHolidayById(id:number):Observable<SchedulingHoliday>{
-    debugger
     return this._http.get<SchedulingHoliday>(this.url+"/"+id)
   }
   deleteSchedulingHoliday(idSchedulingHoliday:number):Observable<boolean>{
