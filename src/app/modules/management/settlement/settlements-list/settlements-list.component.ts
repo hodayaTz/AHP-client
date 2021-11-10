@@ -34,6 +34,8 @@ export class SettlementsListComponent implements OnInit {
   settlementDetails(id:number){
     this._router.navigate(['detailsSettlement/',id],{relativeTo:this.route});
   }
-  getHistory(){}
+  getHistory(id:number){
+    this._router.navigate(["history/", id],{relativeTo:this.route})
+  }
 
 }

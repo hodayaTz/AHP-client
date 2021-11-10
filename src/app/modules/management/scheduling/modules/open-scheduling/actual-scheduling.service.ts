@@ -30,4 +30,8 @@ export class ActualSchedulingService {
     saveVolunteerToSettlement(settlement:number, holidayVolunteer:HolidayVolunteer):Observable<boolean>{
         return this._http.post<boolean>("/api/HolidayVolunteer/saveVolunteerToSettlement/"+settlement,holidayVolunteer)
     }
+
+    sendEmailToSettlements(scheduling:number){
+        
+    }
 }

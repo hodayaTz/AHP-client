@@ -26,7 +26,9 @@ export class VolunteersListComponent implements OnInit {
   color:string= "primary"
   currentVolunteerDetails:Volunteer
   searchText:string
-  getVolHistory(){}
+  getVolHistory(id: number){
+    this._router.navigate(["history/",id],{relativeTo:this.route})
+  }
   editVolunteer(id: number) {
     this._router.navigate(["editVolunteer/", id],{relativeTo:this.route})
   }

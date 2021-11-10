@@ -9,6 +9,7 @@ import { ManagementBasicDesignComponent } from './management-basic-design/manage
 import { MaterialModule } from 'src/app/material.module';
 import { MenuDesignComponent } from './menu-design/menu-design.component';
 import { NavComponent } from './nav/nav.component';
+import { HistoryModule } from './history/history.module';
 
 
 
@@ -18,6 +19,6 @@ ManagementBasicDesignComponent,MenuDesignComponent,NavComponent
   ],
   imports: [
     CommonModule,ManagamentRoutingModule,
-    MaterialModule ]
+    MaterialModule,HistoryModule ]
 })
 export class ManagementModule { }

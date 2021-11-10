@@ -79,8 +79,8 @@ export class SchedulingActualComponent implements OnInit {
 
   finishScheduling(){
     const dialogRef = this.dialog.open(CompletionSchedulingComponent, {
-      width: '100%',
-    height: 'auto',
+    //   width: '100%',
+    // height: 'auto',
       data: {},
       panelClass:'dialog'
     });
