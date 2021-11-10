@@ -7,9 +7,9 @@ import { SchedulingService } from './scheduling.service';
 import { SchedulingRoutingModule } from './scheduling-routing.module';
 import { MaterialModule } from 'src/app/material.module';
 import { NewSchedulingHolidayComponent } from './components/new-scheduling-holiday/new-scheduling-holiday.component';
-import { OpenSchedulingModule } from './modules/open-scheduling/open-scheduling.module';
 import { OpenSchedulingListComponent } from './components/open-scheduling-list/open-scheduling-list.component';
 import { HolidaysService } from '../holidays/holidays-service.service';
+import { OpenSchedulingModule } from './open-scheduling/open-scheduling.module';
 
 
 

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { SchedulingService } from '../../scheduling.service';
 import { HolidaysService } from '../../../holidays/holidays-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OpenScedulingBasicComponent } from '../../modules/open-scheduling/open-sceduling-basic/open-sceduling-basic.component';
+import { OpenScedulingBasicComponent } from '../../open-scheduling/open-sceduling-basic/open-sceduling-basic.component';
 
 
 export interface DialogDataScheduling {

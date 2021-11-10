@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
 import { HolidayVolunteer } from 'src/app/models/holiday-volunteer';
 import { OptionalSettlement } from 'src/app/models/optional-settlement';
@@ -10,9 +10,9 @@ import { SchedulingHoliday } from 'src/app/models/scheduling-holiday';
 
 const URL_VOLUNTEER="/api/OptionalVolunteerToHoliday"
 const URL_SETTLEMENT="/api/OptionalSettlementToHoliday"
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  // {providedIn: 'root'}
+)
 export class OpenSchedulingService {
   constructor(private _http:HttpClient) {
     this.getProfessionals().subscribe(data=>{
@@ -50,7 +50,14 @@ export class OpenSchedulingService {
   //   this._holidayId = h;
   // }
 
-  public holidayId:number
+  // public holidayId:number
+  
+  // private holidayId = new BehaviorSubject(0);
+  // currentholidayId = this.holidayId.asObservable();
+  // changeholidayId(id: number) {
+  //   this.holidayId.next(id)
+  // }
+
   
   private _professionals:Professional[]
 
@@ -69,4 +76,6 @@ export class OpenSchedulingService {
   getSchedulingHolidayById(id:number):Observable<SchedulingHoliday>{
     return this._http.get<SchedulingHoliday>("/api/SchedulingHoliday/"+id)
   }
+
+  
 }

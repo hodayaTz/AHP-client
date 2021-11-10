@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { OpenSchedulingService } from '../open-scheduling.service';
 import { ActivatedRoute } from '@angular/router';
-import { SchedulingService } from '../../../scheduling.service';
 import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
 import { Observable } from 'rxjs';
 import { ExperienceOptional } from 'src/app/models/experience_optional';
@@ -10,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DetailsVolunteerToHolidayComponent } from '../details-volunteer-to-holiday/details-volunteer-to-holiday.component';
 import { OptionalSettlement } from 'src/app/models/optional-settlement';
 import { DetailsSettlementToHolidayComponent } from '../details-settlement-to-holiday/details-settlement-to-holiday.component';
+import { SchedulingService } from '../../scheduling.service';
 
 @Component({
   selector: 'app-settlement',

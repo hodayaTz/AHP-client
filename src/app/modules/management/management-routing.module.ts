@@ -25,7 +25,7 @@ const routes: Routes = [
       { path: "settlement", loadChildren: () => import("./settlement/settlement.module").then(m => m.SettlementModule) },
       { path: "scheduling", loadChildren: () => import("./scheduling/scheduling.module").then(m => m.SchedulingModule) },
       { path: "holidays", loadChildren: () => import("./holidays/holidays.module").then(m => m.HolidaysModule) },
-      { path: "history", component:HistoryComponent }
+      { path: "history", component:HistoryComponent },
     ]
   }
 ];

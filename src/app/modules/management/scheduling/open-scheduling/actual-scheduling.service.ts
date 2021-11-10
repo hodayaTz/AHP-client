@@ -31,7 +31,15 @@ export class ActualSchedulingService {
         return this._http.post<boolean>("/api/HolidayVolunteer/saveVolunteerToSettlement/"+settlement,holidayVolunteer)
     }
 
-    sendEmailToSettlements(scheduling:number){
-        
+    sendEmailToSettlements(scheduling:number):Observable<void>{
+        return this._http.get<void>("/api/SendingEmail/sendToContactPersonOfSettlements/"+scheduling)
+    }
+
+    sendEmailToVolunteers(scheduling:number):Observable<void>{
+        return this._http.get<void>("/api/SendingEmail/sendToVolunteers/"+scheduling)
+    }
+
+    closeScheduling(schedulingHoliday:number):Observable<boolean>{
+        return this._http.put<boolean>("/api/SchedulingHoliday/CloseScheduling/"+schedulingHoliday,{})
     }
 }

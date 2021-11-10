@@ -2,10 +2,11 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { OpenSchedulingService } from '../open-scheduling.service';
 import { ActivatedRoute } from '@angular/router';
 import { SchedulingHoliday } from 'src/app/models/scheduling-holiday';
-import { SchedulingService } from '../../../scheduling.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../details-volunteer-to-holiday/details-volunteer-to-holiday.component';
-import { DialogDataScheduling } from '../../../components/open-scheduling-list/open-scheduling-list.component';
+import { SchedulingService } from '../../scheduling.service';
+import { DialogDataScheduling } from '../../components/open-scheduling-list/open-scheduling-list.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-open-sceduling-basic',
@@ -34,9 +35,16 @@ export class OpenScedulingBasicComponent implements OnInit {
     // })
     this._schedilingService.getSchedulingHolidayById(this.data.id).subscribe(res => {
       this.schedulingHoliday = res
-      this._service.holidayId = res.idHoliday
+      // this._service.holidayId = res.idHoliday
+      // this._service.changeholidayId(res.idHoliday)
+      // this.subscription = this._service.currentholidayId.subscribe(id => 
+      //   console.log(id))
+      sessionStorage.setItem('holidy',res.idHoliday.toString())
     })
+
   }
+  // holiday:number;
+  // subscription: Subscription;
 
   schedulingHoliday: SchedulingHoliday
 

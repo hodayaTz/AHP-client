@@ -3,13 +3,13 @@ import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
 import { OpenSchedulingService } from '../open-scheduling.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
-import { SchedulingService } from '../../../scheduling.service';
 import { Observable } from 'rxjs';
 import { ExperienceOptional } from 'src/app/models/experience_optional';
 import { DetailsVolunteerToHolidayComponent } from '../details-volunteer-to-holiday/details-volunteer-to-holiday.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Volunteer } from 'src/app/models/volunteer';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SchedulingService } from '../../scheduling.service';
 
 
 @Component({

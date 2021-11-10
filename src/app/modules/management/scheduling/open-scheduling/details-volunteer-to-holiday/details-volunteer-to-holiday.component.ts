@@ -4,11 +4,11 @@ import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@ang
 import { OpenSchedulingService } from '../open-scheduling.service';
 import { HolidayVolunteer } from 'src/app/models/holiday-volunteer';
 import { Professional } from 'src/app/models/professional';
-import { Observable } from 'rxjs';
-import { SchedulingService } from '../../../scheduling.service';
+import { Observable, Subscription } from 'rxjs';
 import { PrayerText } from 'src/app/models/prayer_text';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OptionalVolunteer } from 'src/app/models/optional_volunteer';
+import { SchedulingService } from '../../scheduling.service';
 
 export interface DialogData {
   volunteer: number;
@@ -25,10 +25,13 @@ export interface DialogData {
 export class DetailsVolunteerToHolidayComponent implements OnInit {
   
   ngOnInit(): void {
-    let holiday=this._openSchedulingService.holidayId
+    // this.subscription = this._openSchedulingService.currentholidayId.subscribe(id => this.holiday = id)
+
+    // console.log(this._openSchedulingService.holidayId)
+    // let holiday=this._openSchedulingService.holidayId
+    let holiday=Number( sessionStorage.getItem('holidy'))
     this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
     this.prayerTexts$=this._SchedulingService.getPrayerTexts()
-    console.log(this._openSchedulingService.holidayId)
   }
 
   constructor(private _snackBar: MatSnackBar,private _schedulingService:SchedulingService,private _openSchedulingService:OpenSchedulingService,private fb:FormBuilder,
@@ -44,6 +47,11 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
   volunteer:HolidayVolunteer
   professionals$:Observable<Professional[]>
   prayerTexts$:Observable<PrayerText[]>
+  
+  
+  // holiday:number;
+  // subscription: Subscription;
+  
 
   volunteerHolidayForm:FormGroup=new FormGroup({
     countjoiners:new FormControl(0),

@@ -1,15 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { PrayerText } from 'src/app/models/prayer_text';
 import { Professional } from 'src/app/models/professional';
 import { SettlementHoliday } from 'src/app/models/settlement-holiday';
 import { OpenSchedulingService } from '../open-scheduling.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { SchedulingService } from '../../../scheduling.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DetailsVolunteerToHolidayComponent } from '../details-volunteer-to-holiday/details-volunteer-to-holiday.component';
 import { OptionalSettlement } from 'src/app/models/optional-settlement';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SchedulingService } from '../../scheduling.service';
 
 export interface DialogData {
   settlement: number;
@@ -25,7 +25,12 @@ export interface DialogData {
 export class DetailsSettlementToHolidayComponent implements OnInit {
 
   ngOnInit(): void {
-    let holiday=this._openSchedulingService.holidayId
+    // this.subscription = this._openSchedulingService.currentholidayId.subscribe(id=>
+    //   {console.log(id)
+    //   this.professionals$=this._SchedulingService.getProfessionalsByHoliday(id)}
+    // )
+    // let holiday=this._openSchedulingService.holidayId
+    let holiday=Number( sessionStorage.getItem('holidy'))
     this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
     this.prayerTexts$=this._SchedulingService.getPrayerTexts()
   }
@@ -42,6 +47,9 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
   settlement:SettlementHoliday
   professionals$:Observable<Professional[]>
   prayerTexts$:Observable<PrayerText[]>
+  // holiday:number;
+  // subscription: Subscription;
+  
 
   settlementHolidayForm:FormGroup=new FormGroup({
     amountPeopleConsumed:new FormControl(0),

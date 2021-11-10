@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActualSchedulingService } from '../actual-scheduling.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SettlementHoliday } from 'src/app/models/settlement-holiday';
 import { Observable } from 'rxjs';
 import { HolidayVolunteer } from 'src/app/models/holiday-volunteer';
@@ -23,7 +23,9 @@ export interface DialogDataVolunteer{
   styleUrls: ['./scheduling-actual.component.css']
 })
 export class SchedulingActualComponent implements OnInit {
-  constructor(private _service:ActualSchedulingService, private _acr: ActivatedRoute,private _openSchedulingService:OpenSchedulingService,public dialog: MatDialog) { }
+  constructor(private _service:ActualSchedulingService, private _acr: ActivatedRoute,
+    private _openSchedulingService:OpenSchedulingService,public dialog: MatDialog
+    ,private _router:Router, private _Activeroute:ActivatedRoute) { }
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data => {
       if(data.has("id")) {
@@ -41,15 +43,11 @@ export class SchedulingActualComponent implements OnInit {
   settlements:Observable<SettlementHoliday[]>
   // volunteers:Observable<HolidayVolunteer[]>
   volunteers:HolidayVolunteer[][]
-  // volunteersFromHistory:Observable<HolidayVolunteer[]>
   settlementChoose:SettlementHoliday
   settlementChooseMoreNeeded:SettlementHoliday=new SettlementHoliday()
   selectSettlement(event:any){
     this.settlementChoose=event?._value[0]
     this.settlementChooseMoreNeeded=event?._value[0]
-    // this._service.getVolunteersFromHistory(this.settlementChoose.idSettlement,this.schedulingHoliday).subscribe(data=>{
-    // })
-    // this.volunteersFromHistory=this._service.getVolunteersFromHistory(this.settlementChoose.idSettlement,this.schedulingHoliday)
     this._service.getVolunteersToScheduling(this.settlementChoose.idSettlement,this.schedulingHolidayId).subscribe(data=>{
       this.volunteers=data
     })
@@ -78,15 +76,13 @@ export class SchedulingActualComponent implements OnInit {
   }
 
   finishScheduling(){
+    this._router.navigate(["../history",this.schedulingHolidayId],{relativeTo:this._Activeroute})
     const dialogRef = this.dialog.open(CompletionSchedulingComponent, {
-    //   width: '100%',
-    // height: 'auto',
-      data: {},
+      data: {scheduling:this.schedulingHolidayId},
       panelClass:'dialog'
     });
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 }

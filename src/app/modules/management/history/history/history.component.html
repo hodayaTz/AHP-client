@@ -1,6 +1,5 @@
 <table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"
->
-
+matSort (matSortChange)="announceSortChange($event)">
   <!-- Year Column -->
   <ng-container matColumnDef="year">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
