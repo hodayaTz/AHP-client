@@ -1,3 +1,29 @@
+<div style="display: flex;justify-content: space-around;">
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter(input.value,'year')" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  <!-- <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event,'holiday')" placeholder="Ex. ium" #input>
+  </mat-form-field> -->
+  <mat-form-field appearance="fill">
+    <mat-label></mat-label>
+    <mat-select (valueChange)="applyFilter(holiday.value,'holiday')" #holiday>
+      <mat-option *ngFor="let holiday of holidays" [value]="holiday.descriptionHoliday">
+        {{holiday.descriptionHoliday}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter(input.value,'settlement')" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter(input.value,'volunteer')" placeholder="Ex. ium" #input>
+  </mat-form-field>
+</div>
 <table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"
 matSort (matSortChange)="announceSortChange($event)">
   <!-- Year Column -->

@@ -20,7 +20,8 @@ import { SchedulingService } from '../../scheduling.service';
 export class VolunteerComponent implements OnInit {
 
   primary:string="primary"
-  constructor(private _snackBar: MatSnackBar,private dialog: MatDialog,private _service:OpenSchedulingService,private _acr: ActivatedRoute,private _serviceScheduling:SchedulingService) { }
+  constructor(private _snackBar: MatSnackBar,private dialog: MatDialog,private _service:OpenSchedulingService,
+    private _acr: ActivatedRoute,private _serviceScheduling:SchedulingService) { }
 
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data=>{
@@ -58,8 +59,7 @@ export class VolunteerComponent implements OnInit {
   }
 
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:ExperienceOptional){
-    //האם להשתמש בID או בתאור
-    if(newExperience.descriptionExperience=='כן'){
+    if(newExperience.idExperience===1){
       let res=this.openDialog(optionalVolunteer.idVolunteer,newExperience.idExperience,optionalVolunteer)
     }
     else{
@@ -99,5 +99,22 @@ export class VolunteerComponent implements OnInit {
     this._snackBar.open(message, action,{
       duration: 3000
     });
+  }
+
+  getExperienceDescription(id:number):string{
+    switch (id) {
+      case 1:
+        return 'הרשמה לחג'
+        break;
+      case 2:
+        return 'דחייה'
+        break;
+      case 3:
+        return 'ספק'
+        break;
+      default:
+        return ''
+        break;
+    }
   }
 }

@@ -35,7 +35,7 @@
             </div> -->
             <div>
                 <div *ngIf="volunteers">
-                    <div>
+                    <!-- <div> -->
                         פעילים שהיו כבר בישוב :
                         <br>
                         <mat-selection-list [multiple]="false">
@@ -64,13 +64,13 @@
                                     </div>
                                 </div>
                             </mat-list-option>
-                        </mat-selection-list>
-                    </div>
+                        <!-- </mat-selection-list> -->
+                    <!-- </div> -->
                     <mat-divider></mat-divider>
-                    <div>
+                    <!-- <div> -->
                         פעילים:
                         <br>
-                        <mat-selection-list [multiple]="false">
+                        <!-- <mat-selection-list [multiple]="false"> -->
                             <mat-list-option style="height: auto;" *ngFor="let volunteer of volunteers[1]"
                                 [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
@@ -96,13 +96,13 @@
                                     </div>
                                 </div>
                             </mat-list-option>
-                        </mat-selection-list>
-                    </div>
+                        <!-- </mat-selection-list> -->
+                    <!-- </div> -->
                     <mat-divider></mat-divider>
-                    <div>
+                    <!-- <div> -->
                         פעילים ששובצו לישוב אחר :
                         <br>
-                        <mat-selection-list [multiple]="false">
+                        <!-- <mat-selection-list [multiple]="false"> -->
                             <mat-list-option style="height: auto;" *ngFor="let volunteer of volunteers[3]"
                                 [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
@@ -128,13 +128,13 @@
                                     </div>
                                 </div>
                             </mat-list-option>
-                        </mat-selection-list>
-                    </div>
+                        <!-- </mat-selection-list> -->
+                    <!-- </div> -->
                     <mat-divider></mat-divider>
-                    <div>
+                    <!-- <div> -->
                         פעילים שכבר שובצו לישוב :
                         <br>
-                        <mat-selection-list [multiple]="false">
+                        <!-- <mat-selection-list [multiple]="false"> -->
                             <mat-list-option style="height: auto;" *ngFor="let volunteer of volunteers[2]"
                                 [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
@@ -161,7 +161,7 @@
                                 </div>
                             </mat-list-option>
                         </mat-selection-list>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>

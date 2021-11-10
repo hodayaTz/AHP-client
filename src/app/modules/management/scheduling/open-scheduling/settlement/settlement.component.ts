@@ -92,4 +92,21 @@ export class SettlementComponent implements OnInit {
     this.dataSource=new MatTableDataSource(this.settlements.filter(s=>s.idExperience==idExperience))
     this.currentStatus=idExperience
   }
+
+  getExperienceDescription(id:number):string{
+    switch (id) {
+      case 1:
+        return 'הרשמה לחג'
+        break;
+      case 2:
+        return 'דחייה'
+        break;
+      case 3:
+        return 'ספק'
+        break;
+      default:
+        return ''
+        break;
+    }
+  }
 }
