@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { HistoryScheduling } from 'src/app/models/history';
 import { HolidaysService } from '../../holidays/holidays-service.service';
 import { Holiday } from 'src/app/models/holiday';
+// import * as XLSX from "xlsx";
+import { TableUtil } from "../tableUtil";
 
 @Component({
   selector: 'app-history',
@@ -106,5 +108,9 @@ export class HistoryComponent implements OnInit {
         break;
     }
     // this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  exportTable() {
+    TableUtil.exportTableToExcel("ExampleMaterialTable");
   }
 }
