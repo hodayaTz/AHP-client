@@ -9,8 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HistoryScheduling } from 'src/app/models/history';
 import { HolidaysService } from '../../holidays/holidays-service.service';
 import { Holiday } from 'src/app/models/holiday';
-// import * as XLSX from "xlsx";
-import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
 
 @Component({
   selector: 'app-history',
@@ -21,30 +20,30 @@ export class HistoryComponent implements OnInit {
 
   history: HistoryScheduling[]
   ngOnInit(): void {
-    this._serviceHolidays.getHolidays().subscribe(data=>{
-      this.holidays=data
+    this._serviceHolidays.getHolidays().subscribe(data => {
+      this.holidays = data
     })
     this._acr.paramMap.subscribe(param => {
       if (param.has("volunteer")) {
         this._historyService.getHistory().subscribe(data => {
           this.history = data
-          this.historyWithOutFilter=data
+          this.historyWithOutFilter = data
           this.history = this.history.filter(h => h.volunteer.idVolunteer === Number(param.get("volunteer")))
           this.dataSource = new MatTableDataSource(this.history);
         })
       }
-      if (param.has("settlement")) {
+      else if (param.has("settlement")) {
         this._historyService.getHistory().subscribe(data => {
           this.history = data
-          this.historyWithOutFilter=data
+          this.historyWithOutFilter = data
           this.history = this.history.filter(h => h.settlement.idSettlement === Number(param.get("settlement")))
           this.dataSource = new MatTableDataSource(this.history);
         })
       }
-      if (param.has("history")) {
+      else if (param.has("history")) {
         this._historyService.getHistory().subscribe(data => {
           this.history = data
-          this.historyWithOutFilter=data
+          this.historyWithOutFilter = data
           this.history = this.history.filter(h => h.scheduling.idSchedulingHoliday === Number(param.get("history")))
           this.dataSource = new MatTableDataSource(this.history);
         })
@@ -52,7 +51,7 @@ export class HistoryComponent implements OnInit {
       else {
         this._historyService.getHistory().subscribe(data => {
           this.history = data
-          this.historyWithOutFilter=data
+          this.historyWithOutFilter = data
           this.dataSource = new MatTableDataSource(this.history);
         })
       }
@@ -61,10 +60,10 @@ export class HistoryComponent implements OnInit {
 
   displayedColumns: string[] = ['year', 'holiday', 'settlement', 'volunteer'];
   dataSource: any
-  holidays:Holiday[]
-  historyWithOutFilter:HistoryScheduling[]
+  holidays: Holiday[]
+  historyWithOutFilter: HistoryScheduling[]
 
-  constructor(private _serviceHolidays:HolidaysService,private _liveAnnouncer: LiveAnnouncer, private _historyService: HistoryService, private _acr: ActivatedRoute) { }
+  constructor(private _serviceHolidays: HolidaysService, private _liveAnnouncer: LiveAnnouncer, private _historyService: HistoryService, private _acr: ActivatedRoute) { }
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -101,7 +100,7 @@ export class HistoryComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.history);
         break;
       case 'volunteer':
-        this.history = this.history.filter(h => (h.volunteer.volunteer.firstName+" "+h.volunteer.volunteer.lastName).includes(filterValue))
+        this.history = this.history.filter(h => (h.volunteer.volunteer.firstName + " " + h.volunteer.volunteer.lastName).includes(filterValue))
         this.dataSource = new MatTableDataSource(this.history);
         break;
       default:
@@ -110,7 +109,15 @@ export class HistoryComponent implements OnInit {
     // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  exportTable() {
-    TableUtil.exportTableToExcel("ExampleMaterialTable");
+  exportexcel(): void {
+    /* table id is passed over here */
+    let fileName = 'ExcelSheet.xlsx';
+    let element = document.getElementById('history-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    /* save to file */
+    XLSX.writeFile(wb, fileName);
   }
 }

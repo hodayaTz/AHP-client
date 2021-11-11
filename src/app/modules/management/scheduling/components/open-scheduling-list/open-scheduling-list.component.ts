@@ -44,7 +44,7 @@ export class OpenSchedulingListComponent implements OnInit {
 
   openDialogChooseScheduling(idScheduling:number): void {
     const dialogRef = this.dialog.open(OpenScedulingBasicComponent, {
-      width: '30%',
+      width: '40%',
       data:{id:idScheduling}
     });
     dialogRef.disableClose=true

@@ -7,7 +7,8 @@ const routes: Routes = [
   // ,children:[{path:"openScheduling/:id",component:OpenScedulingBasicComponent}]
   },
   // {path:"openScheduling/:id",component:OpenScedulingBasicComponent}
-  {path:"openScheduling/:id",loadChildren: () => import("./open-scheduling/open-scheduling.module").then(m => m.OpenSchedulingModule)}
+  {path:"openScheduling/:id",loadChildren: () => import("./open-scheduling/open-scheduling.module").then(m => m.OpenSchedulingModule)},
+  
 ];
 
 @NgModule({

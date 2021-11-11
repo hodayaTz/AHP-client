@@ -41,7 +41,7 @@ export class SettlementComponent implements OnInit {
   getOptinalSettlements(){
     this._service.getOptionalSettlementByHoliday(this.schedulingHolidayId).subscribe(data=>{
       this.settlements=data
-      this.dataSource = new MatTableDataSource(this.settlements.filter(v=>v.idExperience==0||v.idExperience==1))
+      this.dataSource = new MatTableDataSource(this.settlements.filter(v=>v.idExperience==0||v.idExperience==3))
       this.dataSource.filterPredicate = (data: OptionalSettlement, filter:string) => {
         console.log(data.settlement.nameSettlement)
         return data.settlement.nameSettlement.includes(filter)  
@@ -57,7 +57,7 @@ export class SettlementComponent implements OnInit {
 
   changeExperience(optionalSettlement:OptionalSettlement,newExperience:ExperienceOptional){
     //האם להשתמש בID או בתאור
-    if(newExperience.descriptionExperience=='כן'){
+    if(newExperience.idExperience==1){
       this.openDialog(optionalSettlement.idSettlement,newExperience.idExperience,optionalSettlement)
     }
     else{
@@ -103,6 +103,22 @@ export class SettlementComponent implements OnInit {
         break;
       case 3:
         return 'ספק'
+        break;
+      default:
+        return ''
+        break;
+    }
+  }
+  getExperienceDescriptionGeneral(id:number):string{
+    switch (id) {
+      case 1:
+        return 'הצג רק רשומים'
+        break;
+      case 2:
+        return 'הצג דחויים'
+        break;
+      case 3:
+        return 'הצג רק בספק'
         break;
       default:
         return ''

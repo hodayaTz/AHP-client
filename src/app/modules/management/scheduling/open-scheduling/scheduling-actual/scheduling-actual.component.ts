@@ -70,8 +70,9 @@ export class SchedulingActualComponent implements OnInit {
       data: {volunteer: volunteer, settlement: this.settlementChoose,isBusy:_isBusy,currentSettlement:volunteer.idSettlement},
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
-      // this.animal = result;
+      this._service.getVolunteersToScheduling(this.settlementChoose.idSettlement,this.schedulingHolidayId).subscribe(data=>{
+        this.volunteers=data
+      })
     });
   }
 

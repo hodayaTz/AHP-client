@@ -44,7 +44,7 @@ export class VolunteerComponent implements OnInit {
   getOptinalVolunteers(){
     this._service.getOptionalVolunteerByHoliday(this.schedulingHolidayId).subscribe(data=>{
       this.volunteers=data
-      this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==0||v.idExperience==1))
+      this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==0||v.idExperience==3))
       this.dataSource.filterPredicate = (data: OptionalVolunteer, filter:string) => {
         return (data.volunteer.firstName+" "+data.volunteer.lastName).includes(filter)
       }
@@ -111,6 +111,22 @@ export class VolunteerComponent implements OnInit {
         break;
       case 3:
         return 'ספק'
+        break;
+      default:
+        return ''
+        break;
+    }
+  }
+  getExperienceDescriptionGeneral(id:number):string{
+    switch (id) {
+      case 1:
+        return 'הצג רק רשומים'
+        break;
+      case 2:
+        return 'הצג דחויים'
+        break;
+      case 3:
+        return 'הצג רק בספק'
         break;
       default:
         return ''

@@ -1,4 +1,4 @@
-<button (click)="exportTable()" mat-raised-button color="primary">Primary</button>
+<button (click)="exportexcel()" mat-stroked-button color="primary">המרת הטבלה לקובץ Excel</button>
 
 <div style="display: flex;justify-content: space-around;">
   <mat-form-field appearance="standard">
@@ -26,7 +26,7 @@
     <input matInput (keyup)="applyFilter(input.value,'volunteer')" placeholder="Ex. ium" #input>
   </mat-form-field>
 </div>
-<table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"
+<table id="excel-table" *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"
 matSort (matSortChange)="announceSortChange($event)">
   <!-- Year Column -->
   <ng-container matColumnDef="year">
@@ -46,10 +46,11 @@ matSort (matSortChange)="announceSortChange($event)">
 
   <!-- settlement Column -->
   <ng-container matColumnDef="settlement">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+    <th  mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
       ישוב
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.settlement.settlement.nameSettlement}} </td>
+    <td  mat-cell *matCellDef="let element" 
+    > {{element.settlement.settlement.nameSettlement}} </td>
   </ng-container>
 
   <!-- volunteer Column -->

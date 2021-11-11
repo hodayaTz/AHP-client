@@ -1,5 +1,5 @@
 <div class="container-button">
-    <button class="btn" *ngFor="let e of experienceOptionals$ | async" mat-raised-button color="{{primary}}" (click)="showOnly(e.idExperience)">הצג רק {{e.descriptionExperience}}</button>
+    <button class="btn" *ngFor="let e of experienceOptionals$ | async" mat-raised-button color="{{primary}}" (click)="showOnly(e.idExperience)">{{getExperienceDescriptionGeneral(e.idExperience)}}</button>
     <button class="btn" mat-raised-button color="{{primary}}" (click)="showOnly(0)">הצג רק פעילים שלא טופלו</button>
     <button class="btn" mat-raised-button color="{{primary}}" (click)="showOnly(-1)"> הצג הכל</button>
 </div>
