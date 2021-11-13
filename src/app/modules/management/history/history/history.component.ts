@@ -112,7 +112,7 @@ export class HistoryComponent implements OnInit {
   exportexcel(): void {
     /* table id is passed over here */
     let fileName = 'ExcelSheet.xlsx';
-    let element = document.getElementById('history-table');
+    let element = document.getElementById('historyTable');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     /* generate workbook and add the worksheet */
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
