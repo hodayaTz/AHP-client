@@ -24,8 +24,8 @@ export class HolidaysService {
   getProfessionalsByHoliday(holiday:number):Observable<Professional[]>{
     return this._http.get<Professional[]>("/api/Professional/GetProfessionalsById/"+holiday)
   }
-  getProfessionals():Observable<Professional[]>{
-    return this._http.get<Professional[]>("/api/Professional")
+  getProfessionals(idHoliday:number):Observable<Professional[]>{
+    return this._http.get<Professional[]>(this.url+"/GetProfessionalsHoliday/"+idHoliday)
   }
 
 }

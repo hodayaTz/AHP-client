@@ -11,27 +11,28 @@ import { FormGroup } from '@angular/forms';
 })
 export class HolidayDetailsComponent implements OnInit {
 
-  constructor( private _acr: ActivatedRoute,private _serviceHoliday:HolidaysService ) { }
+  constructor(private _acr: ActivatedRoute, private _serviceHoliday: HolidaysService) { }
 
   ngOnInit(): void {
-    this.holiday=new Holiday()
-    this.holiday.descriptionHoliday=""
-    this._acr.paramMap.subscribe(data=>{
-      if(data.has("id")){
-        this._serviceHoliday.getHolidayById(Number(data.get("id"))).subscribe(h=>{
+    this.holiday = new Holiday()
+    this.holiday.descriptionHoliday = ""
+    this._acr.paramMap.subscribe(data => {
+      if (data.has("id")) {
+        this._serviceHoliday.getHolidayById(Number(data.get("id"))).subscribe(h => {
           console.log(h.descriptionHoliday)
-          this.holiday= h;
+          this.holiday = h;
         })
       }
     })
   }
-  private _holiday:Holiday=new Holiday()
+  private _holiday: Holiday = new Holiday()
+
 
   public get holiday(): Holiday {
     return this._holiday;
   }
-  public set holiday(h:Holiday){
-    this._holiday=h
+  public set holiday(h: Holiday) {
+    this._holiday = h
   }
 
 }

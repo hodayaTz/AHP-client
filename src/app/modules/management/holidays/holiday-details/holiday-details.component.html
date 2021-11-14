@@ -4,3 +4,9 @@
     <label for="description"></label>
     <input type="text" id="description" [(ngModel)]="holiday.descriptionHoliday">
 </form>
+
+<div *ngFor="let p of holiday.professionals" appearance="fill">
+    <mat-label>{{p.descriptionProfessional}}</mat-label>
+</div>
+
+

@@ -2,10 +2,11 @@
     display:flex;
     flex-direction:column;
     align-items: center;
-    border: 1px gray solid;
-    border-radius: 0.7%;
+    border: 3.5px brown double;
+    border-radius: 1.2%;
     padding: 60px;
     padding: 60px 80px 60px 80px;
+    margin: 40px;
 }
 
 .form_concatper{
@@ -13,6 +14,10 @@
     flex-direction:column;
     align-items: center;
 }
+ h2{
+    color: gray;
+    font-size: xx-large;
+ }
 
 /* .mat-form-field-flex .ng-tns-c69-0 {
     border-radius: 2px 2px 0 0;

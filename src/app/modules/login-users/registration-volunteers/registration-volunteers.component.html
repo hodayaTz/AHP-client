@@ -1,46 +1,52 @@
 <div class="card">
   <form [formGroup]="volunteerForm" class="form_register" (submit)="volunteerForm.valid && saveNewVolunteer()">
-    <h2 style="padding-bottom: 20px;">נא מלא פרטים אישיים</h2>
-    <p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label for="identityNumber">מספר ת.ז.</mat-label>
-        <input matInput formControlName="identityNumber">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label for="firstName">שם פרטי</mat-label>
-        <input matInput formControlName="firstName">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label for="lastName">שם משפחה</mat-label>
-        <input matInput formControlName="lastName">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>טלפון</mat-label>
-        <input type="tel" matInput formControlName="phone" placeholder="055-555-5555">
-        <mat-icon matSuffix>phone</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="gmail" placeholder="Ex. pat@example.com">
-        <mat-icon matSuffix>gmail</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>מיקום בארץ:</mat-label>
-        <mat-select disableRipple name="idArea" id="idArea" formControlName="idArea">
-          <mat-option *ngFor="let a of areas" [value]="a.idArea">{{a.areaName}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </p>
-    <button style="width:120px; padding: 5px;"  mat-raised-button color="primary">שמירה</button>
+    <h2 style="padding-bottom: 20px;">נא מלא פרטים אישיים:</h2>
+    <div class="details">
+      <div>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="identityNumber">מספר ת.ז.</mat-label>
+            <input matInput formControlName="identityNumber">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="firstName">שם פרטי</mat-label>
+            <input matInput formControlName="firstName">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="lastName">שם משפחה</mat-label>
+            <input matInput formControlName="lastName">
+          </mat-form-field>
+        </p>
+      </div>
+      <div>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>טלפון</mat-label>
+            <input type="tel" matInput formControlName="phone" placeholder="055-555-5555">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="gmail" placeholder="Ex. pat@example.com">
+            <mat-icon matSuffix>gmail</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>מיקום בארץ:</mat-label>
+            <mat-select disableRipple name="idArea" id="idArea" formControlName="idArea">
+              <mat-option *ngFor="let a of areas" [value]="a.idArea">{{a.areaName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <button style="width:120px; padding: 5px;" mat-raised-button color="primary">שמירה</button>
   </form>
 </div>
