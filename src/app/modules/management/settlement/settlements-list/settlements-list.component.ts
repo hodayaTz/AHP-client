@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Settlement } from 'src/app/models/settlement';
 import { SettlementService } from '../settlement.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { MessageBeforeDeleteComponent } from '../../message-before-delete/message-before-delete.component';
 
 @Component({
   selector: 'app-settlements-list',
@@ -11,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class SettlementsListComponent implements OnInit {
 
-  constructor(private _settlementService:SettlementService,private _router:Router, private route:ActivatedRoute) { }
+  constructor(public dialog: MatDialog,private _settlementService:SettlementService,private _router:Router, private route:ActivatedRoute) { }
   
   settlements$:Observable< Settlement[]>
   searchText:string
@@ -23,10 +25,18 @@ export class SettlementsListComponent implements OnInit {
     this.settlements$=this._settlementService.getSettlements()
   }
   deleteSettlement(settlement:Settlement){
-    this._settlementService.deleteService(settlement.idSettlement).subscribe(result => {
-      console.log(result)
-    })
-    this.settlements$=this._settlementService.getSettlements()
+      const dialogRef = this.dialog.open(MessageBeforeDeleteComponent, {
+        width: '250px',
+        data: {message:'האם למחוק ישוב'},
+      });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this._settlementService.deleteService(settlement.idSettlement).subscribe(result => {
+          this.settlements$=this._settlementService.getSettlements()
+        })
+      }
+    });
+    
   }
   addNewSettlement(){
     this._router.navigate(['addSettlement'],{relativeTo:this.route})

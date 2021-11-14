@@ -20,7 +20,6 @@ export interface DialogDataScheduling {
   styleUrls: ['./open-scheduling-list.component.css']
 })
 export class OpenSchedulingListComponent implements OnInit {
-  color:string="primary"
 
   ngOnInit(): void {
     this.openSchedulingHolidays$=this._service.getSchedulingsHoliday().pipe(
@@ -31,6 +30,7 @@ export class OpenSchedulingListComponent implements OnInit {
 
   formNewSchedulingHoliday:FormGroup
   openSchedulingHolidays$:Observable<SchedulingHoliday[]>
+  color:string="primary"
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewSchedulingHolidayComponent, {
@@ -49,6 +49,7 @@ export class OpenSchedulingListComponent implements OnInit {
     });
     dialogRef.disableClose=true
     dialogRef.afterClosed().subscribe(result => {
+      this.openSchedulingHolidays$=this._service.getSchedulingsHoliday()
     });
   }
 

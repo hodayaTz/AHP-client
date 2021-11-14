@@ -15,7 +15,14 @@ import { HolidaysService } from '../../../holidays/holidays-service.service';
 })
 export class NewSchedulingHolidayComponent implements OnInit {
 
-
+  constructor(private _service:SchedulingService,private _holidaysService:HolidaysService,
+    public dialogRef: MatDialogRef<NewSchedulingHolidayComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: string) { }
+  
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  
   ngOnInit(): void {
     this.formNewSchedulingHoliday=new FormGroup({
       idSchedulingHoliday:new FormControl(0),
@@ -26,10 +33,12 @@ export class NewSchedulingHolidayComponent implements OnInit {
       this.holidays=holidaysData
     })
   }
+
   currentYear:number=new Date().getFullYear()
   formNewSchedulingHoliday:FormGroup
   holidays:Holiday[]
   newSchedulingHoliday:SchedulingHoliday
+
   addSchedulingHoliday(){
     this.newSchedulingHoliday=new SchedulingHoliday
     this.newSchedulingHoliday=this.formNewSchedulingHoliday.value
@@ -42,12 +51,6 @@ export class NewSchedulingHolidayComponent implements OnInit {
       }
     })
   }
-  constructor(private _service:SchedulingService,private _holidaysService:HolidaysService,
-    public dialogRef: MatDialogRef<NewSchedulingHolidayComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: string) { }
-  
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+
 
 }

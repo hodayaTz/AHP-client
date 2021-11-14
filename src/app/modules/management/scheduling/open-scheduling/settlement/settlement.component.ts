@@ -18,7 +18,6 @@ import { SchedulingService } from '../../scheduling.service';
 })
 export class SettlementComponent implements OnInit {
 
-  primary:string="primary"
   constructor(private dialog: MatDialog,private _service:OpenSchedulingService,private _acr: ActivatedRoute,private _serviceScheduling:SchedulingService) { }
 
   ngOnInit(): void {
@@ -30,7 +29,8 @@ export class SettlementComponent implements OnInit {
     })
     this.experienceOptionals$=this._serviceScheduling.getExperienceOption().pipe()
   }
-
+  
+  primary:string="primary"
   schedulingHolidayId:number
   settlements:OptionalSettlement[]
   dataSource:any
@@ -46,7 +46,6 @@ export class SettlementComponent implements OnInit {
         console.log(data.settlement.nameSettlement)
         return data.settlement.nameSettlement.includes(filter)  
       }
-      // this.showOnly(this.currentStatus)
     })
   }
 
@@ -56,7 +55,6 @@ export class SettlementComponent implements OnInit {
   }
 
   changeExperience(optionalSettlement:OptionalSettlement,newExperience:ExperienceOptional){
-    //האם להשתמש בID או בתאור
     if(newExperience.idExperience==1){
       this.openDialog(optionalSettlement.idSettlement,newExperience.idExperience,optionalSettlement)
     }

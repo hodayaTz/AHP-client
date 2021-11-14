@@ -21,12 +21,12 @@ export class VolunteerPlacementApprovalComponent implements OnInit {
     })
     this.dialogRef.close();
   }
+  currentSettlement:string
 
   cancel(): void {
     this.dialogRef.close();
   }
 
-  currentSettlement:string
   ngOnInit(): void {
     this._settlementService.getSettlementById(this.data.currentSettlement).subscribe(settlement=>{
       this.currentSettlement=settlement.nameSettlement

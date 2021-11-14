@@ -2,15 +2,15 @@
 
 <div style="display: flex;justify-content: space-around;">
   <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter(input.value,'year')" placeholder="Ex. ium" #input>
+    <mat-label>שנה</mat-label>
+    <input matInput (keyup)="applyFilter(input.value,'year')" #input>
   </mat-form-field>
   <!-- <mat-form-field appearance="standard">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event,'holiday')" placeholder="Ex. ium" #input>
   </mat-form-field> -->
   <mat-form-field appearance="fill">
-    <mat-label></mat-label>
+    <mat-label>חג</mat-label>
     <mat-select (valueChange)="applyFilter(holiday.value,'holiday')" #holiday>
       <mat-option *ngFor="let holiday of holidays" [value]="holiday.descriptionHoliday">
         {{holiday.descriptionHoliday}}
@@ -18,12 +18,12 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter(input.value,'settlement')" placeholder="Ex. ium" #input>
+    <mat-label>ישוב</mat-label>
+    <input matInput (keyup)="applyFilter(input.value,'settlement')"  #input>
   </mat-form-field>
   <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter(input.value,'volunteer')" placeholder="Ex. ium" #input>
+    <mat-label>פעיל</mat-label>
+    <input matInput (keyup)="applyFilter(input.value,'volunteer')"  #input>
   </mat-form-field>
 </div>
 <table id='historyTable' *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"

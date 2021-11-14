@@ -10,12 +10,13 @@ import { MaterialModule } from 'src/app/material.module';
 import { MenuDesignComponent } from './menu-design/menu-design.component';
 import { NavComponent } from './nav/nav.component';
 import { HistoryModule } from './history/history.module';
+import { MessageBeforeDeleteComponent } from './message-before-delete/message-before-delete.component';
 
 
 
 @NgModule({
   declarations: [
-ManagementBasicDesignComponent,MenuDesignComponent,NavComponent
+ManagementBasicDesignComponent,MenuDesignComponent,NavComponent,MessageBeforeDeleteComponent
   ],
   imports: [
     CommonModule,ManagamentRoutingModule,

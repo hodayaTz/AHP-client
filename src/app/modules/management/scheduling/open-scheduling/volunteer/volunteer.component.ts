@@ -37,7 +37,6 @@ export class VolunteerComponent implements OnInit {
   volunteers:OptionalVolunteer[]
   dataSource:any
   displayedColumns: string[] = ['experience','nameAndPhone', 'details','btn']
-  // displayedColumns: string[] = ['icon-status', 'name+phone', 'button-details','button-ok','button-cancel','button-maby']
   experienceOptionals$:Observable<ExperienceOptional[]>
   currentStatus:number=-1
 

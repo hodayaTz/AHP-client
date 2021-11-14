@@ -38,6 +38,7 @@ export class SchedulingActualComponent implements OnInit {
       }
     })
   }
+  
   schedulingHolidayId:number
   schedulingHoliday:SchedulingHoliday
   settlements:Observable<SettlementHoliday[]>
@@ -45,6 +46,7 @@ export class SchedulingActualComponent implements OnInit {
   volunteers:HolidayVolunteer[][]
   settlementChoose:SettlementHoliday
   settlementChooseMoreNeeded:SettlementHoliday=new SettlementHoliday()
+
   selectSettlement(event:any){
     this.settlementChoose=event?._value[0]
     this.settlementChooseMoreNeeded=event?._value[0]

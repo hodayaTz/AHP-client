@@ -27,7 +27,6 @@
         <mat-select disableRipple name="idPrayer" id="idPrayer" formControlName="idPrayer">
           <mat-option *ngFor="let p of prayerTexts$ | async" [value]="p.idPrayer">{{p.namePrayer}}</mat-option>
         </mat-select>
-        <!-- <mat-icon>map</mat-icon> -->
       </mat-form-field>
     </p>
     <p>
@@ -39,9 +38,6 @@
       </mat-form-field>
     </p>
 
-    <!-- <p *ngFor="let p of professionals$ |async ; index as i">
-      <mat-checkbox formControlName="professionals.controls[i]">{{p.descriptionProfessional}}</mat-checkbox>
-    </p> -->
     <button mat-raised-button type="submit" color="primary" (click)="onNoClick()">שמירה</button>
     <button type="button" mat-button (click)="onNoClick()">ביטול</button>
   </form>

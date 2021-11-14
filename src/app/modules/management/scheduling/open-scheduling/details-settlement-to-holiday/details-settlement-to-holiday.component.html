@@ -18,7 +18,6 @@
           <mat-select disableRipple name="idPrayer" id="idPrayer" formControlName="idPrayer">
             <mat-option *ngFor="let p of prayerTexts$ | async" [value]="p.idPrayer">{{p.namePrayer}}</mat-option>
           </mat-select>
-          <!-- <mat-icon>map</mat-icon> -->
         </mat-form-field>
       </p>
       <p>

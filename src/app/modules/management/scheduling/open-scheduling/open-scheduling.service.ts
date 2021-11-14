@@ -11,7 +11,7 @@ import { SchedulingHoliday } from 'src/app/models/scheduling-holiday';
 const URL_VOLUNTEER="/api/OptionalVolunteerToHoliday"
 const URL_SETTLEMENT="/api/OptionalSettlementToHoliday"
 @Injectable(
-  // {providedIn: 'root'}
+  {providedIn: 'root'}
 )
 export class OpenSchedulingService {
   constructor(private _http:HttpClient) {
