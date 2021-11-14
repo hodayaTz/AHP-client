@@ -15,6 +15,7 @@ export class RegistrationVolunteersComponent implements OnInit {
     
   }
 
+
   ngOnInit(): void {
     this._service.getArea().subscribe(areasData=>{
       this.areas=areasData

@@ -22,11 +22,17 @@
                     <button mat-button color="primary">הסטוריה</button>
                     <mat-icon>account_circle</mat-icon>
                 </mat-panel-description>
+                <mat-panel-description>
+                    <button mat-button color="primary"  (click)="editProfessionals(h.idHoliday)">מקצועות החג</button>
+                    <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+
             </mat-expansion-panel-header>
 
-            <div *ngFor="let p of professional$ | async" appearance="fill">
+
+            <!-- <div *ngFor="let p of professional$ | async" appearance="fill">
                 <mat-label>{{p.descriptionProfessional}}</mat-label>
-            </div>
+            </div> -->
 
         </mat-expansion-panel>
     </div>
