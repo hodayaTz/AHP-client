@@ -8,11 +8,11 @@
                 <mat-hint>שם יישוב</mat-hint>
             </mat-form-field>
         </p>
-       
+
         <p>
             <mat-form-field appearance="legacy">
                 <label></label>
-                <mat-select  disableRipple name="idArea" id="idArea" formControlName="areaName">
+                <mat-select disableRipple name="idArea" id="idArea" formControlName="areaName">
                     <mat-option *ngFor="let a of areas$ | async" [value]="a.idArea">{{a.areaName}}</mat-option>
                 </mat-select>
                 <mat-hint>איזור מגורים</mat-hint>
@@ -21,40 +21,41 @@
 
         <h2>פרטי איש קשר:</h2>
         <form [formGroup]="contactPerson!" (submit)="contactPerson?.valid">
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="firstName">
-                <mat-icon matSuffix></mat-icon>
-                <mat-hint>שם פרטי</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="lastName">
-                <mat-icon matSuffix></mat-icon>
-                <mat-hint>שם משפחה</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="phone">
-                <mat-icon matSuffix>phone</mat-icon>
-                <mat-hint>מספר פלאפון</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="gmail">
-                <mat-icon matSuffix>gmail</mat-icon>
-                <mat-hint>כתובת דוא"ל</mat-hint>
-            </mat-form-field>
-        </p></form>
-      
+            <p>
+                <mat-form-field appearance="legacy">
+                    <label></label>
+                    <input matInput formControlName="firstName">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-hint>שם פרטי</mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="legacy">
+                    <label></label>
+                    <input matInput formControlName="lastName">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-hint>שם משפחה</mat-hint>
+                </mat-form-field>
+            </p>
+            <!-- <p> -->
+            <p>
+                <mat-form-field appearance="legacy">
+                    <label></label>
+                    <input matInput formControlName="phone">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-hint>מספר פלאפון</mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="legacy">
+                    <label></label>
+                    <input matInput formControlName="gmail">
+                    <mat-icon matSuffix>gmail</mat-icon>
+                    <mat-hint>כתובת דוא"ל</mat-hint>
+                </mat-form-field>
+            </p>
+        </form>
+
         <button mat-raised-button type="submit" color="primary">שמירה</button>
     </form>
 </div>

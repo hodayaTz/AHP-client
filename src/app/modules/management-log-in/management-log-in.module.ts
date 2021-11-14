@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ManagementLogInComponent } from './management-log-in/management-log-in.component';
 import { HttpClient } from '@angular/common/http';
 import { ManagementLogInService } from './management-log-in.service';
+import { MaterialModule } from 'src/app/material.module';
 
 
 
 @NgModule({
   declarations: [ManagementLogInComponent],
   imports: [
-    CommonModule,HttpClient
+    CommonModule,HttpClient,MaterialModule
   ],
   providers:[ManagementLogInService]
 })

@@ -36,7 +36,7 @@ export class HolidaysListComponent implements OnInit {
       
     })
   }
-  editProfessionals(id:number){
+  editHoliday(id:number){
     this._router.navigate(["detailsHoliday/", id],{relativeTo:this.route})
   }
 
