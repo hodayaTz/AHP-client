@@ -49,7 +49,7 @@ matSort (matSortChange)="announceSortChange($event)">
     <th  mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
       ישוב
     </th>
-    <td  mat-cell *matCellDef="let element" 
+    <td   mat-cell *matCellDef="let element" routerLink="/management/settlement/editVolunteer/{{element.settlement.idSettlement}}"
     > {{element.settlement.settlement.nameSettlement}} </td>
   </ng-container>
 

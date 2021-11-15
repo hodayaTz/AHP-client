@@ -28,4 +28,8 @@ export class VolunteersService {
     return this._http.put<boolean>(this.url + "/ChangeStatus", volunteerToChange)
   }
 
+  isPlaced(volunteer:number):Observable<boolean>{
+    return this._http.get<boolean>(this.url+"/IsPlaced/"+volunteer)
+  }
+
 }

@@ -51,8 +51,8 @@ export class OpenScedulingBasicComponent implements OnInit {
 
   delete() {
     const dialogRef = this.dialog.open(MessageBeforeDeleteComponent, {
-      width: '250px',
-      data: {message:'האם למחוק את השיבוץ'},
+      panelClass:'dialogDel',
+      data: {message:'האם למחוק את השיבוץ'}
     });
 
     dialogRef.afterClosed().subscribe(result => {

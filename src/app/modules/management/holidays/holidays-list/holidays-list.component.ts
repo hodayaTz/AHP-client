@@ -39,6 +39,8 @@ export class HolidaysListComponent implements OnInit {
   editHoliday(id:number){
     this._router.navigate(["detailsHoliday/", id],{relativeTo:this.route})
   }
-
+  history(id:number){
+    this._router.navigate(["history/", id], { relativeTo: this.route })
+  }
 
 }

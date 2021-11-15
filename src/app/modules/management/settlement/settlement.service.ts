@@ -34,4 +34,8 @@ export class SettlementService {
     debugger
     return this._http.put<boolean>(this.url + "/", settlement)
   }
+
+  isPlaced(settlement:number):Observable<boolean>{
+    return this._http.get<boolean>(this.url+"/IsPlaced/"+settlement)
+  }
 }

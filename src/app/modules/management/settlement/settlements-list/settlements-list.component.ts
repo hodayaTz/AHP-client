@@ -18,26 +18,36 @@ export class SettlementsListComponent implements OnInit {
   settlements$:Observable< Settlement[]>
   searchText:string
   color:string= "primary"
-  displayedColumns: string[] = ['experience','name', 'details','history','delete']
+  displayedColumns: string[] = ['name', 'details','history','delete']
 
   ngOnInit(): void {
 
     this.settlements$=this._settlementService.getSettlements()
   }
   deleteSettlement(settlement:Settlement){
-      const dialogRef = this.dialog.open(MessageBeforeDeleteComponent, {
-        width: '250px',
-        data: {message:'האם למחוק ישוב'},
-      });
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this._settlementService.deleteService(settlement.idSettlement).subscribe(result => {
-          this.settlements$=this._settlementService.getSettlements()
-        })
+    let message_
+    this._settlementService.isPlaced(settlement.idSettlement).subscribe(result => {
+      if (result) {
+        message_ = 'הישוב משובץ כרגע האם למחוק'
       }
-    });
-    
+      else {
+        message_ = 'האם למחוק ישוב'
+      } 
+      const dialogRef = this.dialog.open(MessageBeforeDeleteComponent, {
+        panelClass:'dialogDel',
+        data: { message: message_ },
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this._settlementService.deleteService(settlement.idSettlement).subscribe(result => {
+            this.settlements$=this._settlementService.getSettlements()
+          })
+        }
+      });
+    })
   }
+
+
   addNewSettlement(){
     this._router.navigate(['addSettlement'],{relativeTo:this.route})
   }

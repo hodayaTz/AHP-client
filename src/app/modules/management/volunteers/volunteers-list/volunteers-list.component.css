@@ -43,3 +43,9 @@ margin: 0.3%;
   height: 80%;
   overflow: auto;
 }
+
+
+::ng-deep .dialogDel >  mat-dialog-container {
+  padding: 0;
+  width: 400px;
+}

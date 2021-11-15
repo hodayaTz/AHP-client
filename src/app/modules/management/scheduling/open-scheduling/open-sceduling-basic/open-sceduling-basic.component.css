@@ -3,3 +3,8 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
+::ng-deep .dialogDel >  mat-dialog-container {
+    padding: 0;
+    width: 400px;
+  }
