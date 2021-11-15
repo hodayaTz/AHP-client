@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManagementLogInComponent } from './management-log-in/management-log-in.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ManagementLogInService } from './management-log-in.service';
 import { MaterialModule } from 'src/app/material.module';
 
@@ -10,7 +10,7 @@ import { MaterialModule } from 'src/app/material.module';
 @NgModule({
   declarations: [ManagementLogInComponent],
   imports: [
-    CommonModule,HttpClient,MaterialModule
+    CommonModule,HttpClientModule,MaterialModule
   ],
   providers:[ManagementLogInService]
 })

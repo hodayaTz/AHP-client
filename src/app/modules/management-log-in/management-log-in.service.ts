@@ -8,6 +8,6 @@ export class ManagementLogInService{
   constructor(private _http:HttpClient) { }
   
   checkPassword(pass:string):Observable<boolean>{
-      return this._http.post<boolean>("api/Password",pass)
+    return this._http.get<boolean>("/api/Password/checkPassword/"+pass)
   }
 }

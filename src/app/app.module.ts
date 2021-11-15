@@ -10,6 +10,7 @@ import { SettlementsListComponent } from './modules/management/settlement/settle
 import { VolunteersListComponent } from './modules/management/volunteers/volunteers-list/volunteers-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { ManagementLogInModule } from './modules/management-log-in/management-log-in.module';
 
 
 
@@ -22,7 +23,7 @@ import { MatSliderModule } from '@angular/material/slider';
     BrowserModule,
     AppRoutingModule,
     LoginUsersModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,ManagementLogInModule
   ],
   providers: [],
   bootstrap: [AppComponent]
