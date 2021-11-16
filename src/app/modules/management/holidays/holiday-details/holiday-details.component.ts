@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Holiday } from 'src/app/models/holiday';
 import { HolidaysService } from '../holidays-service.service';
 import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-holiday-details',
@@ -11,7 +12,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class HolidayDetailsComponent implements OnInit {
 
-  constructor(private _acr: ActivatedRoute, private _serviceHoliday: HolidaysService) { }
+  constructor(private _acr: ActivatedRoute, private _serviceHoliday: HolidaysService,private router:Router,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.holiday = new Holiday()
@@ -26,8 +27,20 @@ export class HolidayDetailsComponent implements OnInit {
     })
   }
   private _holiday: Holiday = new Holiday()
+// func(){
+//   const dialogRef = this.dialog.open(PasswordDialogComponent, {
+//     width: '350px'
+//   });
 
+//   dialogRef.afterClosed().subscribe(result => {
+//     this.router.navigate(['./passwords']);
+//   });
+// }
 
+func(val:any){
+
+  console.log(val.innerHTML)
+}
   public get holiday(): Holiday {
     return this._holiday;
   }

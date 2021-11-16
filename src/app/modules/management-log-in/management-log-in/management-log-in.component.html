@@ -1,5 +1,18 @@
-<!-- <form>
-    <label for="password">password</label>
-    <input type="text" id="password" (change)="chekPasword(pass.value)" #pass>
-</form> -->
-
+<body>
+    <div class="card">
+        <h2>הכנס סיסמת מנהל לכניסה למערכת</h2>
+        <mat-form-field class="form" appearance="fill" >
+            <mat-label>Enter your password</mat-label>
+            <input matInput  #pass [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <!-- <h3 #none class="none">אנא הכנס סיסמא</h3> -->
+        <button (click)="checkPassword(pass.value)" style="padding: 5px;" mat-raised-button>כניסה</button>
+    </div>
+    <div class="logo">
+        <img style="width: 500px;" src="../../../../assets/images/logohe.png" alt="Ayelet_Hashachar">
+    </div>
+</body>

@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar></mat-toolbar>
+    <mat-toolbar><img class="logo" src="{{logo}}" alt="איילת השחר"></mat-toolbar>
     <mat-nav-list>
       <a  mat-list-item routerLink="volunteers">פעילים</a>
       <a mat-list-item routerLink="settlement">ישובים</a>
@@ -17,7 +17,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>פעילות חגים</span>
+      <span>פעילות </span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

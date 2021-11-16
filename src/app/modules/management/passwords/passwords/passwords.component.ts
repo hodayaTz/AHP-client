@@ -12,56 +12,55 @@ import { NewPasswordComponent } from '../new-password/new-password.component';
 })
 export class PasswordsComponent implements OnInit {
 
-  constructor(private _service:PasswordsService,private _snackBar: MatSnackBar,public dialog: MatDialog) { }
+  constructor(private _service: PasswordsService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     // this.passwords$=this._service.getPasswords()
-    this._service.getPasswords().subscribe(data=>{
-      this.passwords=data
-      this.hides=Array(this.passwords.length).fill(true)
+    this._service.getPasswords().subscribe(data => {
+      this.passwords = data
+      this.hides = Array(this.passwords.length).fill(true)
     })
   }
-  passwords:string[]
-  hides:boolean[]
+  passwords: string[]
+  hides: boolean[]
 
   hide = true;
-  addPassword(){
+  addPassword() {
     const dialogRef = this.dialog.open(NewPasswordComponent, {
       width: '350px',
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      if(res){
-        this._service.addPassword(res).subscribe(result=>{
-          if(result){
+      if (res) {
+        this._service.addPassword(res).subscribe(result => {
+          if (result) {
             this.openSnackBar("הסיסמה נוספה בהצלחה")
-            this._service.getPasswords().subscribe(data=>{
-              this.passwords=data
-              this.hides=Array(this.passwords.length).fill(true)
+            this._service.getPasswords().subscribe(data => {
+              this.passwords = data
+              this.hides = Array(this.passwords.length).fill(true)
             })
           }
-          else{
+          else {
             this.openSnackBar("הסיסמה קיימת כבר")
           }
         })
       }
-      
     });
   }
-  openSnackBar(message: string, action: string="x") {
-    this._snackBar.open(message, action,{
+  openSnackBar(message: string, action: string = "x") {
+    this._snackBar.open(message, action, {
       duration: 3000
     });
   }
-  checkHide(i:number){
-    if(this.hide==false || this.hides[i]==false){
+  checkHide(i: number) {
+    if (this.hide == false || this.hides[i] == false) {
       return true
     }
     return false
   }
 
-  changeAll(){
-    this.hide=!this.hide
+  changeAll() {
+    this.hide = !this.hide
     this.hides.fill(this.hide)
   }
 }

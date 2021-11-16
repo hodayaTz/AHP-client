@@ -1,6 +1,8 @@
-
 <!-- פרטי החג עם אפשרות עריכה ומחיקה -->
 
 <div *ngFor="let p of holiday.professionals" appearance="fill">
-    <mat-label>{{p.descriptionProfessional}}</mat-label>
+    <div class="del">
+        <h2 #val>{{p.descriptionProfessional}}</h2>
+        <button mat-button color="primary" (click)="func(val)"><mat-icon>delete</mat-icon></button>
+    </div>
 </div>

@@ -1,0 +1,8 @@
+.del{
+    display: flex;
+    justify-content: row;
+    text-align: center;
+}
+.mat-title{
+    margin: 0;
+}

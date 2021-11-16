@@ -1,7 +1,12 @@
 
 
-.example-action-buttons {
-    padding-bottom: 20px;
+.action-buttons {
+    padding: 20px;
+    align-items: center;
+}
+
+.action-buttons button{
+    margin: 10px;
 }
   
 .example-headers-align .mat-expansion-panel-header-title,

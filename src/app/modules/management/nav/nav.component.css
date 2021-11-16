@@ -16,6 +16,12 @@
   /* z-index: 1; */
 }
 
+.logo{
+  width: 200px;
+  margin-right: -25px;
+  margin-top: 5px;
+}
+
 .img{
   display: flex;
   justify-content: center;

@@ -7,9 +7,9 @@
 הוספת חג חדש
 כפתור להפניה להסטוריה  -->
 
-<div class="example-action-buttons">
-    <button mat-button (click)="accordion.openAll()">Expand All</button>
-    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+<div class="action-buttons">
+    <button mat-raised-button color="primary" (click)="accordion.openAll()">צפה בהכל</button>
+    <button mat-raised-button (click)="accordion.closeAll()">סגור הכל</button>
 </div>
 <mat-accordion class="example-headers-align" multi>
     <div *ngFor="let h of holidays$ | async">
