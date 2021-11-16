@@ -40,11 +40,11 @@ export class HistoryComponent implements OnInit {
           this.dataSource = new MatTableDataSource(this.history);
         })
       }
-      else if (param.has("history")) {
+      else if (param.has("scheduling")) {
         this._historyService.getHistory().subscribe(data => {
           this.history = data
           this.historyWithOutFilter = data
-          this.history = this.history.filter(h => h.scheduling.idSchedulingHoliday === Number(param.get("history")))
+          this.history = this.history.filter(h => h.scheduling.idSchedulingHoliday === Number(param.get("scheduling")))
           this.dataSource = new MatTableDataSource(this.history);
         })
       }

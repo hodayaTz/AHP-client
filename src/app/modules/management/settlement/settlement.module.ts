@@ -19,7 +19,6 @@ import { SettlementsSearchPipe } from './settlements-search-pipe';
   imports: [
     CommonModule,SettlementsRoutingModule,MaterialModule,ReactiveFormsModule,FormsModule, HttpClientModule,RouterModule
   ],
-  providers:[SettlementService],
-  // exports:[MaterialModule]
+  providers:[SettlementService]
 })
 export class SettlementModule { }

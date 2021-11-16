@@ -68,7 +68,7 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
       if(result){
         this._SchedulingService.changeExperienceSettlement(this.data.optionalSettlement,this.data.idExperience).subscribe(_result=>{
           if(_result){
-            this.openSnackBar("נשמרו פרטי הישוב "+this.data.optionalSettlement.settlement.areaName)
+            this.openSnackBar("נשמרו פרטי הישוב "+this.data.optionalSettlement.settlement.nameSettlement)
           }
           else{
             this.openSnackBar("שגיאה-פרטי הישוב לא נשמרו")

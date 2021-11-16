@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManagementLogInComponent } from './management-log-in/management-log-in.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ManagementLogInService } from './management-log-in.service';
+import {  PasswordsService } from './passwords.service';
 import { MaterialModule } from 'src/app/material.module';
 
 
@@ -12,6 +12,6 @@ import { MaterialModule } from 'src/app/material.module';
   imports: [
     CommonModule,HttpClientModule,MaterialModule
   ],
-  providers:[ManagementLogInService]
+  providers:[PasswordsService]
 })
 export class ManagementLogInModule { }

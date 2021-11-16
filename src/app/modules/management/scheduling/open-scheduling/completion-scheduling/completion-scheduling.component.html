@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: space-around;">
-    <button mat-stroked-button routerLink="./actualScheduling/{{data.scheduling}}" color="primary">חזרה לשיבוץ</button>
+    <button mat-stroked-button routerLink="/management/scheduling/actualScheduling/{{data.scheduling}}" color="primary">חזרה לשיבוץ</button>
     <button mat-stroked-button (click)="sendEmailToVolunteers()" color="primary">שליחת מייל עם פרטי השיבוץ לפעילים</button>
     <button mat-stroked-button (click)="sendEmailToSettlements()" color="primary">שליחת מייל עם פרטי השיבוץ לאנשי קשר בישובים</button>
     <button mat-raised-button (click)="closeScheduling()" color="primary">סיום שיבוץ סופי-סגירת השיבוץ</button>

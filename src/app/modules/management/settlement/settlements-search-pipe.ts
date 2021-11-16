@@ -10,6 +10,7 @@ export class SettlementsSearchPipe implements PipeTransform {
         if (!settlements) return [];
         if (!searchText) return settlements;
         searchText = searchText.toLowerCase();
-        return settlements.filter(s=>(s.nameSettlement).toLowerCase().includes(searchText))
+        return settlements.filter(s=>((s.nameSettlement).toLowerCase()).includes(searchText))
     }
 }
+

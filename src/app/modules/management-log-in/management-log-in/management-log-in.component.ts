@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ManagementLogInService } from '../management-log-in.service';
 import { Router } from '@angular/router';
 import { NgModel } from '@angular/forms';
+import { PasswordsService } from '../passwords.service';
 
 @Component({
   selector: 'app-management-log-in',
@@ -10,7 +10,7 @@ import { NgModel } from '@angular/forms';
 })
 export class ManagementLogInComponent implements OnInit {
 
-  constructor(private _service:ManagementLogInService,private _router:Router) { }
+  constructor(private _service:PasswordsService,private _router:Router) { }
 
   ngOnInit(): void {
   }

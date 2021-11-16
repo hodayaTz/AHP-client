@@ -79,7 +79,7 @@ export class SchedulingActualComponent implements OnInit {
   }
 
   finishScheduling(){
-    this._router.navigate(["../history",this.schedulingHolidayId],{relativeTo:this._Activeroute})
+    this._router.navigate(["/management/history",{scheduling:this.schedulingHolidayId}],{relativeTo:this._Activeroute})
     const dialogRef = this.dialog.open(CompletionSchedulingComponent, {
       data: {scheduling:this.schedulingHolidayId},
       panelClass:'dialog'
