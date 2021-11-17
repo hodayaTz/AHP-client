@@ -14,16 +14,15 @@ import { MessageBeforeDeleteComponent } from '../../message-before-delete/messag
 export class SettlementsListComponent implements OnInit {
 
   constructor(public dialog: MatDialog,private _settlementService:SettlementService,private _router:Router, private route:ActivatedRoute) { }
-  
+  ngOnInit(): void {
+    this.settlements$=this._settlementService.getSettlements()
+  }
+
   settlements$:Observable< Settlement[]>
   searchText:string
   color:string= "primary"
   displayedColumns: string[] = ['name', 'details','history','delete']
 
-  ngOnInit(): void {
-
-    this.settlements$=this._settlementService.getSettlements()
-  }
   deleteSettlement(settlement:Settlement){
     let message_
     this._settlementService.isPlaced(settlement.idSettlement).subscribe(result => {

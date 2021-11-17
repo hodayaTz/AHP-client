@@ -15,7 +15,6 @@ export class RegistrationVolunteersComponent implements OnInit {
     
   }
 
-
   ngOnInit(): void {
     this._service.getArea().subscribe(areasData=>{
       this.areas=areasData
@@ -24,8 +23,10 @@ export class RegistrationVolunteersComponent implements OnInit {
       });
     })
   }
+
   areas:Area[]
   newVolunteer:Volunteer
+  
   volunteerForm:FormGroup=new FormGroup({
     firstName:new FormControl("",[Validators.required]),
     lastName:new FormControl("",[Validators.required]),

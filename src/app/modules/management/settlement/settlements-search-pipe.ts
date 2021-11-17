@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Volunteer } from 'src/app/models/volunteer';
 import { Settlement } from 'src/app/models/settlement';
 
 @Pipe({

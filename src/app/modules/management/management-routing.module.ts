@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManagementBasicDesignComponent } from './management-basic-design/management-basic-design.component';
 import { NavComponent } from './nav/nav.component';
 import { VolunteersListComponent } from './volunteers/volunteers-list/volunteers-list.component';
 import { VolunteersDetailsComponent } from './volunteers/volunteers-details/volunteers-details.component';

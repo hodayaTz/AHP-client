@@ -46,5 +46,4 @@ export class SchedulingService {
     return this._http.get<PrayerText[]>("/api/PrayerText/GetPrayerTexts")
   }
   
-  // experienceOptionals:ExperienceOptional[]
 }

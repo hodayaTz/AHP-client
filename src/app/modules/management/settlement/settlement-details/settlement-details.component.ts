@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Area } from 'src/app/models/area';
 import { Settlement } from 'src/app/models/settlement';
 import { SettlementService } from '../settlement.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-settlement-details',
@@ -12,45 +13,65 @@ import { SettlementService } from '../settlement.service';
   styleUrls: ['./settlement-details.component.css']
 })
 export class SettlementDetailsComponent implements OnInit {
-  //הצגת ועריכת פרטי יישוב ואיש קשר???
-  constructor(private _settlementService: SettlementService, private _activate: ActivatedRoute) { }
+  constructor(private _snackBar: MatSnackBar, private _settlementService: SettlementService, private _activate: ActivatedRoute) { }
 
-  settlement: Settlement;
-  settlementForm: FormGroup;
-  contactPerson: FormGroup
-  areas$: Observable<Area[]>
-  res:boolean
   ngOnInit(): void {
-    this._activate.paramMap.subscribe(url => {
-      let id = Number(url.get('id'));
-      debugger
-      if (id != undefined) {
-        this._settlementService.getSettlementById(id).subscribe(res => {
-          this.settlement = res;
+    this._activate.paramMap.subscribe(data => {
+      if (data.has("id")) {
+        this._settlementService.getSettlementById(Number(data.get("id"))).subscribe(current_settlement => {
+          this.settlement = current_settlement
           this.areas$ = this._settlementService.getArea()
-          console.log(this.settlement)
-          this.settlementForm = new FormGroup({
-            "id": new FormControl(this.settlement.idSettlement, Validators.required),
-            "settlementName": new FormControl(this.settlement.nameSettlement, Validators.required),
-            "areaName": new FormControl([this.settlement.areaName], Validators.required)
-          })
-          this.contactPerson = new FormGroup({
-            "idContactPerson": new FormControl(this.settlement.contactPer.idContactPerson, Validators.required),
-            "firstName": new FormControl(this.settlement.contactPer.firstName, Validators.required),
-            "lastName": new FormControl(this.settlement.contactPer.lastName, Validators.required),
-            "phone": new FormControl(this.settlement.contactPer.phone, Validators.required),
-            "gmail": new FormControl(this.settlement.contactPer.gmail, Validators.required),
-          })
         })
       }
     })
   }
+
+  public get settlement(): Settlement {
+    return this._settlement
+  }
+  public set settlement(s: Settlement) {
+    this._settlement = s
+    if (this._settlement != undefined) {
+      this.settlementForm = new FormGroup({
+        idSettlement: new FormControl(this.settlement.idSettlement, Validators.required),
+        nameSettlement: new FormControl(this.settlement.nameSettlement, Validators.required),
+        area: new FormControl(this.settlement.area, Validators.required)
+      })
+      this.contactPerson = new FormGroup({
+        idContactPer: new FormControl(this.settlement.contactPer.idContactPerson, Validators.required),
+        firstName: new FormControl(this.settlement.contactPer.firstName, Validators.required),
+        lastName: new FormControl(this.settlement.contactPer.lastName, Validators.required),
+        phone: new FormControl(this.settlement.contactPer.phone, Validators.required),
+        gmail: new FormControl(this.settlement.contactPer.gmail, Validators.required),
+      })
+    }
+  }
+
+  res:boolean
+  private _settlement: Settlement = new Settlement()
+  settlementForm: FormGroup | undefined = undefined
+  contactPerson: FormGroup | undefined = undefined
+  areas$: Observable<Area[]>
+  saveSucceed = false
+
   updateSettlement() {
     this.settlement = this.settlementForm?.value
     this.settlement.contactPer = this.contactPerson?.value
+    this.settlement.isActive = this.settlement.isActive
+    this.settlement.areaName = this.settlement.area.areaName
+    this.settlement.idArea = this.settlement.area.idArea
     this._settlementService.updateSettlement(this.settlement).subscribe(res => {
-      this.res = res
+      if (res) {
+        this.openSnackBar("פרטי הישוב עודכנו בהצלחה")
+      }
+      else {
+        this.openSnackBar("שגיאה- פרטי הישוב לא עודכנו נסה שוב")
+      }
     })
   }
-
+  openSnackBar(message: string, action: string = "x") {
+    this._snackBar.open(message, action, {
+      duration: 3000
+    });
+  }
 }

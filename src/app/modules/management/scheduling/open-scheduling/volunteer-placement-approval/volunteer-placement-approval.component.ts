@@ -17,9 +17,8 @@ export class VolunteerPlacementApprovalComponent implements OnInit {
   
   choose(): void {
     this._service.saveVolunteerToSettlement(this.data.settlement.settlement.idSettlement,this.data.volunteer).subscribe(result=>{
-      
+      this.dialogRef.close();
     })
-    this.dialogRef.close();
   }
   currentSettlement:string
 
@@ -32,5 +31,4 @@ export class VolunteerPlacementApprovalComponent implements OnInit {
       this.currentSettlement=settlement.nameSettlement
     })
   }
-
 }

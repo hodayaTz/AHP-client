@@ -50,7 +50,6 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
   // holiday:number;
   // subscription: Subscription;
   
-
   settlementHolidayForm:FormGroup=new FormGroup({
     amountPeopleConsumed:new FormControl(0),
     idPrayer :new FormControl(Validators.required),

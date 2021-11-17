@@ -1,14 +1,4 @@
 <div>
-    <!-- <ul>
-        <li *ngFor="let s of settlements">
-            <div (click)="settlementDetails(s.idSettlement)">
-                <span>{{s.idArea}}</span>
-             
-                <span>{{s.nameSettlement}}</span>
-            </div>
-            <button (click)="deleteSettlement(s)">Delete</button>
-        </li>
-    </ul> -->
     <div class="filterAndButton">
         <mat-form-field appearance="standard">
             <mat-label>חיפוש...</mat-label>
@@ -52,12 +42,7 @@
                 </button>
             </td>
         </ng-container>
-
-
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
     </table>
 </div>

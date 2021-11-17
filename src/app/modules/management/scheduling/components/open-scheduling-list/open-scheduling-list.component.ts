@@ -47,7 +47,7 @@ export class OpenSchedulingListComponent implements OnInit {
       width: '40%',
       data:{id:idScheduling}
     });
-    dialogRef.disableClose=true
+    // dialogRef.disableClose=true
     dialogRef.afterClosed().subscribe(result => {
       this.openSchedulingHolidays$=this._service.getSchedulingsHoliday()
     });

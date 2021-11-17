@@ -19,7 +19,6 @@ import { SchedulingService } from '../../scheduling.service';
 })
 export class VolunteerComponent implements OnInit {
 
-  primary:string="primary"
   constructor(private _snackBar: MatSnackBar,private dialog: MatDialog,private _service:OpenSchedulingService,
     private _acr: ActivatedRoute,private _serviceScheduling:SchedulingService) { }
 
@@ -32,7 +31,7 @@ export class VolunteerComponent implements OnInit {
     })
     this.experienceOptionals$=this._serviceScheduling.getExperienceOption().pipe()
   }
-
+  primary:string="primary"
   schedulingHolidayId:number
   volunteers:OptionalVolunteer[]
   dataSource:any
@@ -60,6 +59,7 @@ export class VolunteerComponent implements OnInit {
   changeExperience(optionalVolunteer:OptionalVolunteer,newExperience:ExperienceOptional){
     if(newExperience.idExperience===1){
       let res=this.openDialog(optionalVolunteer.idVolunteer,newExperience.idExperience,optionalVolunteer)
+
     }
     else{
       if(optionalVolunteer.idExperience==1){
@@ -67,10 +67,9 @@ export class VolunteerComponent implements OnInit {
         this._service.deleteVolunteerHoliday(optionalVolunteer.idSchedulingHoliday,optionalVolunteer.idVolunteer)
       }
       this._serviceScheduling.changeExperience(optionalVolunteer,newExperience.idExperience).subscribe(result=>{
-        console.log(result)
+        this.getOptinalVolunteers()
       })
     }
-    this.getOptinalVolunteers()
   }
 
   openDialog(idVolunteer:number,experience:number,_optionalVolunteer:OptionalVolunteer): void {
@@ -81,7 +80,7 @@ export class VolunteerComponent implements OnInit {
     });
     dialogRef.disableClose=true
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.getOptinalVolunteers()
     });
   }
 

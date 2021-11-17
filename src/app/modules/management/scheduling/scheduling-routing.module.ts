@@ -4,9 +4,7 @@ import { OpenSchedulingListComponent } from './components/open-scheduling-list/o
 
 const routes: Routes = [
   {path:"" ,component:OpenSchedulingListComponent,pathMatch:"full"
-  // ,children:[{path:"openScheduling/:id",component:OpenScedulingBasicComponent}]
   },
-  // {path:"openScheduling/:id",component:OpenScedulingBasicComponent}
   {path:"openScheduling/:id",loadChildren: () => import("./open-scheduling/open-scheduling.module").then(m => m.OpenSchedulingModule)},
   
 ];

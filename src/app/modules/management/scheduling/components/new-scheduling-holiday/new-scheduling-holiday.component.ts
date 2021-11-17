@@ -5,8 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Holiday } from 'src/app/models/holiday';
 import { SchedulingService } from '../../scheduling.service';
 import { HolidaysService } from '../../../holidays/holidays-service.service';
-// import { DialogData } from '../open-scheduling-list/open-scheduling-list.component';
-// import { DialogData } from '../open-scheduling-list/open-scheduling-list.component';
+
 
 @Component({
   selector: 'app-new-scheduling-holiday',

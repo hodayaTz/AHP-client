@@ -5,10 +5,6 @@
     <mat-label>שנה</mat-label>
     <input matInput (keyup)="applyFilter(input.value,'year')" #input>
   </mat-form-field>
-  <!-- <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event,'holiday')" placeholder="Ex. ium" #input>
-  </mat-form-field> -->
   <mat-form-field appearance="fill">
     <mat-label>חג</mat-label>
     <mat-select (valueChange)="applyFilter(holiday.value,'holiday')" #holiday>
@@ -19,11 +15,11 @@
   </mat-form-field>
   <mat-form-field appearance="standard">
     <mat-label>ישוב</mat-label>
-    <input matInput (keyup)="applyFilter(input.value,'settlement')"  #input>
+    <input matInput (keyup)="applyFilter(sett.value,'settlement')" #sett>
   </mat-form-field>
   <mat-form-field appearance="standard">
     <mat-label>פעיל</mat-label>
-    <input matInput (keyup)="applyFilter(input.value,'volunteer')"  #input>
+    <input matInput (keyup)="applyFilter(vol.value,'volunteer')"  #vol>
   </mat-form-field>
 </div>
 <table id='historyTable' *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"

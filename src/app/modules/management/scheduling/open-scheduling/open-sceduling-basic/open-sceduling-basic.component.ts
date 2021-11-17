@@ -39,14 +39,12 @@ export class OpenScedulingBasicComponent implements OnInit {
       // this._service.holidayId = res.idHoliday
       // this._service.changeholidayId(res.idHoliday)
       // this.subscription = this._service.currentholidayId.subscribe(id => 
-      //   console.log(id))
       sessionStorage.setItem('holidy',res.idHoliday.toString())
     })
 
   }
   // holiday:number;
   // subscription: Subscription;
-
   schedulingHoliday: SchedulingHoliday
 
   delete() {

@@ -18,12 +18,6 @@ export class RegistrationSettlementComponent implements OnInit {
   constructor(private _service: LogInService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    // debugger
-    // this.newArea.areaName="dd"
-    // this.newArea.idArea=4
-    // this._service.addArea(this.newArea).subscribe(res=>{
-    //   console.log(res)
-    // })
     this._service.getArea().subscribe(areasData => {
       this.areas = areasData
     })

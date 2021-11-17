@@ -17,8 +17,8 @@ import * as XLSX from "xlsx";
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
+  constructor(private _serviceHolidays: HolidaysService, private _liveAnnouncer: LiveAnnouncer, private _historyService: HistoryService, private _acr: ActivatedRoute) { }
 
-  history: HistoryScheduling[]
   ngOnInit(): void {
     this._serviceHolidays.getHolidays().subscribe(data => {
       this.holidays = data
@@ -57,13 +57,12 @@ export class HistoryComponent implements OnInit {
       }
     })
   }
-
+  history: HistoryScheduling[]
   displayedColumns: string[] = ['year', 'holiday', 'settlement', 'volunteer'];
   dataSource: any
   holidays: Holiday[]
   historyWithOutFilter: HistoryScheduling[]
 
-  constructor(private _serviceHolidays: HolidaysService, private _liveAnnouncer: LiveAnnouncer, private _historyService: HistoryService, private _acr: ActivatedRoute) { }
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -96,11 +95,11 @@ export class HistoryComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.history);
         break;
       case 'settlement':
-        this.history = this.history.filter(h => h.settlement.settlement.nameSettlement.includes(filterValue))
+        this.history = this.historyWithOutFilter.filter(h => h.settlement.settlement.nameSettlement.includes(filterValue))
         this.dataSource = new MatTableDataSource(this.history);
         break;
       case 'volunteer':
-        this.history = this.history.filter(h => (h.volunteer.volunteer.firstName + " " + h.volunteer.volunteer.lastName).includes(filterValue))
+        this.history = this.historyWithOutFilter.filter(h => (h.volunteer.volunteer.firstName + " " + h.volunteer.volunteer.lastName).includes(filterValue))
         this.dataSource = new MatTableDataSource(this.history);
         break;
       default:

@@ -1,4 +1,5 @@
 import { ContactPerson } from './contactPerson';
+import { Area } from './area';
 
 export class Settlement{
     idSettlement:number
@@ -8,6 +9,8 @@ export class Settlement{
 	contactPer:ContactPerson
 	areaName:string
 	isActive:boolean 
+	area:Area
 }
+
 
 

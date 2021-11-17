@@ -26,8 +26,6 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
   
   ngOnInit(): void {
     // this.subscription = this._openSchedulingService.currentholidayId.subscribe(id => this.holiday = id)
-
-    // console.log(this._openSchedulingService.holidayId)
     // let holiday=this._openSchedulingService.holidayId
     let holiday=Number( sessionStorage.getItem('holidy'))
     this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
@@ -47,12 +45,9 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
   volunteer:HolidayVolunteer
   professionals$:Observable<Professional[]>
   prayerTexts$:Observable<PrayerText[]>
-  
-  
   // holiday:number;
   // subscription: Subscription;
   
-
   volunteerHolidayForm:FormGroup=new FormGroup({
     countjoiners:new FormControl(0),
     withFamily :new FormControl(false),

@@ -1,5 +1,5 @@
 <div class="card" *ngIf="settlementForm!=undefined">
-    <form [formGroup]="settlementForm!" (submit)="settlementForm?.valid && updateSettlement()">
+    <form [formGroup]="settlementForm" (submit)="settlementForm?.valid && updateSettlement()">
         <p>
             <mat-form-field appearance="legacy">
                 <label></label>
@@ -12,8 +12,8 @@
         <p>
             <mat-form-field appearance="legacy">
                 <label></label>
-                <mat-select disableRipple name="idArea" id="idArea" formControlName="areaName">
-                    <mat-option *ngFor="let a of areas$ | async" [value]="a.idArea">{{a.areaName}}</mat-option>
+                <mat-select disableRipple name="idArea" id="idArea" formControlName="area">
+                    <mat-option *ngFor="let a of areas$ | async" [value]="a">{{a.areaName}}</mat-option>
                 </mat-select>
                 <mat-hint>איזור מגורים</mat-hint>
             </mat-form-field>
@@ -37,7 +37,6 @@
                     <mat-hint>שם משפחה</mat-hint>
                 </mat-form-field>
             </p>
-            <!-- <p> -->
             <p>
                 <mat-form-field appearance="legacy">
                     <label></label>

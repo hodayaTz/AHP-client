@@ -5,6 +5,7 @@ import { Volunteer } from 'src/app/models/volunteer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Area } from 'src/app/models/area';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-volunteers-details',
@@ -12,14 +13,12 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./volunteers-details.component.css']
 })
 export class VolunteersDetailsComponent implements OnInit {
-  constructor(private dialog: MatDialog, private _acr: ActivatedRoute, private _serviceVolunteers: VolunteersService) { }
+  constructor(private _snackBar: MatSnackBar,private dialog: MatDialog, private _acr: ActivatedRoute, private _serviceVolunteers: VolunteersService) { }
   
   ngOnInit(): void {
-    // debugger
     this._acr.paramMap.subscribe(data => {
       if (data.has("id")) {
         this._serviceVolunteers.getVolunteerById(Number(data.get("id"))).subscribe(current_volunteer => {
-          // debugger
           this.volunteer = current_volunteer
         })
       }
@@ -51,13 +50,24 @@ export class VolunteersDetailsComponent implements OnInit {
       })
     }
   }
+
   updateVolunteer() {
     this.volunteer = this.volunteerForm?.value
     debugger
     this._serviceVolunteers.updateVolunteer(this.volunteer).subscribe(result => {
       this.saveSucceed = result
+      if(result){
+        this.openSnackBar("פרטי הפעיל עודכנו בהצלחה")
+      }
+      else{
+        this.openSnackBar("שגיאה- פרטי הפעיל לא עודכנו נסה שוב")
+      }
     })
-   //open dialog
-    
+  }
+
+  openSnackBar(message: string, action: string="x") {
+    this._snackBar.open(message, action,{
+      duration: 3000
+    });
   }
 }

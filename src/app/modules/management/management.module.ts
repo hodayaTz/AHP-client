@@ -5,7 +5,6 @@ import { SettlementModule } from './settlement/settlement.module';
 import { VolunteersModule } from './volunteers/volunteers.module';
 import { ManagamentRoutingModule } from './management-routing.module';
 import { SchedulingModule } from './scheduling/scheduling.module';
-import { ManagementBasicDesignComponent } from './management-basic-design/management-basic-design.component';
 import { MaterialModule } from 'src/app/material.module';
 import { NavComponent } from './nav/nav.component';
 import { HistoryModule } from './history/history.module';
@@ -20,7 +19,7 @@ import { PasswordsModule } from './passwords/passwords.module';
 
 @NgModule({
   declarations: [
-ManagementBasicDesignComponent,NavComponent,MessageBeforeDeleteComponent,
+NavComponent,MessageBeforeDeleteComponent,
 PasswordDialogComponent
   ],
   imports: [

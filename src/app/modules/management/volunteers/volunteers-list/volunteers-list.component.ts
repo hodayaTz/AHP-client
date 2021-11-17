@@ -18,7 +18,6 @@ export class VolunteersListComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private _router: Router, private _service: VolunteersService, private route: ActivatedRoute) { }
 
-
   ngOnInit(): void {
     this.volunteers$ = this._service.getVolunteers()
   }
@@ -34,13 +33,6 @@ export class VolunteersListComponent implements OnInit {
   editVolunteer(id: number) {
     this._router.navigate(["editVolunteer/", id], { relativeTo: this.route })
   }
-
-  // changeStatus(volunteerToChange: Volunteer) {
-  //   this._service.changeStatus(volunteerToChange).subscribe(result => {
-  //     console.log(result)
-  //   })
-  //   // this.volunteers$=this._service.getVolunteers()
-  // }
 
   deleteVolunteer(volunteer: Volunteer) {
     let message_
