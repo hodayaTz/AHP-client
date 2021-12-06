@@ -16,6 +16,8 @@ import { VolunteerPlacementApprovalComponent } from './volunteer-placement-appro
 import { CompletionSchedulingComponent } from './completion-scheduling/completion-scheduling.component';
 import { SchedulingService } from '../scheduling.service';
 import { SettlementService } from '../../settlement/settlement.service';
+import { ChartsModule } from 'ng2-charts';
+
 
 
 
@@ -25,7 +27,7 @@ import { SettlementService } from '../../settlement/settlement.service';
     VolunteerPlacementApprovalComponent,CompletionSchedulingComponent],
   imports: [
     CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,
-    ReactiveFormsModule,FormsModule
+    ReactiveFormsModule,FormsModule,ChartsModule
   ],
   providers:[OpenSchedulingService,SchedulingService,ActualSchedulingService,SettlementService]
 })

@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Volunteer } from 'src/app/models/volunteer';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SchedulingService } from '../../scheduling.service';
+import { ChartOptions, ChartType } from 'chart.js';
+import { Label, SingleDataSet } from 'ng2-charts';
 
 
 @Component({
@@ -42,6 +44,17 @@ export class VolunteerComponent implements OnInit {
   getOptinalVolunteers(){
     this._service.getOptionalVolunteerByHoliday(this.schedulingHolidayId).subscribe(data=>{
       this.volunteers=data
+      let temp=new Array(4).fill(0)
+      this.volunteers.forEach(v=>{
+        if(v.idExperience===null){
+          temp[0]+=1
+        }
+        else{
+          temp[v.idExperience]+=1
+        }
+      })
+      this.pieChartData=[]
+      this.pieChartData.push(...[temp])
       this.dataSource = new MatTableDataSource(this.volunteers.filter(v=>v.idExperience==0||v.idExperience==3))
       this.dataSource.filterPredicate = (data: OptionalVolunteer, filter:string) => {
         return (data.volunteer.firstName+" "+data.volunteer.lastName).includes(filter)
@@ -131,4 +144,13 @@ export class VolunteerComponent implements OnInit {
         break;
     }
   }
+
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabels: Label[] = ['לא טופל','רשומים', 'דחויים', 'בספק'];
+  public pieChartData: SingleDataSet=[0,0,0,0] ;
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
 }

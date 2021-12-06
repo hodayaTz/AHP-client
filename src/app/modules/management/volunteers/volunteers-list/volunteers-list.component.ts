@@ -38,10 +38,10 @@ export class VolunteersListComponent implements OnInit {
     let message_
     this._service.isPlaced(volunteer.idVolunteer).subscribe(result => {
       if (result) {
-        message_ = 'הפעיל משובץ כרגע האם למחוק'
+        message_ = 'הפעיל משובץ כרגע - האם אתה בטוח שברצונך למחוק פעיל זה'
       }
       else {
-        message_ = 'האם למחוק פעיל'
+        message_ = 'האם אתה בטוח שברצונך למחוק פעיל זה'
       } 
       const dialogRef = this.dialog.open(MessageBeforeDeleteComponent, {
         data: { message: message_ },

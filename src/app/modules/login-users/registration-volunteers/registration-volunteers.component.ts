@@ -60,4 +60,5 @@ export class RegistrationVolunteersComponent implements OnInit {
       this.openSnackBar("שגיאה - אנא נסה שנית")
     })
   } 
+  element:number=155324.2547
 }

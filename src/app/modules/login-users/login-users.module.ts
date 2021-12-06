@@ -6,7 +6,7 @@ import { RegistrationVolunteersComponent } from './registration-volunteers/regis
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LogInRoutingModule } from './login-users-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LogInService } from './log-in.service';
 import { MaterialModule } from 'src/app/material.module';
 
@@ -20,7 +20,8 @@ import { MaterialModule } from 'src/app/material.module';
     LogInRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   exports:[RegistrationSettlementComponent,RegistrationVolunteersComponent],
   providers:[LogInService]

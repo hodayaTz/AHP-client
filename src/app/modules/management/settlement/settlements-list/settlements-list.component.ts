@@ -27,10 +27,10 @@ export class SettlementsListComponent implements OnInit {
     let message_
     this._settlementService.isPlaced(settlement.idSettlement).subscribe(result => {
       if (result) {
-        message_ = 'הישוב משובץ כרגע האם למחוק'
+        message_ = 'הישוב משובץ כרגע - האם אתה בטוח שברצונך למחוק ישוב זה?'
       }
       else {
-        message_ = 'האם למחוק ישוב'
+        message_ = 'האם אתה בטוח שברצונך למחוק ישוב זה?'
       } 
       const dialogRef = this.dialog.open(MessageBeforeDeleteComponent, {
         panelClass:'dialogDel',

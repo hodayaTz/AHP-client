@@ -10,6 +10,8 @@ import { DetailsVolunteerToHolidayComponent } from '../details-volunteer-to-holi
 import { OptionalSettlement } from 'src/app/models/optional-settlement';
 import { DetailsSettlementToHolidayComponent } from '../details-settlement-to-holiday/details-settlement-to-holiday.component';
 import { SchedulingService } from '../../scheduling.service';
+import { ChartOptions, ChartType } from 'chart.js';
+import { Label, SingleDataSet } from 'ng2-charts';
 
 @Component({
   selector: 'app-settlement',
@@ -41,6 +43,17 @@ export class SettlementComponent implements OnInit {
   getOptinalSettlements(){
     this._service.getOptionalSettlementByHoliday(this.schedulingHolidayId).subscribe(data=>{
       this.settlements=data
+      let temp=new Array(4).fill(0)
+      this.settlements.forEach(s=>{
+        if(s.idExperience===null){
+          temp[0]+=1
+        }
+        else{
+          temp[s.idExperience]+=1
+        }
+      })
+      this.pieChartData=[]
+      this.pieChartData.push(...[temp])
       this.dataSource = new MatTableDataSource(this.settlements.filter(v=>v.idExperience==0||v.idExperience==3))
       this.dataSource.filterPredicate = (data: OptionalSettlement, filter:string) => {
         return data.settlement.nameSettlement.includes(filter)  
@@ -121,4 +134,13 @@ export class SettlementComponent implements OnInit {
         break;
     }
   }
+
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabels: Label[] = ['לא טופל','רשומים', 'דחויים', 'בספק'];
+  public pieChartData: SingleDataSet=[0,0,0,0] ;
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
 }
