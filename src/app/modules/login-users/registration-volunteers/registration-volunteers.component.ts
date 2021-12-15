@@ -4,6 +4,8 @@ import { Volunteer } from 'src/app/models/volunteer';
 import { LogInService } from '../log-in.service';
 import { Area } from 'src/app/models/area';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registration-volunteers',
@@ -14,7 +16,6 @@ export class RegistrationVolunteersComponent implements OnInit {
   constructor(private _service:LogInService,private _snackBar: MatSnackBar) { 
     
   }
-
   ngOnInit(): void {
     this._service.getArea().subscribe(areasData=>{
       this.areas=areasData
@@ -23,7 +24,7 @@ export class RegistrationVolunteersComponent implements OnInit {
       });
     })
   }
-
+  
   areas:Area[]
   newVolunteer:Volunteer
   
@@ -41,7 +42,7 @@ export class RegistrationVolunteersComponent implements OnInit {
       duration: 3000
     });
   }
-
+  
   saveNewVolunteer(){
     this.newVolunteer=this.volunteerForm.value;
     this.newVolunteer.isActive=true;
