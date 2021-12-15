@@ -7,7 +7,7 @@
 }
 h2{
     font-size: xx-large;
-    color: gray;
+    /* color: gray; */
 }
 
 .form_register{
@@ -15,7 +15,7 @@ h2{
     flex-direction:column;
     margin-top: 40px;
     align-items: center;
-    border: 3.5px gray double;
+    border: 3.5px black double;
     border-radius: 1.3%;
     padding: 60px;
     padding: 60px 80px 60px 80px;
@@ -31,7 +31,12 @@ h2{
     display: flex;
     flex-direction: row;
     justify-content: center;
-   
+    background-image: url('../../../../assets/images/hands.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    height:auto;
 }
 
 .example-full-width{

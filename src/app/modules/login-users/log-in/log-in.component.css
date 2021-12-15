@@ -1,6 +1,12 @@
 .container{
   display: flex;
   justify-content: center;
+  background-image: url('../../../../assets/images/hands.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  height:auto;
 }
 .container-flex-column{
   display: flex;
@@ -13,9 +19,7 @@ button{
   font-size: large;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-/* body{
-  background-image: url('../../../../assets/images/logohe.png');
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-} */
+.back{
+  height: 150px;
+  width: 300px;
+}

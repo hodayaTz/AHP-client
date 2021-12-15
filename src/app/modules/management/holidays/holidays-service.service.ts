@@ -9,26 +9,26 @@ import { Professional } from 'src/app/models/professional';
 })
 export class HolidaysService {
 
-  url:string="/api/Holiday"
-  constructor(private _http:HttpClient) { }
+  url: string = "/api/Holiday"
+  constructor(private _http: HttpClient) { }
 
-  getHolidays():Observable<Holiday[]>{
+  getHolidays(): Observable<Holiday[]> {
     return this._http.get<Holiday[]>(this.url)
   }
-  getHolidayById(id:number):Observable<Holiday>{
-    return this._http.get<Holiday>(this.url+"/"+id)
+  getHolidayById(id: number): Observable<Holiday> {
+    return this._http.get<Holiday>(this.url + "/" + id)
   }
-  deleteHoliday(holidayToDelete:Holiday):Observable<boolean>{
-    return this._http.delete<boolean>(this.url+"/"+holidayToDelete.idHoliday)
+  deleteHoliday(holidayToDelete: Holiday): Observable<boolean> {
+    return this._http.delete<boolean>(this.url + "/" + holidayToDelete.idHoliday)
   }
-  getProfessionalsByHoliday(holiday:number):Observable<Professional[]>{
-    return this._http.get<Professional[]>("/api/Professional/GetProfessionalsById/"+holiday)
+  getProfessionalsByHoliday(holiday: number): Observable<Professional[]> {
+    return this._http.get<Professional[]>("/api/Professional/GetProfessionalsById/" + holiday)
   }
-  getProfessionals(idHoliday:number):Observable<Professional[]>{
-    return this._http.get<Professional[]>(this.url+"/GetProfessionalsHoliday/"+idHoliday)
+  getProfessionals(idHoliday: number): Observable<Professional[]> {
+    return this._http.get<Professional[]>(this.url + "/GetProfessionalsHoliday/" + idHoliday)
   }
-  deleteProffesionalHoliday(prof:string):Observable<boolean>{
-    return this._http.delete<boolean>(this.url+"/"+prof);
+  deleteProfessionalHoliday(prof: string): Observable<boolean> {
+    return this._http.delete<boolean>(this.url + "/DeleteProfessionalHoliday/" + prof);
   }
 
 }

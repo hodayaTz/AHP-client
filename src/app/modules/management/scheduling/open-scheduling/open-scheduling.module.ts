@@ -22,13 +22,15 @@ import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
-  declarations: [SettlementComponent,VolunteerComponent,DetailsVolunteerToHolidayComponent,
-    DetailsSettlementToHolidayComponent,OpenScedulingBasicComponent,SchedulingActualComponent,
-    VolunteerPlacementApprovalComponent,CompletionSchedulingComponent],
-  imports: [
-    CommonModule,OpenSchedulingRoutingModule,MaterialModule,RouterModule,
-    ReactiveFormsModule,FormsModule,ChartsModule
+  declarations: [SettlementComponent, VolunteerComponent, DetailsVolunteerToHolidayComponent,
+    DetailsSettlementToHolidayComponent, OpenScedulingBasicComponent, SchedulingActualComponent,
+    VolunteerPlacementApprovalComponent, CompletionSchedulingComponent
   ],
-  providers:[OpenSchedulingService,SchedulingService,ActualSchedulingService,SettlementService]
+  imports: [
+    CommonModule, OpenSchedulingRoutingModule, MaterialModule, RouterModule,
+    ReactiveFormsModule, FormsModule, 
+    ChartsModule
+  ],
+  providers: [OpenSchedulingService, SchedulingService, ActualSchedulingService, SettlementService]
 })
 export class OpenSchedulingModule { }

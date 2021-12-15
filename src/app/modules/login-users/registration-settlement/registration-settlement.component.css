@@ -10,13 +10,14 @@
     
 }
 
+
 .form_concatper{
     display:flex;
     flex-direction:column;
     align-items: center;
 }
  h2{
-    color: gray;
+    color: black;
     font-size: xx-large;
  }
 
@@ -30,7 +31,12 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-   
+    background-image: url('../../../../assets/images/hands.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    height:auto;
 }
 
 .example-full-width{
