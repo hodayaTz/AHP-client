@@ -64,6 +64,7 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
     this.settlement.idSchedulingHoliday=this.data.scheduling
     this.settlement.idSettlement=this.data.settlement
     this._openSchedulingService.addSettlementHoliday(this.settlement).subscribe(result=>{
+      debugger
       if(result){
         this._SchedulingService.changeExperienceSettlement(this.data.optionalSettlement,this.data.idExperience).subscribe(_result=>{
           if(_result){

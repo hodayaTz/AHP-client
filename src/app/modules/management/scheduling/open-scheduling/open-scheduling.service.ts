@@ -37,6 +37,7 @@ export class OpenSchedulingService {
   }
 
   addSettlementHoliday(settlementHoliday:SettlementHoliday):Observable<boolean>{
+    debugger
     return this._http.post<boolean>("/api/SettlementHoliday",settlementHoliday)
   }
 
