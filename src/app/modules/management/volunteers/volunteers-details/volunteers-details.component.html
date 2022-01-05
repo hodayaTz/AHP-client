@@ -1,55 +1,61 @@
 <div class="card" *ngIf="volunteerForm!=undefined">
-    <form [formGroup]="volunteerForm!" (submit)="volunteerForm?.valid && updateVolunteer()">
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="identityNumber">
-                <mat-icon matSuffix></mat-icon>
-                <mat-hint>מספר זהות</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="firstName">
-                <mat-icon matSuffix></mat-icon>
-                <mat-hint>שם פרטי</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="lastName">
-                <mat-icon matSuffix></mat-icon>
-                <mat-hint>שם משפחה</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="phone">
-                <mat-icon matSuffix>phone</mat-icon>
-                <mat-hint>מספר פלאפון</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <input matInput formControlName="gmail">
-                <mat-icon matSuffix>gmail</mat-icon>
-                <mat-hint>כתובת דוא"ל</mat-hint>
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="legacy">
-                <label></label>
-                <mat-select disableRipple name="idArea" id="idArea" formControlName="idArea">
-                    <mat-option *ngFor="let a of areas" [value]="a.idArea">{{a.areaName}}</mat-option>
-                </mat-select>
-                <mat-hint>איזור מגורים</mat-hint>
-            </mat-form-field>
-        </p>
-        <button mat-raised-button type="submit" color="primary">שמירה</button>
+    <form [formGroup]="volunteerForm!" class="form_register" (submit)="volunteerForm?.valid && updateVolunteer()">
+        <h1> <u> פרטי מתנדב</u></h1>
+        <div class="details">
+            <div>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <label></label>
+                        <input matInput formControlName="identityNumber">
+                        <mat-icon matSuffix></mat-icon>
+                        <mat-hint>מספר זהות</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <label></label>
+                        <input matInput formControlName="firstName">
+                        <mat-icon matSuffix></mat-icon>
+                        <mat-hint>שם פרטי</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <label></label>
+                        <input matInput formControlName="lastName">
+                        <mat-icon matSuffix></mat-icon>
+                        <mat-hint>שם משפחה</mat-hint>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <label></label>
+                        <input matInput formControlName="phone">
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-hint>מספר פלאפון</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <label></label>
+                        <input matInput formControlName="gmail">
+                        <mat-icon matSuffix>gmail</mat-icon>
+                        <mat-hint>כתובת דוא"ל</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <label></label>
+                        <mat-select disableRipple name="idArea" id="idArea" formControlName="idArea">
+                            <mat-option *ngFor="let a of areas" [value]="a.idArea">{{a.areaName}}</mat-option>
+                        </mat-select>
+                        <mat-hint>איזור מגורים</mat-hint>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <button style="width: 200px; padding: 5px;" mat-raised-button type="submit" color="primary">שמירה</button>
     </form>
 </div>

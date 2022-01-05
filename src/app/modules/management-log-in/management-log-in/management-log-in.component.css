@@ -1,4 +1,4 @@
-.login-main{
+/* .login-main{
     margin-top: 10%;
     }
     mat-card{
@@ -30,9 +30,7 @@ h2{
     flex-direction:column;
     padding-top: 10px;
 }
-body{
-    background-color: rgb(230, 228, 250);
-}
+
 .red{
     color: red;
     display: block;
@@ -40,4 +38,39 @@ body{
 .none{
     display: none;
 }
-    
+*/
+
+body{
+    background-image: url('../../../../assets/images/love.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    height:auto;
+}
+
+.all{
+    position: fixed;
+    left: 6%;
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+    top: 40px;
+    justify-content: space-around;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 370px;
+    margin-top: 60px;
+}
+
+h1{
+    margin: 0 0 45px;
+    font-weight: bolder;
+}
+.btn_enter{
+    width: 200px;
+}

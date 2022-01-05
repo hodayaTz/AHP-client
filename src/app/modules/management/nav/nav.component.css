@@ -40,3 +40,11 @@
   width: 100%;
   z-index: 1;
 }
+.router{
+  background-image: url('../../../../assets/images/love.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  height:auto;
+}
