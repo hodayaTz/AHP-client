@@ -17,8 +17,8 @@ h2{
     align-items: center;
     border: 3.5px black double;
     border-radius: 1.3%;
-    padding: 60px;
     padding: 60px 80px 60px 80px;
+    margin-bottom: 120px;
 }
 
 /* .mat-form-field-flex .ng-tns-c69-0 {
