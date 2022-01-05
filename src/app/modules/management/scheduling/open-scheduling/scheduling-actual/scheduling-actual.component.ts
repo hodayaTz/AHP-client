@@ -78,6 +78,14 @@ export class SchedulingActualComponent implements OnInit {
     });
   }
 
+  deleteVolunteerFromSettlement(volunteer:HolidayVolunteer){
+    this._service.deleteVolunteerFromSettlement(volunteer).subscribe(res=>
+      this._service.getVolunteersToScheduling(this.settlementChoose.idSettlement,this.schedulingHolidayId).subscribe(data=>{
+        this.volunteers=data
+      })
+    )
+  }
+
   finishScheduling(){
     this._router.navigate(["/management/history",{scheduling:this.schedulingHolidayId}],{relativeTo:this._Activeroute})
     const dialogRef = this.dialog.open(CompletionSchedulingComponent, {
