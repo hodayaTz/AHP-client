@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {MatAccordion} from '@angular/material/expansion';
 import { Professional } from 'src/app/models/professional';
+import { MatDialog } from '@angular/material/dialog';
+import { HolidayDetailsComponent } from '../holiday-details/holiday-details.component';
 
 @Component({
   selector: 'app-holidays-list',
@@ -15,13 +17,11 @@ export class HolidaysListComponent implements OnInit {
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
-  detailsHoliday(holidayId:number){
-    console.log(holidayId)
-    console.log()
-    this._router.navigate(["/detailsHoliday",holidayId])
-  }
+  // detailsHoliday(holidayId:number){
+  //   this._router.navigate(["/detailsHoliday",holidayId])
+  // }
 
-  constructor(private _serviceHoliday:HolidaysService,private _router:Router,private route:ActivatedRoute) { }
+  constructor(private _serviceHoliday:HolidaysService,private _router:Router,private route:ActivatedRoute,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.holidays$=this._serviceHoliday.getHolidays()
@@ -30,10 +30,10 @@ export class HolidaysListComponent implements OnInit {
 
   holidays$:Observable<Holiday[]>
   professional$:Observable<Professional[]>
+  newProfessional:string
 
   deleteHoliday(holidayToDelete:Holiday){
     this._serviceHoliday.deleteHoliday(holidayToDelete).subscribe(res=>{
-      
     })
   }
   editHoliday(id:number){
@@ -42,5 +42,18 @@ export class HolidaysListComponent implements OnInit {
   history(id:number){
     this._router.navigate(["history/", id], { relativeTo: this.route })
   }
-
+  newHoliday() {
+    const dialogRef = this.dialog.open(HolidayDetailsComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.holidays$=this._serviceHoliday.getHolidays()
+    });
+  }
+  AddProfessional(){
+    let p=new Professional()
+    p.descriptionProfessional=this.newProfessional
+    p.idProfessional=0
+    this._serviceHoliday.AddProfessional(p).subscribe(res=>{
+      
+    })
+  }
 }

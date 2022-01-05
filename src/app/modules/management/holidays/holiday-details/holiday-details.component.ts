@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Holiday } from 'src/app/models/holiday';
 import { HolidaysService } from '../holidays-service.service';
-import { FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { FormGroup, FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { Professional } from 'src/app/models/professional';
 
 @Component({
   selector: 'app-holiday-details',
@@ -11,41 +13,34 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./holiday-details.component.css']
 })
 export class HolidayDetailsComponent implements OnInit {
-
-  constructor(private _acr: ActivatedRoute, private _serviceHoliday: HolidaysService,private router:Router,public dialog: MatDialog) { }
-
   ngOnInit(): void {
-    this.holiday = new Holiday()
-    this.holiday.descriptionHoliday = ""
-    this._acr.paramMap.subscribe(data => {
-      if (data.has("id")) {
-        this._serviceHoliday.getHolidayById(Number(data.get("id"))).subscribe(h => {
-          console.log(h.descriptionHoliday)
-          this.holiday = h;
-        })
-      }
+    this.professionals$=this._serviceHoliday.getAllProfessionals()
+  }
+
+  constructor(
+    public dialogRef: MatDialogRef<HolidayDetailsComponent>
+,private _serviceHoliday: HolidaysService
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  addHoliday(){
+    let holiday=new Holiday()
+    holiday.idHoliday=0
+    holiday.descriptionHoliday=this.holidayForm.value.descriptionHoliday
+    holiday.professionals=this.holidayForm.value.professionals
+    console.log(holiday)
+    this._serviceHoliday.addHoliday(holiday).subscribe(res=>{
+      this.onNoClick()
     })
   }
-  private _holiday: Holiday = new Holiday()
-// func(){
-//   const dialogRef = this.dialog.open(PasswordDialogComponent, {
-//     width: '350px'
-//   });
-
-//   dialogRef.afterClosed().subscribe(result => {
-//     this.router.navigate(['./passwords']);
-//   });
-// }
-
-func(val:any){
-
-  console.log(val.innerHTML)
-}
-  public get holiday(): Holiday {
-    return this._holiday;
-  }
-  public set holiday(h: Holiday) {
-    this._holiday = h
-  }
+  holidayForm:FormGroup=new FormGroup({
+    professionals:new FormControl([]),
+    descriptionHoliday:new FormControl(""),
+    idHoliday:new FormControl(0)
+  })
+  professionals$:Observable<Professional[]>
 
 }

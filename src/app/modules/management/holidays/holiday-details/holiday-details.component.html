@@ -1,8 +1,21 @@
-<!-- פרטי החג עם אפשרות עריכה ומחיקה -->
-
-<div *ngFor="let p of holiday.professionals" appearance="fill">
-    <div class="del">
-        <h2 #val>{{p.descriptionProfessional}}</h2>
-        <button mat-button color="primary" (click)="func(val)"><mat-icon>delete</mat-icon></button>
-    </div>
+<div class="center">
+    <form [formGroup]="holidayForm" (submit)="addHoliday()">
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>שם החג</mat-label>
+                <input type="text" formControlName="descriptionHoliday" matInput>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label for="professionals">בחר מקצועות:</mat-label>
+                <mat-select formControlName="professionals" multiple>
+                    <mat-option *ngFor="let p of professionals$ |async" [value]="p">
+                        {{p.descriptionProfessional}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
+        <button mat-raised-button type="submit" color="primary" >שמירה</button>
+        <button type="button" mat-button (click)="onNoClick()">ביטול</button>
+    </form>
 </div>

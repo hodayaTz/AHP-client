@@ -21,14 +21,22 @@ export class HolidaysService {
   deleteHoliday(holidayToDelete: Holiday): Observable<boolean> {
     return this._http.delete<boolean>(this.url + "/" + holidayToDelete.idHoliday)
   }
+  addHoliday(holiday:Holiday):Observable<boolean>{
+    return this._http.post<boolean>(this.url+"/AddHoliday",holiday)
+  }
   getProfessionalsByHoliday(holiday: number): Observable<Professional[]> {
     return this._http.get<Professional[]>("/api/Professional/GetProfessionalsById/" + holiday)
   }
   getProfessionals(idHoliday: number): Observable<Professional[]> {
     return this._http.get<Professional[]>(this.url + "/GetProfessionalsHoliday/" + idHoliday)
   }
+  getAllProfessionals(): Observable<Professional[]> {
+    return this._http.get<Professional[]>("/api/Professional/GetProfessionals")
+  }
   deleteProfessionalHoliday(prof: string): Observable<boolean> {
     return this._http.delete<boolean>(this.url + "/DeleteProfessionalHoliday/" + prof);
   }
-
+  AddProfessional(professional:Professional):Observable<boolean>{
+    return this._http.post<boolean>("/api/Professional/AddProfessional",professional)
+  }
 }

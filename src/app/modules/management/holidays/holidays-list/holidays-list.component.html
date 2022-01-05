@@ -1,6 +1,16 @@
-<div class="action-buttons">
-    <button mat-raised-button color="primary" (click)="accordion.openAll()">צפה בהכל</button>
-    <button mat-raised-button (click)="accordion.closeAll()">סגור הכל</button>
+<div style="display: flex;justify-content: space-between;">
+    <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="accordion.openAll()">צפה בהכל</button>
+        <button mat-raised-button (click)="accordion.closeAll()">סגור הכל</button>
+        <button mat-raised-button (click)="newHoliday()">הוסף חג חדש</button>
+    </div>
+    <div class="action-buttons">
+        <mat-form-field appearance="fill">
+            <mat-label>מקצוע חדש</mat-label>
+            <input [(ngModel)]="newProfessional" matInput>
+        </mat-form-field>
+        <button mat-raised-button (click)="AddProfessional()">הוסף מקצוע חדש</button>
+    </div>
 </div>
 <mat-accordion class="example-headers-align" multi>
     <div *ngFor="let h of holidays$ | async">
@@ -10,16 +20,16 @@
                     <h3><b>{{h.descriptionHoliday}}</b> </h3>
                 </mat-panel-title>
                 <mat-panel-description>
-                    <button (click)="history(h.idHoliday)" mat-button color="primary">הסטוריה
+                    <button (click)="history(h.idHoliday)" mat-button color="primary">הסטורית החג
                         <mat-icon>history</mat-icon>
                     </button>
                 </mat-panel-description>
-                <mat-panel-description>
+                <!-- <mat-panel-description>
                     <button mat-button color="primary" (click)="editHoliday(h.idHoliday)">עריכת החג
                         <mat-icon>edit</mat-icon>
                     </button>
 
-                </mat-panel-description>
+                </mat-panel-description> -->
 
             </mat-expansion-panel-header>
 
