@@ -23,6 +23,7 @@ export class OpenScedulingBasicComponent implements OnInit {
     this.dialogRef.close();
   }
   ngOnInit(): void {
+    debugger
     // this._acr.paramMap.subscribe(data=>{
     //   if(data.has("id")){
     //     console.log(Number(data.get("id")))

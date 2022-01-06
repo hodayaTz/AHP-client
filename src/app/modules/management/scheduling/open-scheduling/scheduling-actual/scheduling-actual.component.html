@@ -1,24 +1,25 @@
 <div style="display: flex;flex-direction: column;">
     <div *ngIf="schedulingHoliday" style="display: flex; justify-content: space-around;">
-        <span>{{schedulingHoliday.descripation}}-{{schedulingHoliday.yearHoliday}}</span>
-        <button (click)="finishScheduling()" mat-raised-button color="primary">סיום שיבוץ</button>
+        <h1>{{schedulingHoliday.descripation}}-{{schedulingHoliday.yearHoliday}}</h1>
+        <br>
+        <button (click)="finishScheduling()" mat-raised-button color="primary" style="    border-radius: 50%;    margin-top: 5px;">סיום שיבוץ</button>
     </div>
     <div class="flex-row">
-        <div style="width: 20%;">
+        <div style="width: 20%;margin-right: 10%;">
             <div>
                 <mat-selection-list #sett [multiple]="false" (selectionChange)="selectSettlement(sett)">
-                    <mat-list-option *ngFor="let settlement of settlements|async" [value]="settlement">
+                    <mat-list-option *ngFor="let settlement of settlements|async" class="m-cus-option" [value]="settlement">
                         {{settlement.settlement.nameSettlement}}
                     </mat-list-option>
                 </mat-selection-list>
             </div>
         </div>
-        <div *ngIf="settlementChoose" style="width: 60%; display: flex; flex-direction: column;">
-            <div>
-                <span>צרכי הישוב:</span>
-                <mat-card>{{settlementChoose?.settlement?.nameSettlement}} מיקום-
-                    {{settlementChoose?.settlement?.areaName}} כמות אנשים- {{settlementChoose?.amountPeopleConsumed}}
-                    נוסח - {{settlementChoose?.prayerText?.namePrayer}}</mat-card>
+        <div *ngIf="settlementChoose" class="left-side">
+            <div class="title-select">
+
+                <mat-card>
+                    <h5 class="cus-title"> {{settlementChoose?.settlement?.nameSettlement}}</h5>
+                    <span> {{settlementChoose?.settlement?.areaName}} |  {{settlementChoose?.amountPeopleConsumed}} אנשים  |  {{settlementChoose?.prayerText?.namePrayer}}</span> </mat-card>
                 <mat-chip-list>
                     <mat-chip *ngFor="let p of settlementChoose.professionals" color="primary" selected>
                         {{getProfessionalById(p)}}</mat-chip>
@@ -35,136 +36,139 @@
             </div> -->
             <div>
                 <div *ngIf="volunteers">
-                    <!-- <div> -->
-                        פעילים שהיו כבר בישוב :
-                        <br>
-                        <mat-selection-list [multiple]="false">
-                            <mat-list-option style="height: auto;" *ngFor="let volunteer of volunteers[0]"
-                                [value]="volunteer">
+                    <span *ngIf="volunteers[0].length" class="cus-title"> פעילים שהיו כבר בישוב</span>
+                    <br>
+                    <mat-selection-list [multiple]="false" class="">
+                        <div class="select-wrapper">
+                            <mat-list-option class="m-cus-option2" style="height: auto;" *ngFor="let volunteer of volunteers[0]" [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="display: flex; flex-direction: column ;">
                                         <div>
-                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}"
-                                                style="font-weight: bold;">{{volunteer.volunteer.firstName}}
-                                                {{volunteer.volunteer.lastName}} :</span>
-                                             מספר אנשים -
-                                            {{volunteer.countjoiners}}
-                                            <span>נוסח - {{volunteer.prayerText.namePrayer}}</span>
+                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}" class="header-name">{{volunteer.volunteer.firstName}}
+                                                {{volunteer.volunteer.lastName}} </span> {{volunteer.countjoiners}} אנשים |
+                                            <span> {{volunteer.prayerText.namePrayer}}</span>
                                         </div>
                                         <div>
                                             <mat-chip-list>
-                                                <mat-chip *ngFor="let p of volunteer.professionals"
-                                                    [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'blue':'gray'}">
+                                                <mat-chip *ngFor="let p of volunteer.professionals" [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'#3f51b5':'#b9b9b9'}">
                                                     {{getProfessionalById(p)}}</mat-chip>
                                             </mat-chip-list>
                                         </div>
+                                        <div class="button-container" (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button>
+                                            <button mat-mini-fab color="warn" aria-label="Example icon button with a home icon">
+                                              <mat-icon>done</mat-icon>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <button (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button
-                                            color="primary">בחר פעיל</button>
-                                    </div>
+                                    <!-- <div>
+                                        <button (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button color="primary">בחר פעיל</button>
+                                    </div> -->
                                 </div>
                             </mat-list-option>
+                        </div>
                         <!-- </mat-selection-list> -->
-                    <!-- </div> -->
-                    <mat-divider></mat-divider>
-                    <!-- <div> -->
-                        פעילים:
+                        <!-- </div> -->
+                        <span *ngIf="volunteers[1].length" class="cus-title"> פעילים</span>
+                        
+                        <!-- <div> -->
                         <br>
                         <!-- <mat-selection-list [multiple]="false"> -->
-                            <mat-list-option style="height: auto;" *ngFor="let volunteer of volunteers[1]"
-                                [value]="volunteer">
+                        <div class="select-wrapper">
+                            <mat-list-option class="m-cus-option2" style="height: auto;" *ngFor="let volunteer of volunteers[1]" [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="display: flex; flex-direction: column ;">
                                         <div>
-                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}"
-                                                style="font-weight: bold;">{{volunteer.volunteer.firstName}}
-                                                {{volunteer.volunteer.lastName}} :</span>
-                                             מספר אנשים -
-                                            {{volunteer.countjoiners}}
-                                            <span>נוסח - {{volunteer.prayerText.namePrayer}}</span>
+                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}" class="header-name">{{volunteer.volunteer.firstName}}
+                                                {{volunteer.volunteer.lastName}} </span> {{volunteer.countjoiners}} אנשים
+                                            <span>| {{volunteer.prayerText.namePrayer}}</span>
                                         </div>
                                         <div>
                                             <mat-chip-list>
-                                                <mat-chip *ngFor="let p of volunteer.professionals"
-                                                    [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'blue':'gray'}">
+                                                <mat-chip *ngFor="let p of volunteer.professionals" [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'#3f51b5':'#b9b9b9'}">
                                                     {{getProfessionalById(p)}}</mat-chip>
                                             </mat-chip-list>
                                         </div>
+                                        <div class="button-container" (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button>
+                                            <button mat-mini-fab color="warn" aria-label="Example icon button with a home icon">
+                                              <mat-icon>done</mat-icon>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <button (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button
-                                            color="primary">בחר פעיל</button>
-                                    </div>
+                                    <!-- <div>
+                                        <button (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button color="primary">בחר פעיל</button>
+                                    </div> -->
                                 </div>
+
                             </mat-list-option>
+                        </div>
                         <!-- </mat-selection-list> -->
-                    <!-- </div> -->
-                    <mat-divider></mat-divider>
-                    <!-- <div> -->
-                        פעילים ששובצו לישוב אחר :
+                        <!-- </div> -->
+
+                        <!-- <div> -->
+                        <span *ngIf="volunteers[3].length" class="cus-title"> פעילים ששובצו לישוב אחר</span>
                         <br>
                         <!-- <mat-selection-list [multiple]="false"> -->
-                            <mat-list-option style="height: auto;" *ngFor="let volunteer of volunteers[3]"
-                                [value]="volunteer">
+                        <div class="select-wrapper">
+                            <mat-list-option class="m-cus-option2" style="height: auto;" *ngFor="let volunteer of volunteers[3]" [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="display: flex; flex-direction: column ;">
                                         <div>
-                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}"
-                                                style="font-weight: bold;">{{volunteer.volunteer.firstName}}
-                                                {{volunteer.volunteer.lastName}} :</span>
-                                            נוסח - {{volunteer.prayerText.namePrayer}} מספר אנשים -
-                                            {{volunteer.countjoiners}}
+                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}" class="header-name">{{volunteer.volunteer.firstName}}
+                                                {{volunteer.volunteer.lastName}} </span> {{volunteer.prayerText.namePrayer}} | {{volunteer.countjoiners}} אנשים
                                         </div>
                                         <div>
                                             <mat-chip-list>
-                                                <mat-chip *ngFor="let p of volunteer.professionals"
-                                                    [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'blue':'gray'}">
+                                                <mat-chip *ngFor="let p of volunteer.professionals" [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'#3f51b5':'#b9b9b9'}">
                                                     {{getProfessionalById(p)}}</mat-chip>
                                             </mat-chip-list>
                                         </div>
+                                        <div class="button-container" (click)="saveVolunteerToSettlement(volunteer,true)" mat-stroked-button>
+                                            <button mat-mini-fab color="warn" aria-label="Example icon button with a home icon">
+                                              <mat-icon>done</mat-icon>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <button (click)="saveVolunteerToSettlement(volunteer,true)" mat-stroked-button
-                                            color="primary">בחר פעיל</button>
-                                    </div>
+                                    <!-- <div>
+                                        <button (click)="saveVolunteerToSettlement(volunteer,true)" mat-stroked-button color="primary">בחר פעיל</button>
+                                    </div> -->
                                 </div>
                             </mat-list-option>
+                        </div>
                         <!-- </mat-selection-list> -->
-                    <!-- </div> -->
-                    <mat-divider></mat-divider>
-                    <!-- <div> -->
-                        פעילים שכבר שובצו לישוב :
+                        <!-- </div> -->
+
+                        <!-- <div> -->
+                        <span *ngIf="volunteers[2].length" class="cus-title"> פעילים שכבר שובצו לישוב</span>
                         <br>
-                        <!-- <mat-selection-list [multiple]="false"> -->
-                            <mat-list-option style="height: auto;" *ngFor="let volunteer of volunteers[2]"
-                                [value]="volunteer">
+                        <div class="select-wrapper">
+                            <!-- <mat-selection-list [multiple]="false"> -->
+                            <mat-list-option style="height: auto;" class="m-cus-option2" *ngFor="let volunteer of volunteers[2]" [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="display: flex; flex-direction: column ;">
                                         <div>
-                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}"
-                                                style="font-weight: bold;">{{volunteer.volunteer.firstName}}
-                                                {{volunteer.volunteer.lastName}} :</span>
-                                            נוסח - {{volunteer.prayerText.namePrayer}} מספר אנשים -
-                                            {{volunteer.countjoiners}}
+                                            <span routerLink="../editVolunteer/{{volunteer.idVolunteer}}" class="header-name">{{volunteer.volunteer.firstName}}
+                                                {{volunteer.volunteer.lastName}} </span> | {{volunteer.prayerText.namePrayer}} | {{volunteer.countjoiners}} אנשים
                                         </div>
                                         <div>
                                             <mat-chip-list>
-                                                <mat-chip *ngFor="let p of volunteer.professionals"
-                                                    [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'blue':'gray'}">
+                                                <mat-chip *ngFor="let p of volunteer.professionals" [ngStyle]="{'backgroundColor': isProffesionalRelevant(p) ?'#3f51b5':'#b9b9b9'}">
                                                     {{getProfessionalById(p)}}</mat-chip>
                                             </mat-chip-list>
                                         </div>
+                                        <div class="button-container close-cont" (click)="deleteVolunteerFromSettlement(volunteer)" mat-stroked-button>
+                                            <button mat-mini-fab color="warn" aria-label="Example icon button with a home icon">
+                                              <mat-icon>close</mat-icon>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <!-- <button (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button
-                                            color="primary">בחר פעיל</button> -->
-                                            <button (click)="deleteVolunteerFromSettlement(volunteer)" mat-stroked-button
-                                            color="primary">הסרה</button>
-                                    </div>
+                                    <!-- <div>
+                                    
+                                    <button (click)="deleteVolunteerFromSettlement(volunteer)" mat-stroked-button color="primary">הסרה</button>
+                                </div> -->
                                 </div>
                             </mat-list-option>
-                        </mat-selection-list>
+                        </div>
+                    </mat-selection-list>
                     <!-- </div> -->
                 </div>
             </div>
