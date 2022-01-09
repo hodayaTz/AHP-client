@@ -43,13 +43,10 @@ export class NewSchedulingHolidayComponent implements OnInit {
     this.newSchedulingHoliday=this.formNewSchedulingHoliday.value
     this.newSchedulingHoliday.isOpen=true
     this.newSchedulingHoliday.isValid=true
-    // this.newSchedulingHoliday.idSchedulingHoliday=0
     this._service.addSchedulingHoliday(this.newSchedulingHoliday).subscribe(result=>{
       if(!result){
-        console.log("השיבוץ כבר  קיים במערכת")
       }
     })
   }
-
 
 }

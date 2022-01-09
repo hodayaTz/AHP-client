@@ -25,8 +25,6 @@ export interface DialogData {
 export class DetailsVolunteerToHolidayComponent implements OnInit {
   
   ngOnInit(): void {
-    // this.subscription = this._openSchedulingService.currentholidayId.subscribe(id => this.holiday = id)
-    // let holiday=this._openSchedulingService.holidayId
     let holiday=Number( sessionStorage.getItem('holidy'))
     this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
     this.prayerTexts$=this._SchedulingService.getPrayerTexts()
@@ -45,8 +43,6 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
   volunteer:HolidayVolunteer
   professionals$:Observable<Professional[]>
   prayerTexts$:Observable<PrayerText[]>
-  // holiday:number;
-  // subscription: Subscription;
   
   volunteerHolidayForm:FormGroup=new FormGroup({
     countjoiners:new FormControl(0),
@@ -60,7 +56,6 @@ export class DetailsVolunteerToHolidayComponent implements OnInit {
 
   addVolunteerHoliday(){
     this.volunteer=this.volunteerHolidayForm.value
-    console.log(this.volunteer)
     this.volunteer.idSchedulingHoliday=this.data.scheduling
     this.volunteer.idVolunteer=this.data.volunteer
     this._openSchedulingService.addVolunteerHoliday(this.volunteer).subscribe(result=>{

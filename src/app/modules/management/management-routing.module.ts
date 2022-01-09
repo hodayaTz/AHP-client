@@ -8,18 +8,11 @@ import { HistoryComponent } from './history/history/history.component';
 import { PasswordsComponent } from './passwords/passwords/passwords.component';
 
 const routes: Routes = [
-  // { path: "", redirectTo: "nn", pathMatch: "full" },
-  // { path: "nn", component: ManagementBasicDesignComponent },
-  // { path: "menu", component: MenuDesignComponent },
+
   {
     path: "", component: NavComponent, children: [
       {
         path: "volunteers", loadChildren: () => import("./volunteers/volunteers.module").then(m => m.VolunteersModule)
-        // , children: [
-        //   { path: "", component: VolunteersListComponent, pathMatch: "full" },
-        //   { path: "editVolunteer/:id", component: VolunteersDetailsComponent },
-        //   { path: "addVolunteer", component: RegistrationVolunteersComponent }
-        // ]
       },
       { path: "settlement", loadChildren: () => import("./settlement/settlement.module").then(m => m.SettlementModule) },
       { path: "scheduling", loadChildren: () => import("./scheduling/scheduling.module").then(m => m.SchedulingModule) },

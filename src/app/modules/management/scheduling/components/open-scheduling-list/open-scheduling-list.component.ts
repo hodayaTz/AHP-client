@@ -36,7 +36,6 @@ export class OpenSchedulingListComponent implements OnInit {
     const dialogRef = this.dialog.open(NewSchedulingHolidayComponent, {
       width: 'auto',
     });
-   
     dialogRef.afterClosed().subscribe(result => {
       this.openSchedulingHolidays$=this._service.getSchedulingsHoliday()
     });
@@ -47,17 +46,10 @@ export class OpenSchedulingListComponent implements OnInit {
       width: '40%',
       data:{id:idScheduling}
     });
-    // dialogRef.disableClose=true
     dialogRef.afterClosed().subscribe(result => {
       this.openSchedulingHolidays$=this._service.getSchedulingsHoliday()
     });
   }
-
-  // getHolidayName(id:number){
-  //   this._service_holiday.getHolidayById(id).subscribe(holiday=>{
-  //     return holiday.descriptionHoliday
-  //   })
-  // }
 
   openScheduling(idSchedulingHoliday:number){
     this._router.navigate(["openScheduling",idSchedulingHoliday],{relativeTo:this.route})

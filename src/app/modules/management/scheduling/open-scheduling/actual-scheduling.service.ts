@@ -19,10 +19,6 @@ export class ActualSchedulingService {
         return this._http.get<HolidayVolunteer[]>("/api/HolidayVolunteer/" + id)
     }
 
-    // getVolunteersFromHistory(settlement:number,scheduling:number):Observable<HolidayVolunteer[]>{
-    //     return this._http.get<HolidayVolunteer[]>("/api/HolidayVolunteer/GetVolunteersBySettlement/"+settlement+"/"+scheduling)
-    // }
-
     getVolunteersToScheduling(settlement:number,scheduling:number):Observable<HolidayVolunteer[][]>{
         return this._http.get<HolidayVolunteer[][]>("/api/HolidayVolunteer/GetVolunteersToScheduling/"+settlement+"/"+scheduling)
     }

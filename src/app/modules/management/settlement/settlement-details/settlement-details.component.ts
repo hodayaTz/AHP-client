@@ -69,6 +69,7 @@ export class SettlementDetailsComponent implements OnInit {
       }
     })
   }
+  
   openSnackBar(message: string, action: string = "x") {
     this._snackBar.open(message, action, {
       duration: 3000

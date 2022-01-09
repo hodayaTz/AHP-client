@@ -18,16 +18,11 @@ export class HolidaysListComponent implements OnInit {
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
-  // detailsHoliday(holidayId:number){
-  //   this._router.navigate(["/detailsHoliday",holidayId])
-  // }
-
   constructor(private _serviceHoliday:HolidaysService,private _router:Router,
     private route:ActivatedRoute,public dialog: MatDialog,private _snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
     this.holidays$=this._serviceHoliday.getHolidays()
-    // this.professional$=this._serviceHoliday.getProfessionals()
   }
 
   holidays$:Observable<Holiday[]>

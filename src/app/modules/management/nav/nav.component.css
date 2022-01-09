@@ -40,13 +40,6 @@
   width: 100%;
   z-index: 1;
 }
-/* .router{
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100%;
-  height:auto;
-} */
 .router {
   background-position: center;
   background-repeat: no-repeat;
@@ -54,5 +47,7 @@
   min-height: 100%;
   height: 100%;
   overflow: auto;
+  padding-left: 5%;
+    padding-right: 5%;
 }
 

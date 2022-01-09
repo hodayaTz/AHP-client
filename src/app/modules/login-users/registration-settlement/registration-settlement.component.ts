@@ -33,8 +33,6 @@ export class RegistrationSettlementComponent implements OnInit {
   })
 
   contactPersonForm: FormGroup = new FormGroup({
-    // idContactPerson: new FormControl(""),
-    // idSettlement: new FormControl(""),
     firstName: new FormControl(""),
     lastName: new FormControl(""),
     phone: new FormControl(""),
@@ -51,7 +49,6 @@ export class RegistrationSettlementComponent implements OnInit {
     this.IsContactPerson = true
   }
   saveNewSettlement() {
-    debugger
     this.newSettlement = this.settlementForm.value;
     this.newContactPerson=this.contactPersonForm.value
     this.newContactPerson.idContactPerson=0

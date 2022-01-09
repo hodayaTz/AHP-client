@@ -24,6 +24,7 @@ export class NavComponent implements OnInit{
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog,private router:Router) { }
   ngOnInit(): void {
   }
+  
   logo = require('../../../../assets/images/logohe.png').default;
 
   checkPassword() {

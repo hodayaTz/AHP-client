@@ -23,14 +23,15 @@ export interface DialogDataVolunteer{
   styleUrls: ['./scheduling-actual.component.css']
 })
 export class SchedulingActualComponent implements OnInit {
+
   constructor(private _service:ActualSchedulingService, private _acr: ActivatedRoute,
     private _openSchedulingService:OpenSchedulingService,public dialog: MatDialog
     ,private _router:Router, private _Activeroute:ActivatedRoute) { }
+
   ngOnInit(): void {
     this._acr.paramMap.subscribe(data => {
       if(data.has("id")) {
         this.schedulingHolidayId=Number(data.get("id")) 
-        // this.volunteers=this._service.getVolunteers(this.schedulingHoliday)
         this.settlements=this._service.getSettlements(this.schedulingHolidayId)
         this._openSchedulingService.getSchedulingHolidayById(this.schedulingHolidayId).subscribe(data=>{
           this.schedulingHoliday=data
@@ -42,7 +43,6 @@ export class SchedulingActualComponent implements OnInit {
   schedulingHolidayId:number
   schedulingHoliday:SchedulingHoliday
   settlements:Observable<SettlementHoliday[]>
-  // volunteers:Observable<HolidayVolunteer[]>
   volunteers:HolidayVolunteer[][]
   settlementChoose:SettlementHoliday
   settlementChooseMoreNeeded:SettlementHoliday=new SettlementHoliday()
@@ -93,7 +93,6 @@ export class SchedulingActualComponent implements OnInit {
       panelClass:'dialog'
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
     });
   }
 }

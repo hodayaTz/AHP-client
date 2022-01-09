@@ -20,6 +20,7 @@ export class VolunteerPlacementApprovalComponent implements OnInit {
       this.dialogRef.close();
     })
   }
+  
   currentSettlement:string
 
   cancel(): void {

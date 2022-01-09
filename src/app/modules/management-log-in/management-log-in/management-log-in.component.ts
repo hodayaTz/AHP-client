@@ -23,7 +23,6 @@ export class ManagementLogInComponent implements OnInit {
           sessionStorage.setItem("pass", "true")
         }
         else {
-          console.log("false")
         }
       })
     }

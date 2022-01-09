@@ -35,8 +35,6 @@ export class CompletionSchedulingComponent implements OnInit {
 
   closeScheduling(){
     this._service.closeScheduling(this.data.scheduling).subscribe(result=>{
-
     })
   }
-
 }

@@ -31,7 +31,6 @@ export class SettlementService {
   }
 
   updateSettlement(settlement: Settlement): Observable<boolean> {
-    debugger
     return this._http.put<boolean>(this.url + "/", settlement)
   }
 

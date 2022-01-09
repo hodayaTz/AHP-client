@@ -72,12 +72,8 @@ export class SettlementComponent implements OnInit {
     }
     else{
       if(optionalSettlement.idExperience==1){
-        //למחוק מהטבלה של holidayvolunteer
-        //לעשות אתזה 
-        // this._service.deleteVolunteerHoliday(optionalVolunteer.idSchedulingHoliday,optionalVolunteer.idVolunteer)
       }
       this._serviceScheduling.changeExperienceSettlement(optionalSettlement,newExperience.idExperience).subscribe(result=>{
-        console.log(result)
       })
     }
     this.getOptinalSettlements()

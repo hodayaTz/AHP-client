@@ -81,7 +81,6 @@ export class HistoryComponent implements OnInit {
         });
       }
     });
-    // Overrride default filter behaviour of Material Datatable
   }
   getMapedHistory(historyVals: any[]) {
     return historyVals.map((element, index) => ({
@@ -138,9 +137,6 @@ export class HistoryComponent implements OnInit {
     ];
 
     this.dataSource.filterPredicate = (data: any, filter: string) => {
-      // const dataStr = JSON.stringify(data).toLowerCase();
-      // return dataStr.indexOf(filter) != -1;
-
       let match = true;
       const filtersList = JSON.parse(filter);
       const dataStgr = JSON.stringify(data);
@@ -180,7 +176,6 @@ export class HistoryComponent implements OnInit {
   filterValuesArr: any[] = [];
   // Called on Filter change
   filterChange(filter: any, event: any) {
-    //let filterValues = {}
     var key = filter.columnProp;
     var obj: any = {};
     var isExists = false;
@@ -218,8 +213,6 @@ export class HistoryComponent implements OnInit {
           delete searchTerms[col];
         }
       }
-
-      console.log(searchTerms);
 
       let nameSearch = () => {
         let found = false;
@@ -265,49 +258,14 @@ export class HistoryComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  // ngAfterViewInit() {
-  //   this.dataSource.sort = this.sort;
-  // }
-
   /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
-
-  // applyFilter(filterValue: string, column: string) {
-  //   // const filterValue = (event.target as HTMLInputElement).value;
-  //   switch (column) {
-  //     case 'year':
-  //       this.history = this.history.filter(h => h.scheduling.yearHoliday.toString().includes(filterValue))
-  //       this.dataSource = new MatTableDataSource(this.getMapedHistory(this.history));
-  //       break;
-  //     case 'holiday':
-  //       this.history = this.history.filter(h => h.scheduling.descripation.includes(filterValue))
-  //       this.dataSource = new MatTableDataSource(this.getMapedHistory(this.history));
-  //       break;
-  //     case 'settlement':
-  //       this.history = this.history.filter(h => h.settlement.settlement.nameSettlement.includes(filterValue))
-  //       this.dataSource = new MatTableDataSource(this.getMapedHistory(this.history));
-  //       break;
-  //     case 'volunteer':
-  //       this.history = this.history.filter(h => (h.volunteer.volunteer.firstName + " " + h.volunteer.volunteer.lastName).includes(filterValue))
-  //       this.dataSource = new MatTableDataSource(this.getMapedHistory(this.history));
-  //       break;
-  //     default:
-  //       this.dataSource = new MatTableDataSource(this.getMapedHistory(this.history)WithOutFilter);
-
-  //       break;
-  //   }
-  //   // this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
 
   exportexcel(): void {
     /* table id is passed over here */

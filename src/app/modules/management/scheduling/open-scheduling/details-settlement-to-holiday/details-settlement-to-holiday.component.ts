@@ -25,11 +25,6 @@ export interface DialogData {
 export class DetailsSettlementToHolidayComponent implements OnInit {
 
   ngOnInit(): void {
-    // this.subscription = this._openSchedulingService.currentholidayId.subscribe(id=>
-    //   {console.log(id)
-    //   this.professionals$=this._SchedulingService.getProfessionalsByHoliday(id)}
-    // )
-    // let holiday=this._openSchedulingService.holidayId
     let holiday=Number( sessionStorage.getItem('holidy'))
     this.professionals$=this._SchedulingService.getProfessionalsByHoliday(holiday)
     this.prayerTexts$=this._SchedulingService.getPrayerTexts()
@@ -47,8 +42,6 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
   settlement:SettlementHoliday
   professionals$:Observable<Professional[]>
   prayerTexts$:Observable<PrayerText[]>
-  // holiday:number;
-  // subscription: Subscription;
   
   settlementHolidayForm:FormGroup=new FormGroup({
     amountPeopleConsumed:new FormControl(0),
@@ -64,7 +57,6 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
     this.settlement.idSchedulingHoliday=this.data.scheduling
     this.settlement.idSettlement=this.data.settlement
     this._openSchedulingService.addSettlementHoliday(this.settlement).subscribe(result=>{
-      debugger
       if(result){
         this._SchedulingService.changeExperienceSettlement(this.data.optionalSettlement,this.data.idExperience).subscribe(_result=>{
           if(_result){
@@ -79,6 +71,7 @@ export class DetailsSettlementToHolidayComponent implements OnInit {
         this.openSnackBar("שגיאה-פרטי הישוב לא נשמרו")      }
     })
   }
+
   openSnackBar(message: string, action: string="x") {
     this._snackBar.open(message, action,{
       duration: 3000

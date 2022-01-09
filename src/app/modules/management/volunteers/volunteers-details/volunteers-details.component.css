@@ -1,11 +1,7 @@
 .example-container .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
-  /* .center{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  } */
+
 
 
 .details{
@@ -27,12 +23,6 @@
   padding: 60px 80px 60px 80px;
   margin-bottom: 120px;
 }
-
-/* .mat-form-field-flex .ng-tns-c69-0 {
-  border-radius: 2px 2px 0 0;
-  box-shadow: inset 0px 0.5px 1px rgb(192, 192, 192);
-
-} */
 
 .card{
   display: flex;

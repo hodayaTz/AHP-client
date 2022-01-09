@@ -15,16 +15,16 @@ export class PasswordsComponent implements OnInit {
   constructor(private _service: PasswordsService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // this.passwords$=this._service.getPasswords()
     this._service.getPasswords().subscribe(data => {
       this.passwords = data
       this.hides = Array(this.passwords.length).fill(true)
     })
   }
+  
   passwords: string[]
   hides: boolean[]
-
   hide = true;
+
   addPassword() {
     const dialogRef = this.dialog.open(NewPasswordComponent, {
       width: '350px',
@@ -47,11 +47,13 @@ export class PasswordsComponent implements OnInit {
       }
     });
   }
+
   openSnackBar(message: string, action: string = "x") {
     this._snackBar.open(message, action, {
       duration: 3000
     });
   }
+
   checkHide(i: number) {
     if (this.hide == false || this.hides[i] == false) {
       return true

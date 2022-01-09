@@ -14,6 +14,7 @@ import { MessageBeforeDeleteComponent } from '../../message-before-delete/messag
 export class SettlementsListComponent implements OnInit {
 
   constructor(public dialog: MatDialog,private _settlementService:SettlementService,private _router:Router, private route:ActivatedRoute) { }
+  
   ngOnInit(): void {
     this.settlements$=this._settlementService.getSettlements()
   }
@@ -45,7 +46,6 @@ export class SettlementsListComponent implements OnInit {
       });
     })
   }
-
 
   addNewSettlement(){
     this._router.navigate(['addSettlement'],{relativeTo:this.route})

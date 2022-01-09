@@ -20,7 +20,6 @@ export class RegistrationVolunteersComponent implements OnInit {
     this._service.getArea().subscribe(areasData=>{
       this.areas=areasData
       this.areas.forEach(element => {
-        console.log(element.areaName)
       });
     })
   }
@@ -47,7 +46,6 @@ export class RegistrationVolunteersComponent implements OnInit {
     this.newVolunteer=this.volunteerForm.value;
     this.newVolunteer.isActive=true;
     this.newVolunteer.idVolunteer=0
-    debugger
     this._service.saveNewVolunteer(this.newVolunteer).subscribe(res=>{
       if(res){
         this.openSnackBar("פרטי הפעיל נשמרו בצלחה")

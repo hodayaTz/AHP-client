@@ -35,7 +35,6 @@ export class SchedulingService {
   }
 
   changeExperienceSettlement(optionalSettlement:OptionalSettlement,newExperience:number):Observable<boolean>{
-    debugger
     return this._http.post<boolean>("/api/OptionalSettlementToHoliday/"+newExperience,optionalSettlement)
   }
 

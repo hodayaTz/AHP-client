@@ -31,7 +31,6 @@ export class HolidayDetailsComponent implements OnInit {
     holiday.idHoliday=0
     holiday.descriptionHoliday=this.holidayForm.value.descriptionHoliday
     holiday.professionals=this.holidayForm.value.professionals
-    console.log(holiday)
     this._serviceHoliday.addHoliday(holiday).subscribe(res=>{
       this.onNoClick()
     })

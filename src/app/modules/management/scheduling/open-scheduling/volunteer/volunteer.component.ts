@@ -33,6 +33,7 @@ export class VolunteerComponent implements OnInit {
     })
     this.experienceOptionals$=this._serviceScheduling.getExperienceOption().pipe()
   }
+
   primary:string="primary"
   schedulingHolidayId:number
   volunteers:OptionalVolunteer[]
@@ -59,12 +60,10 @@ export class VolunteerComponent implements OnInit {
       this.dataSource.filterPredicate = (data: OptionalVolunteer, filter:string) => {
         return (data.volunteer.firstName+" "+data.volunteer.lastName).includes(filter)
       }
-      // this.showOnly(this.currentStatus)
     })
   }
 
   applyFilter(event: Event ) {
-    debugger
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
@@ -76,7 +75,6 @@ export class VolunteerComponent implements OnInit {
     }
     else{
       if(optionalVolunteer.idExperience==1){
-        //למחוק מהטבלה של holidayvolunteer
         this._service.deleteVolunteerHoliday(optionalVolunteer.idSchedulingHoliday,optionalVolunteer.idVolunteer)
       }
       this._serviceScheduling.changeExperience(optionalVolunteer,newExperience.idExperience).subscribe(result=>{

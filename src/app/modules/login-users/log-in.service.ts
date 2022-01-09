@@ -9,7 +9,6 @@ import { Area } from 'src/app/models/area';
 export class LogInService {
 
     saveNewVolunteer(newVolunteer:Volunteer): Observable<boolean> {
-        console.log(JSON.stringify(newVolunteer))
         return this._http.post<boolean>("/api/Volunteer",newVolunteer)
     }
 

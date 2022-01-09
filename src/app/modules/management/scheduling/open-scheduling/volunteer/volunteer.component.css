@@ -18,10 +18,8 @@ table {
 .container-button{
   display: flex;
   justify-content: center;
-/* flex-direction: column; */
 }
 
 .btn{
   margin: 1%;
-  /* height: 40%; */
 }

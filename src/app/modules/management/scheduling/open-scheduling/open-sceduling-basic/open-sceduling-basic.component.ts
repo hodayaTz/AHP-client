@@ -23,29 +23,13 @@ export class OpenScedulingBasicComponent implements OnInit {
     this.dialogRef.close();
   }
   ngOnInit(): void {
-    debugger
-    // this._acr.paramMap.subscribe(data=>{
-    //   if(data.has("id")){
-    //     console.log(Number(data.get("id")))
-    //     console.log(typeof(Number(data.get("id"))))
-    //     this._schedilingService.getSchedulingHolidayById(Number(data.get("id"))).subscribe(res=>{
-    //       this.schedulingHoliday=res
-    //       // sessionStorage.setItem("holiday",res.idHoliday.toString())
-    //       this._service.holidayId=res.idHoliday
-    //     })
-    //   }
-    // })
     this._schedilingService.getSchedulingHolidayById(this.data.id).subscribe(res => {
       this.schedulingHoliday = res
-      // this._service.holidayId = res.idHoliday
-      // this._service.changeholidayId(res.idHoliday)
-      // this.subscription = this._service.currentholidayId.subscribe(id => 
       sessionStorage.setItem('holidy',res.idHoliday.toString())
     })
 
   }
-  // holiday:number;
-  // subscription: Subscription;
+
   schedulingHoliday: SchedulingHoliday
 
   delete() {
@@ -57,7 +41,6 @@ export class OpenScedulingBasicComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this._schedilingService.deleteSchedulingHoliday(this.schedulingHoliday.idSchedulingHoliday).subscribe(result => {
-          //לתפוס את השגיאה
           this.onNoClick()
         })
       }

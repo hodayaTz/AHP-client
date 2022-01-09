@@ -16,7 +16,6 @@ const URL_SETTLEMENT="/api/OptionalSettlementToHoliday"
 export class OpenSchedulingService {
   constructor(private _http:HttpClient) {
     this.getProfessionals().subscribe(data=>{
-      debugger
       this._professionals=data
     })
   }
@@ -40,25 +39,6 @@ export class OpenSchedulingService {
   addSettlementHoliday(settlementHoliday:SettlementHoliday):Observable<boolean>{
     return this._http.post<boolean>("/api/SettlementHoliday",settlementHoliday)
   }
-
-  // private _holidayId:number
-  
-  // public get holidayId() : number {
-  //   return this._holidayId
-  // }
-  
-  // public set holidayId(h : number) {
-  //   this._holidayId = h;
-  // }
-
-  // public holidayId:number
-  
-  // private holidayId = new BehaviorSubject(0);
-  // currentholidayId = this.holidayId.asObservable();
-  // changeholidayId(id: number) {
-  //   this.holidayId.next(id)
-  // }
-
   
   private _professionals:Professional[]
 

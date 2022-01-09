@@ -26,14 +26,6 @@
                 </mat-chip-list>
             </div>
             <br>
-            <!-- <div>
-                <span>איזה צרכים נשארו:</span>
-                <mat-card>כמות אנשים- {{settlementChooseMoreNeeded.amountPeopleConsumed}} </mat-card>
-                <mat-chip-list>
-                    <mat-chip *ngFor="let p of settlementChooseMoreNeeded.professionals" color="primary" selected>
-                        {{getProfessionalById(p)}}</mat-chip>
-                </mat-chip-list>
-            </div> -->
             <div>
                 <div *ngIf="volunteers">
                     <span *ngIf="volunteers[0].length" class="cus-title"> פעילים שהיו כבר בישוב</span>
@@ -60,19 +52,11 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <!-- <div>
-                                        <button (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button color="primary">בחר פעיל</button>
-                                    </div> -->
                                 </div>
                             </mat-list-option>
                         </div>
-                        <!-- </mat-selection-list> -->
-                        <!-- </div> -->
                         <span *ngIf="volunteers[1].length" class="cus-title"> פעילים</span>
-                        
-                        <!-- <div> -->
                         <br>
-                        <!-- <mat-selection-list [multiple]="false"> -->
                         <div class="select-wrapper">
                             <mat-list-option class="m-cus-option2" style="height: auto;" *ngFor="let volunteer of volunteers[1]" [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
@@ -94,20 +78,12 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <!-- <div>
-                                        <button (click)="saveVolunteerToSettlement(volunteer)" mat-stroked-button color="primary">בחר פעיל</button>
-                                    </div> -->
                                 </div>
 
                             </mat-list-option>
                         </div>
-                        <!-- </mat-selection-list> -->
-                        <!-- </div> -->
-
-                        <!-- <div> -->
                         <span *ngIf="volunteers[3].length" class="cus-title"> פעילים ששובצו לישוב אחר</span>
                         <br>
-                        <!-- <mat-selection-list [multiple]="false"> -->
                         <div class="select-wrapper">
                             <mat-list-option class="m-cus-option2" style="height: auto;" *ngFor="let volunteer of volunteers[3]" [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
@@ -128,20 +104,12 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <!-- <div>
-                                        <button (click)="saveVolunteerToSettlement(volunteer,true)" mat-stroked-button color="primary">בחר פעיל</button>
-                                    </div> -->
                                 </div>
                             </mat-list-option>
                         </div>
-                        <!-- </mat-selection-list> -->
-                        <!-- </div> -->
-
-                        <!-- <div> -->
                         <span *ngIf="volunteers[2].length" class="cus-title"> פעילים שכבר שובצו לישוב</span>
                         <br>
                         <div class="select-wrapper">
-                            <!-- <mat-selection-list [multiple]="false"> -->
                             <mat-list-option style="height: auto;" class="m-cus-option2" *ngFor="let volunteer of volunteers[2]" [value]="volunteer">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="display: flex; flex-direction: column ;">
@@ -161,15 +129,10 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <!-- <div>
-                                    
-                                    <button (click)="deleteVolunteerFromSettlement(volunteer)" mat-stroked-button color="primary">הסרה</button>
-                                </div> -->
                                 </div>
                             </mat-list-option>
                         </div>
                     </mat-selection-list>
-                    <!-- </div> -->
                 </div>
             </div>
         </div>
